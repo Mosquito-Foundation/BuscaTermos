@@ -29,12 +29,12 @@ public class GridColumn {
 	private boolean resizable;
 
 	/**
-	 * Indica se a coluna È invisÌvel
+	 * Indica se a coluna √© invis√≠vel
 	 */
 	private boolean visible;
 
 	/**
-	 * Classe para criaÁ„o de uma coluna 
+	 * Classe para cria√ß√£o de uma coluna 
 	 * @author giovane.oliveira
 	 */
 	public static class Builder {
@@ -125,16 +125,16 @@ public class GridColumn {
 	}
 
 	/**
-	 * Retorna se È redimension·vel
-	 * @return Coluna È redimension·vel ou n„o
+	 * Retorna se √© redimension√°vel
+	 * @return Coluna √© redimension√°vel ou n√£o
 	 */
 	public boolean isResizable() {
 		return this.resizable;
 	}
 
 	/**
-	 * Retorna se È invisÌvel
-	 * @return Coluna È invisÌvel ou n„o
+	 * Retorna se √© invis√≠vel
+	 * @return Coluna √© invis√≠vel ou n√£o
 	 */
 	public boolean isVisible() {
 		return this.visible;

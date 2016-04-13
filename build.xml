@@ -15,7 +15,7 @@
 	<target name="build" depends="compile">
 		<mkdir dir="target" />
 		<jar destfile="target/BuscaTermos.jar" basedir="bin" filesetmanifest="skip">
-			<zipgroupfileset dir="lib" includes="*.jar"/>
+			<!--<zipgroupfileset dir="lib" includes="*.jar"/>-->
 			<zipfileset dir="images" includes="*.jpg"></zipfileset>
 			<zipfileset dir="images" includes="*.png"></zipfileset>
 			<!--zipgroupfileset dir="images" includes="**"/-->
@@ -30,12 +30,12 @@
 		<delete dir="bin" />
 		<mkdir dir="bin" />
 
-		<javac srcdir="src" destdir="bin">
-			<classpath>
+		<javac srcdir="src" destdir="bin" encoding="UTF-8">
+			<!--<classpath>
 				<fileset dir="lib">
 					<include name="*.jar" />
 				</fileset>
-			</classpath>
+			</classpath>-->
 		</javac>
 	</target>
 

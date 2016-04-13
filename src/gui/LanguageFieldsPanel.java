@@ -51,7 +51,7 @@ public class LanguageFieldsPanel extends BTPanel {
 	private BTPanel getFields() {
 		GridLayout containerLayout;
 		BTPanel container;
-		// Corrigir espa�amento
+		// Corrigir espaçamento
 		if ( Configuration.getInstance().isMacTheme() ) {
 			containerLayout = new GridLayout( 2, 3, 0, 0 );
 			container = new BTPanel( containerLayout );
@@ -79,8 +79,8 @@ public class LanguageFieldsPanel extends BTPanel {
 	}
 
 	/**
-	 * Monta e retorna campo referente ao idioma Portugues (Brasil)
-	 * @return Campo referente ao idioma Portugues (Brasil)
+	 * Monta e retorna campo referente ao idioma Português (Brasil)
+	 * @return Campo referente ao idioma Português (Brasil)
 	 */
 	public BTTextField getBrazilField() {
 		if( this.brazilField == null ) {
@@ -90,8 +90,8 @@ public class LanguageFieldsPanel extends BTPanel {
 	}
 
 	/**
-	 * Monta e retorna campo referente ao idioma Ingles (EUA)
-	 * @return Campo referente ao idioma Ingles (EUA)
+	 * Monta e retorna campo referente ao idioma Inglês (EUA)
+	 * @return Campo referente ao idioma Inglês (EUA)
 	 */
 	public BTTextField getUsaField() {
 		if( this.usaField == null ) {
@@ -112,8 +112,8 @@ public class LanguageFieldsPanel extends BTPanel {
 	}
 
 	/**
-	 * Monta e retorna campo referente ao idioma Frances
-	 * @return Campo referente ao idioma Frances
+	 * Monta e retorna campo referente ao idioma Francês
+	 * @return Campo referente ao idioma Francês
 	 */
 	public BTTextField getFranceField() {
 		if( this.franceField == null ) {
@@ -135,8 +135,8 @@ public class LanguageFieldsPanel extends BTPanel {
 	}
 
 	/**
-	 * Monta e retorna campo referente ao idioma Alemao
-	 * @return Campo referente ao idioma Alemao
+	 * Monta e retorna campo referente ao idioma Alemão
+	 * @return Campo referente ao idioma Alemão
 	 */
 	public BTTextField getGermanyField() {
 		if( this.germanyField == null ) {

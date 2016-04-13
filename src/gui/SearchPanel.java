@@ -28,12 +28,12 @@ public class SearchPanel extends JPanel implements Runnable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Inst‚ncia da janela
+	 * Inst√¢ncia da janela
 	 */
 	private final MainFrame mainFrame;
 	
 	/**
-	 * Instancia das configuraÁıes
+	 * Instancia das configura√ß√µes
 	 */
 	private final Configuration configuration = Configuration.getInstance();
 	
@@ -63,14 +63,14 @@ public class SearchPanel extends JPanel implements Runnable {
 	private BTSplitter splitter;
 	
 	/**
-	 * Indica se o painel inferior estar· expandido
+	 * Indica se o painel inferior estar√° expandido
 	 */
 	private boolean bottomPaneExpanded;
 	
 	/**
 	 * Construtor
 	 * @param fileLanguage Nome do arquivo do idioma
-	 * @param mainFrame Inst‚ncia da janela
+	 * @param mainFrame Inst√¢ncia da janela
 	 */
 	public SearchPanel( final String fileLanguage, final MainFrame mainFrame, final boolean bottomPaneExpanded ) {
 		this.mainFrame = mainFrame;
@@ -94,7 +94,7 @@ public class SearchPanel extends JPanel implements Runnable {
 	}
 
 	/**
-	 * Monta e retorna painel com os filtros (Campo texto e bot„o limpar)
+	 * Monta e retorna painel com os filtros (Campo texto e bot√£o limpar)
 	 * @return Painel de filtros
 	 */
 	private BTPanel getFilterArea() {
@@ -106,8 +106,8 @@ public class SearchPanel extends JPanel implements Runnable {
 	}
 
 	/**
-	 * Monta e retorna container com o campo texto e bot„o limpar
-	 * @return Container com campo texto e bot„o limpar
+	 * Monta e retorna container com o campo texto e bot√£o limpar
+	 * @return Container com campo texto e bot√£o limpar
 	 */
 	private BTPanel getFieldContainer() {
 		BTPanel fieldContainer = new BTPanel( new BorderLayout() );
@@ -137,8 +137,8 @@ public class SearchPanel extends JPanel implements Runnable {
 	}
 	
 	/**
-	 * Monta e retorna o bot„o de limpar
-	 * @return Bot„o que limpa o campo texto
+	 * Monta e retorna o bot√£o de limpar
+	 * @return Bot√£o que limpa o campo texto
 	 */
 	private BTButton getClearButton() {
 		BTButton clearButton = new BTButton( "clear.png" );
@@ -202,7 +202,7 @@ public class SearchPanel extends JPanel implements Runnable {
 	}
 	
 	/**
-	 * Atualiza configuraÁıes ao clicar no divisor
+	 * Atualiza configura√ß√µes ao clicar no divisor
 	 * @param isExpanded
 	 */
 	public void fireBottomPaneTrigger( final boolean isExpanded ) {

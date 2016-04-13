@@ -28,7 +28,7 @@ public class MainFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	/**
-	 * Armazena as configuraÁıes do aplicativo
+	 * Armazena as configura√ß√µes do aplicativo
 	 */
 	private final Configuration configuration = Configuration.getInstance();
 	
@@ -38,22 +38,22 @@ public class MainFrame extends JFrame {
 	private BTMenuBar toolbar;
 	
 	/**
-	 * OpÁıes da menubar
+	 * Op√ß√µes da menubar
 	 */
 	private BTMenu displayMenu, optionsMenu, themeMenu, helpMenu;
 	
 	/**
-	 * Itens de menu da opÁ„o Exibir
+	 * Itens de menu da op√ß√£o Exibir
 	 */
 	private BTCheckBoxMenuItem viewUSAItem, viewSpainItem, viewFranceItem, viewItalyItem, viewGermanyItem;
 	
 	/**
-	 * Itens de menu da opÁ„o OpÁıes
+	 * Itens de menu da op√ß√£o Op√ß√µes
 	 */
 	private BTCheckBoxMenuItem alwaysOnTopItem;
 	
 	/**
-	 * OpÁıes de temas
+	 * Op√ß√µes de temas
 	 */
 	private BTCheckBoxMenuItem themeDefaultItem, themeWindowsItem, themeMacItem;
 	
@@ -78,7 +78,7 @@ public class MainFrame extends JFrame {
 	private List<SearchPanel> searchPanelList;
 	
 	/**
-	 * Mensagem contendo as expressıes regulares
+	 * Mensagem contendo as express√µes regulares
 	 */
 	private RegexDialog regexDialog;
 	
@@ -86,7 +86,7 @@ public class MainFrame extends JFrame {
 	 * Construtor
 	 */
 	public MainFrame() {
-		// ValidaÁ„o para o path, se o usu·rio informar um path inv·lido e n„o quiser mais procurar um v·lido, sai da aplicaÁ„o
+		// Valida√ß√£oo para o path, se o usu√°rio informar um path inv√°lido e n√£o quiser mais procurar um v√°lido, sai da aplica√ß√£o
 		if( !this.getConfiguration().isPathValid() ) {
 			if( !this.getConfiguration().createInitialPath() ) {
 				System.exit( 0 );
@@ -136,8 +136,8 @@ public class MainFrame extends JFrame {
 	}
 
 	/**
-	 * Monta e retorna item de menu InglÍs(USA)
-	 * @return item de menu para idioma InglÍs(USA)
+	 * Monta e retorna item de menu Ingl√™s(USA)
+	 * @return item de menu para idioma Ingl√™s(USA)
 	 */
 	protected BTCheckBoxMenuItem getViewUSAItem() {
 		if( this.viewUSAItem == null ) {
@@ -174,8 +174,8 @@ public class MainFrame extends JFrame {
 	}
 	
 	/**
-	 * Monta e retorna item de menu FrancÍs
-	 * @return item de menu para o idioma FrancÍs
+	 * Monta e retorna item de menu Franc√™s
+	 * @return item de menu para o idioma Franc√™s
 	 */
 	protected BTCheckBoxMenuItem getViewFranceItem() {
 		if( this.viewFranceItem == null ) {
@@ -212,8 +212,8 @@ public class MainFrame extends JFrame {
 	}
 	
 	/**
-	 * Monta e retorna item de menu Alem„o
-	 * @return item de menu para o idioma Alem„o
+	 * Monta e retorna item de menu Alem√£o
+	 * @return item de menu para o idioma Alem√£o
 	 */
 	protected BTCheckBoxMenuItem getViewGermanyItem() {
 		if( this.viewGermanyItem == null ) {
@@ -231,8 +231,8 @@ public class MainFrame extends JFrame {
 	}
 	
 	/**
-	 * Monta e retorna menu OpÁıes
-	 * @return menu OpÁıes
+	 * Monta e retorna menu Op√ß√µes
+	 * @return menu Op√ß√µes
 	 */
 	private BTMenu getOptionsMenu() {
 		if(this.optionsMenu == null) {
@@ -288,7 +288,7 @@ public class MainFrame extends JFrame {
 	}
 	
 	/**
-	 * MOnta e retorna menu com temas
+	 * Monta e retorna menu com temas
 	 * @return
 	 */
 	private BTMenu getThemeMenu() {
@@ -302,7 +302,7 @@ public class MainFrame extends JFrame {
 	}
 	
 	/**
-	 * Monta e retorna item de menu com tema padrao
+	 * Monta e retorna item de menu com tema padr√£o
 	 * @return
  	 */
 	private BTCheckBoxMenuItem getThemeDefaultItem() {
@@ -359,8 +359,8 @@ public class MainFrame extends JFrame {
 	}
 	
 	/**
-	 * Monta e retorna item de menu Salvar configuraÁıes
-	 * @return item de menu Salvar configuraÁıes
+	 * Monta e retorna item de menu Salvar configura√ß√µes
+	 * @return item de menu Salvar configura√ß√µes
 	 */
 	private BTMenuItem getSaveConfigurationItem() {
 		if(this.saveConfigurationItem == null) {
@@ -427,7 +427,7 @@ public class MainFrame extends JFrame {
 	}
 
 	/**
-	 * Alterna opÁ„o da janela entre sempre no topo
+	 * Alterna op√ß√£o da janela entre sempre no topo
 	 */
 	public void alwaysOnTopToggle() {
 		this.setAlwaysOnTop(alwaysOnTopItem.isSelected());
@@ -454,7 +454,7 @@ public class MainFrame extends JFrame {
 	}
 	
 	/**
-	 * Seta abas visÌveis conforme configuraÁ„o salva
+	 * Seta abas vis√≠veis conforme configura√ß√£o salva
 	 */
 	private void showInitialTabs() {
 		
@@ -487,7 +487,7 @@ public class MainFrame extends JFrame {
 	}
 	
 	/**
-	 * Seta atributos da janela e a torna visÌvel
+	 * Seta atributos da janela e a torna vis√≠vel
 	 */
 	private void createAndShowWindow() {
 		this.setLayout( new GridLayout(1, 2) );
@@ -499,7 +499,7 @@ public class MainFrame extends JFrame {
 			this.getContentPane().setBackground( Color.decode("#E8F0F7") );
 		}
 		
-		// Altera estilo da barra de titulo
+		// Altera estilo da barra de t√≠tulo
 		if ( this.getConfiguration().isMacTheme() ) {
 			this.setUndecorated( true );
 			this.getRootPane().setWindowDecorationStyle( JRootPane.FRAME );
@@ -509,7 +509,7 @@ public class MainFrame extends JFrame {
 			cr.setSnapSize(new Dimension(10, 10));
 		}
 			
-		// Salva configuraÁıes ao fechar app
+		// Salva configura√ß√µes ao fechar app
 		this.addWindowListener(new WindowAdapter() {
 		    @Override
 		    public void windowClosing( final WindowEvent windowEvent ) {
@@ -529,8 +529,8 @@ public class MainFrame extends JFrame {
 	
 	/**
 	 * Adiciona ou remove uma aba
-	 * @param title TÌtulo da aba
-	 * @param icon Õcone do idioma da aba
+	 * @param title T√≠tulo da aba
+	 * @param icon √≠cone do idioma da aba
 	 * @param panel Panel do idioma da aba
 	 */
 	public void addRemoveTabs(String title, String icon, SearchPanel panel) {
@@ -553,12 +553,12 @@ public class MainFrame extends JFrame {
 	}
 	
 	/**
-	 * Salva opÁıes atuais
-	 * @param isChanging Indica se È alteraÁ„o de caminho
+	 * Salva op√ß√µes atuais
+	 * @param isChanging Indica se √© altera√ß√£o de caminho
 	 */
 	public void saveCurrentConfiguration( final boolean isChanging, final boolean isClosing ) {
 
-		// Seta configuraÁıes personalizadas
+		// Seta configura√ß√µes personalizadas
 		this.getConfiguration().setMaximized( this.getExtendedState() == JFrame.MAXIMIZED_BOTH );
 		if ( !this.getConfiguration().isMaximized() ) { 
 			this.getConfiguration().setWidth( this.getWidth() );
@@ -591,7 +591,7 @@ public class MainFrame extends JFrame {
 	}
 	
 	/**
-	 * Limpa seleÁıes dos checkboxes dos temas
+	 * Limpa sele√ß√µes dos checkboxes dos temas
 	 */
 	private void clearThemeSelection( final String selected ) {
 		this.getThemeDefaultItem().setSelected( selected.equals( Configuration.THEME_DEFAULT ) );
@@ -600,7 +600,7 @@ public class MainFrame extends JFrame {
 	}
 	
 	/**
-	 * Exibe janela com expressoes regulares
+	 * Exibe janela com express√µes regulares
 	 */
 	public void showRegexDialog() {
 		if ( this.regexDialog == null ) {
@@ -625,7 +625,7 @@ public class MainFrame extends JFrame {
 	}
 
 	/**
-	 * Monta e retorna lista com os paineis de idiomas
+	 * Monta e retorna lista com os pain√©is de idiomas
 	 * @return
 	 */
 	public List<SearchPanel> getSearchPanelList() {
@@ -642,7 +642,7 @@ public class MainFrame extends JFrame {
 	}
 	
 	/**
-	 * Reinicializa a aplicaÁ„o
+	 * Reinicializa a aplica√ß√£o
 	 */
 	public void reinitialize() {
 		new MainFrame();
@@ -650,9 +650,9 @@ public class MainFrame extends JFrame {
 	}
 	
 	/**
-	 * Retorna um Ìcone
+	 * Retorna um √≠cone
 	 * @param name Nome da imagem
-	 * @return Õcone
+	 * @return √çcone
 	 */
 	protected ImageIcon getIcon(String name) {
 		ImageIcon icon;
@@ -665,24 +665,24 @@ public class MainFrame extends JFrame {
 	}
 
 	/**
-	 * Retorna inst‚ncia da janela
-	 * @return Inst‚ncia da janela
+	 * Retorna inst√¢ncia da janela
+	 * @return Inst√¢ncia da janela
 	 */
 	public MainFrame getInstance() {
 		return this;
 	}
 	
 	/**
-	 * Retorna painel do idioma PortuguÍs(Brasil)
-	 * @return painel do idioma PortuguÍs(Brasil)
+	 * Retorna painel do idioma Portugu√™s(Brasil)
+	 * @return painel do idioma Portugu√™s(Brasil)
 	 */
 	public SearchPanel getSearchPanelBrazil() {
 		return this.searchPanelBrazil;
 	}
 
 	/**
-	 * Retorna painel do idioma InglÍs(EUA)
-	 * @return painel do idioma InglÍs(EUA)
+	 * Retorna painel do idioma Ingl√™s(EUA)
+	 * @return painel do idioma Ingl√™s(EUA)
 	 */
 	public SearchPanel getSearchPanelUSA() {
 		return this.searchPanelUSA;
@@ -697,8 +697,8 @@ public class MainFrame extends JFrame {
 	}
 
 	/**
-	 * Retorna painel do idioma FrancÍs
-	 * @return painel do idioma FrancÍs
+	 * Retorna painel do idioma Franc√™s
+	 * @return painel do idioma Franc√™s
 	 */
 	public SearchPanel getSearchPanelFrance() {
 		return this.searchPanelFrance;
@@ -713,16 +713,16 @@ public class MainFrame extends JFrame {
 	}
 
 	/**
-	 * Retorna painel do idioma Alem„o
-	 * @return painel do idioma Alem„o
+	 * Retorna painel do idioma Alem√£o
+	 * @return painel do idioma Alem√£o
 	 */
 	public SearchPanel getSearchPanelGermany() {
 		return this.searchPanelGermany;
 	}
 
 	/**
-	 * Retorna configuraÁıes atuais
-	 * @return configuraÁıes atuais do aplicativo
+	 * Retorna configura√ß√µes atuais
+	 * @return configura√ß√µes atuais do aplicativo
 	 */
 	public Configuration getConfiguration() {
 		return this.configuration;

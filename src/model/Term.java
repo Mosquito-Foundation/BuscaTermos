@@ -7,7 +7,7 @@ package model;
 public class Term {
 
 	/**
-	 * Número do termo
+	 * NÃºmero do termo
 	 */
 	private String id;
 	
@@ -18,7 +18,7 @@ public class Term {
 	private String text;
 
 	/**
-	 * Retorna número do termo
+	 * Retorna nÃºmero do termo
 	 * @return id
 	 */
 	public String getId() {
@@ -26,7 +26,7 @@ public class Term {
 	}
 
 	/**
-	 * Seta número do termo
+	 * Seta nÃºmero do termo
 	 * @param id
 	 */
 	public void setId(final String id) {

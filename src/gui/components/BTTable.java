@@ -22,7 +22,7 @@ public class BTTable extends JTable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instância da grid que a tabela pertence
+	 * InstÃ¢ncia da grid que a tabela pertence
 	 */
 	private Grid gridInstance;
 	
@@ -88,7 +88,7 @@ public class BTTable extends JTable {
 	}
 	
 	/**
-	 * Retorna própria instância
+	 * Retorna prÃ³pria instï¿½ncia
 	 * @return
 	 */
 	public BTTable getInstance() {
@@ -96,7 +96,7 @@ public class BTTable extends JTable {
 	}
 	
 	/**
-	 * Retorna instância da grid que a tabela pertence
+	 * Retorna instÃ¢ncia da grid que a tabela pertence
 	 * @return
 	 */
 	public Grid getGridInstance() {

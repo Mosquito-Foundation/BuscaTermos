@@ -23,7 +23,7 @@ public class ContextMenu extends JPopupMenu {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Indica se a aba selecionada é a do idioma Português(Brasil)
+	 * Indica se a aba selecionada Ã© a do idioma PortuguÃªs(Brasil)
 	 */
 	private boolean isBrazilTab;
 	
@@ -74,7 +74,7 @@ public class ContextMenu extends JPopupMenu {
 	}
 	
 	/**
-	 * Retorna menu com idiomas que ainda não estão visíveis
+	 * Retorna menu com idiomas que ainda nÃ£o estÃ£o visÃ­veis
 	 * @return <b>BTMenu</b> menu
 	 */
 	protected BTMenu getAddTabGroup() {
@@ -97,7 +97,7 @@ public class ContextMenu extends JPopupMenu {
 	}
 	
 	/**
-	 * Monta e retorna menu com os idiomas disponíveis
+	 * Monta e retorna menu com os idiomas disponÃ­veis
 	 * @return <b>BTMenu</b> menu
 	 */
 	protected BTMenu getLanguageGroup() {
@@ -114,7 +114,7 @@ public class ContextMenu extends JPopupMenu {
 	}
 	
 	/**
-	 * Monta e retorna item de menu com os idiomas Português(Brasil)
+	 * Monta e retorna item de menu com os idiomas PortuguÃªs(Brasil)
 	 * @return <b>BTMenuItem</b> item
 	 */
 	protected BTMenuItem getBrazilOption() {
@@ -130,7 +130,7 @@ public class ContextMenu extends JPopupMenu {
 	}
 	
 	/**
-	 * Monta e retorna item de menu com os idiomas Inglês(USA)
+	 * Monta e retorna item de menu com os idiomas InglÃªs(USA)
 	 * @return <b>BTMenuItem</b> item
 	 */
 	protected BTMenuItem getUSAOption() {
@@ -162,7 +162,7 @@ public class ContextMenu extends JPopupMenu {
 	}
 	
 	/**
-	 * Monta e retorna item de menu com os idiomas Francês
+	 * Monta e retorna item de menu com os idiomas FrancÃªs
 	 * @return <b>BTMenuItem</b> item
 	 */
 	protected BTMenuItem getFranceOption() {
@@ -194,7 +194,7 @@ public class ContextMenu extends JPopupMenu {
 	}
 	
 	/**
-	 * Monta e retorna item de menu com os idiomas Alemão
+	 * Monta e retorna item de menu com os idiomas AlemÃ£o
 	 * @return <b>BTMenuItem</b> item
 	 */
 	protected BTMenuItem getGermanyOption() {
@@ -299,9 +299,9 @@ public class ContextMenu extends JPopupMenu {
 	}
 	
 	/**
-	 * Retorna um ícone
+	 * Retorna um Ã­cone
 	 * @param name Nome da imagem
-	 * @return Ícone
+	 * @return Ã­cone
 	 */
 	protected ImageIcon getIcon(String name) {
 		ImageIcon icon;
@@ -314,14 +314,14 @@ public class ContextMenu extends JPopupMenu {
 	}
 	
 	/**
-	 * Imprime mensagem quando método não foi implementado
+	 * Imprime mensagem quando mÃ©todo nÃ£o foi implementado
 	 */
 	private void unimplementedMethod() {
-		System.out.println("Este método deve ser sobrescrito na classe filha!");
+		System.out.println("Este mÃ©todo deve ser sobrescrito na classe filha!");
 	}
 	
 	/**
-	 * Seta se a aba selecionada é a do idioma Português(Brasil)
+	 * Seta se a aba selecionada Ã© a do idioma PortuguÃªs(Brasil)
 	 * @param isBrazilTab
 	 */
 	protected void setIsBrazilTab(boolean isBrazilTab) {

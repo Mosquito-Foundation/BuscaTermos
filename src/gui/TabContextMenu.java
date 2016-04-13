@@ -30,7 +30,7 @@ public class TabContextMenu extends ContextMenu {
 	}
 
 	/**
-	 * Monta opções do menu
+	 * Monta opÃ§Ãµes do menu
 	 */
 	private void createOptions() {
 		this.add(this.getAddTabGroup());
@@ -41,7 +41,7 @@ public class TabContextMenu extends ContextMenu {
 	}
 
 	/**
-	 * Ação da opção Inglês(EUA)
+	 * AÃ§Ã£o da opÃ§Ã£o InglÃªs(EUA)
 	 */
 	@Override
 	protected void usaAction() {
@@ -50,7 +50,7 @@ public class TabContextMenu extends ContextMenu {
 	}
 	
 	/**
-	 * Ação da opção Espanhol
+	 * AÃ§Ã£o da opÃ§Ã£o Espanhol
 	 */
 	@Override
 	protected void spainAction() {
@@ -59,7 +59,7 @@ public class TabContextMenu extends ContextMenu {
 	}
 	
 	/**
-	 * Ação da opção Francês
+	 * AÃ§Ã£o da opÃ§Ã£o FrancÃªs
 	 */
 	@Override
 	protected void franceAction() {
@@ -68,7 +68,7 @@ public class TabContextMenu extends ContextMenu {
 	}
 	
 	/**
-	 * Ação da opção Italiano
+	 * AÃ§Ã£o da opÃ§Ã£o Italiano
 	 */
 	@Override
 	protected void italyAction() {
@@ -77,7 +77,7 @@ public class TabContextMenu extends ContextMenu {
 	}
 	
 	/**
-	 * Ação da opção Alemão
+	 * AÃ§Ã£o da opÃ§Ã£o AlemÃ£o
 	 */
 	@Override
 	protected void germanyAction() {
@@ -86,7 +86,7 @@ public class TabContextMenu extends ContextMenu {
 	}
 	
 	/**
-	 * Ação da opção Adicionar todos
+	 * AÃ§Ã£o da opÃ§Ã£o Adicionar todos
 	 */
 	protected void addAllAction() {
 		if(!this.mainFrame.getViewUSAItem().isSelected()) this.usaAction();
@@ -97,14 +97,14 @@ public class TabContextMenu extends ContextMenu {
 	}
 
 	/**
-	 * Ação da opção Fechar
+	 * AÃ§Ã£o da opÃ§Ã£o Fechar
 	 */
 	protected void closeAction() {
 		this.removeTab(this.selectedTab);
 	}
 	
 	/**
-	 * Ação da opção Fechar as outras
+	 * AÃ§Ã£o da opÃ§Ã£o Fechar as outras
 	 */
 	protected void closeOthersAction() {
 		JTabbedPane tabbedPane = this.mainFrame.getTabbedPane(); 
@@ -125,7 +125,7 @@ public class TabContextMenu extends ContextMenu {
 	}
 	
 	/**
-	 * Ação da opção Fechar todas
+	 * AÃ§Ã£o da opÃ§Ã£o Fechar todas
 	 */
 	protected void closeAllAction() {
 		this.selectedTab = 0;

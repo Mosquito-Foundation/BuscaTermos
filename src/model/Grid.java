@@ -34,7 +34,7 @@ public class Grid extends JScrollPane {
 	private BTTable table;
 
 	/**
-	 * ConfiguraÁıes das colunas
+	 * Configura√ß√µes das colunas
 	 */
 	private List<GridColumn> gridColumns;
 
@@ -49,18 +49,18 @@ public class Grid extends JScrollPane {
 	private GridTableModel model;
 
 	/**
-	 * OrdenaÁ„o dos registros
+	 * Ordena√ß√£o dos registros
 	 */
 	private TableRowSorter<TableModel> sorter;
 
 	/**
-	 * OrdenaÁ„o padr„o
+	 * Ordena√ß√£o padr√£o
 	 */
 	private int defaultColumnSort;
 
 	/**
 	 * Constutor
-	 * @param  searchPanel Painel que contÈm a grid
+	 * @param  searchPanel Painel que cont√©m a grid
 	 */
 	public Grid(SearchPanel searchPanel) {
 		this.searchPanel = searchPanel;
@@ -79,7 +79,7 @@ public class Grid extends JScrollPane {
 	}
 	
 	/**
-	 * Adiciona uma nova coluna ‡ grid
+	 * Adiciona uma nova coluna √† grid
 	 * @param column
 	 */
 	public void addColumn( final GridColumn column ) {
@@ -87,7 +87,7 @@ public class Grid extends JScrollPane {
 	}
 	
 	/**
-	 * Seta coluna para ordenaÁ„o padr„o
+	 * Seta coluna para ordena√ß√£o padr√£o
 	 * @param col Index da coluna
 	 */
 	public void setDefaultColumnSort(int col) {
@@ -180,8 +180,8 @@ public class Grid extends JScrollPane {
 	}
 	
 	/**
-	 * Callback de seleÁ„o de cÈlula
-	 * @param token CÛdigo do termo selecionado
+	 * Callback de sele√ß√£o de c√©lula
+	 * @param token C√≥digo do termo selecionado
 	 */
 	public void fireSelectionTrigger( final String token ) {
 		this.getSearchPanel().updateLanguageFields( token );
@@ -240,7 +240,7 @@ public class Grid extends JScrollPane {
 	}
 	
 	/**
-	 * Retorna prÛpria inst‚ncia
+	 * Retorna pr√≥pria inst√¢ncia
 	 * @return Grid
 	 */
 	public Grid getInstance() {

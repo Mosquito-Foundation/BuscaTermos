@@ -1,7 +1,7 @@
 package language;
 
 /**
- * Classe que contém todos os textos exibidos ao usuário
+ * Classe que contÃ©m todos os textos exibidos ao usuÃ¡rio
  * @author giovane.oliveira
  */
 public class Language {
@@ -10,11 +10,11 @@ public class Language {
 	
 	public static final String DISPLAY = "Exibir";
 	
-	public static final String BRAZIL = "Português (Brasil)";
+	public static final String BRAZIL = "PortuguÃªs (Brasil)";
 
 	public static final String FILE_BRAZIL = "pt-br";
 	
-	public static final String USA = "Inglês (EUA)";
+	public static final String USA = "InglÃªs (EUA)";
 	
 	public static final String FILE_USA = "en-us";
 	
@@ -22,7 +22,7 @@ public class Language {
 	
 	public static final String FILE_SPAIN = "es";
 	
-	public static final String FRANCE = "Francês";
+	public static final String FRANCE = "FrancÃªs";
 	
 	public static final String FILE_FRANCE = "fr";
 	
@@ -30,15 +30,15 @@ public class Language {
 	
 	public static final String FILE_ITALY = "it";
 	
-	public static final String GERMANY = "Alemão";
+	public static final String GERMANY = "AlemÃ£o";
 	
 	public static final String FILE_GERMANY = "de";
 	
-	public static final String OPTIONS = "Preferências";
+	public static final String OPTIONS = "PreferÃªncias";
 	
 	public static final String ALWAYS_ON_TOP = "Sempre no topo";
 	
-	public static final String SAVE_CONFIGURATION = "Salvar configurações";
+	public static final String SAVE_CONFIGURATION = "Salvar configuraÃ§Ãµes";
 	
 	public static final String SEARCH = "Procurar por:";
 	
@@ -68,13 +68,13 @@ public class Language {
 	
 	public static final String CHANGE_PATH = "Alterar caminho dos arquivos";
 	
-	public static final String FILE_NOT_FOUND_INFO = "Arquivo de termos não encontrado. É necessário encontrar um caminho válido.";
+	public static final String FILE_NOT_FOUND_INFO = "Arquivo de termos nÃ£o encontrado. Ã‰ necessÃ¡rio encontrar um caminho vÃ¡lido.";
 	
-	public static final String FILE_NOT_FOUND_QUESTION = "Arquivo de termos não encontrado. Deseja encontrar um caminho válido?";
+	public static final String FILE_NOT_FOUND_QUESTION = "Arquivo de termos nÃ£o encontrado. Deseja encontrar um caminho vÃ¡lido?";
 	
-	public static final String CONFIGURATION_SAVE_SUCCESS = "Configurações salvas com sucesso!";
+	public static final String CONFIGURATION_SAVE_SUCCESS = "ConfiguraÃ§Ãµes salvas com sucesso!";
 	
-	public static final String CONFIGURATION_SAVE_ERROR = "Houve um erro ao salvar as configurações";
+	public static final String CONFIGURATION_SAVE_ERROR = "Houve um erro ao salvar as configuraÃ§Ãµes";
 	
 	public static final String CLEAR = "Limpar";
 	
@@ -82,17 +82,17 @@ public class Language {
 	
 	public static final String EXPAND = "Expandir";
 	
-	public static final String REGULAR_EXPRESSIONS = "Expressões regulares";
+	public static final String REGULAR_EXPRESSIONS = "ExpressÃµes regulares";
 	
-	public static final String REGULAR_EXPRESSIONS_MESSAGE = "<html><b>Atualmente suportado:</b><br><br><b>\"</b>texto<b>\"</b> - A pesquisa buscará por exatamente o que estiver escrito.<br><br>te<b>?</b>to - Substitui um caractere. Ex: Ao digitar te?to, o resultado poderá retornar texto, testo, tento.<br><br></html>";
+	public static final String REGULAR_EXPRESSIONS_MESSAGE = "<html><b>Atualmente suportado:</b><br><br><b>\"</b>texto<b>\"</b> - A pesquisa buscarÃ¡ por exatamente o que estiver escrito.<br><br>te<b>?</b>to - Substitui um caractere. Ex: Ao digitar te?to, o resultado poderÃ¡ retornar texto, testo, tento.<br><br></html>";
 
 	public static final String THEMES = "Temas";
 	
-	public static final String THEME_DEFAULT = "Padrão";
+	public static final String THEME_DEFAULT = "PadrÃ£o";
 	
 	public static final String THEME_WINDOWS = "Windows";
 	
 	public static final String THEME_MAC = "MacOS";
 	
-	public static final String CHANGE_THEME_WARNING = "As alterações de tema serão aplicadas ao reiniciar o aplicativo";
+	public static final String CHANGE_THEME_WARNING = "As alteraÃ§Ãµes de tema serÃ£o aplicadas ao reiniciar o aplicativo";
 }

@@ -23,7 +23,7 @@ public class FileToList {
 	private final String fileName;
 	
 	/**
-	 * Configurações do aplicativo
+	 * ConfiguraÃ§Ãµes do aplicativo
 	 */
 	private final Configuration configuration;
 	
@@ -35,7 +35,7 @@ public class FileToList {
 	/**
 	 * Construtor
 	 * @param fileName Nome do arquivo que vai ser lido
-	 * @param configuration Configurações atuais do aplicativo
+	 * @param configuration ConfiguraÃ§Ãµes atuais do aplicativo
 	 */
 	public FileToList(String fileName, Configuration configuration) {
 		this.fileName = fileName;
@@ -49,7 +49,7 @@ public class FileToList {
 	 */
 	public List<Object> getTermsList() {
 		
-		File file = new File(this.configuration.getPath().replace("\\", "/") + "sesuite." + fileName + ".inc");
+		File file = new File(this.configuration.getPath().replace("\\", "/") + "sesuite." + fileName + ".utf-8.inc");
 		
 		try {
 			FileReader fileReader = new FileReader(file);
@@ -73,7 +73,7 @@ public class FileToList {
 			return this.terms;
 
 		} catch (FileNotFoundException e) {
-			System.out.println("Arquivo não encontrado.");
+			System.out.println("Arquivo nÃ£o encontrado.");
 			e.printStackTrace();
 		} catch (IOException e) {
 			System.out.println("Erro no processamento das linhas.");

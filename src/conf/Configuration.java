@@ -27,7 +27,7 @@ public final class Configuration implements Serializable {
 	public static final String THEME_MAC = "mac";
 	
 	/**
-	 * Unica instancia da classe
+	 * Unica instância da classe
 	 */
 	private static Configuration INSTANCE;
 
@@ -47,7 +47,7 @@ public final class Configuration implements Serializable {
 	private boolean alwaysOnTop;
 	
 	/**
-	 * Indica se programa abre maximizado
+	 * Indica se o programa abre maximizado
 	 */
 	private boolean maximized;
 	
@@ -57,7 +57,7 @@ public final class Configuration implements Serializable {
 	private boolean tabBrazil, tabUsa, tabSpain, tabFrance, tabItaly, tabGermany;
 	
 	/**
-	 * Indicadores de visibilidade dos paineis inferiores das abas
+	 * Indicadores de visibilidade dos painéis inferiores das abas
 	 */
 	private boolean tabBrazilSplit, tabUsaSplit, tabSpainSplit, tabFranceSplit, tabItalySplit, tabGermanySplit; 
 	
@@ -74,7 +74,7 @@ public final class Configuration implements Serializable {
 	}
 	
 	/**
-	 * Retorna instancia unica da classe
+	 * Retorna instância única da classe
 	 * @return
 	 */
 	public static Configuration getInstance() {
@@ -91,7 +91,9 @@ public final class Configuration implements Serializable {
 		return INSTANCE;
 	}
 
-	// TODO
+	/**
+	 * Carrega o tema
+	 */
 	private static void loadTheme() {
 		if ( INSTANCE.getTheme() == null ) {
 			INSTANCE.setTheme( Configuration.THEME_DEFAULT );
@@ -118,7 +120,7 @@ public final class Configuration implements Serializable {
 	}
 	
 	/**
-	 * Salva configura��es
+	 * Salva configurações
 	 * @return Indica se foi salvo corretamente
 	 */
 	public boolean save() {
@@ -133,7 +135,7 @@ public final class Configuration implements Serializable {
 	}
 	
 	private void createDefaultConfiguration() {
-		// Configura��es
+		// Configurações
 		this.setPath( "C:\\" );
 		this.setWidth( 600 );
 		this.setHeight( 500 );
@@ -157,19 +159,37 @@ public final class Configuration implements Serializable {
 		this.setTabGermanySplit( false );
 	}
 	
+	/**
+	 * Retorna se o path é válido
+	 * @return
+	 */
 	public boolean isPathValid() {
-		File file = new File(this.getPath() + "sesuite." + Language.FILE_BRAZIL + ".inc");
+		File file = new File(this.getPath() + "sesuite." + Language.FILE_BRAZIL + ".utf-8.inc");
 		return file.exists() && !file.isDirectory();
 	}
 	
+	/**
+	 * Inicializa processo de criação do path
+	 * @return Retorna se path é válido
+	 */
 	public boolean createInitialPath() {
 		return this.createPath( true, false );
 	}
 	
+	/**
+	 * Inicializa processo de alteração de path
+	 * @return Retorna se path é valido
+	 */
 	public boolean changePath() {
 		return this.createPath( false, true );
 	}
 	
+	/**
+	 * Valida configurações de path dos arquivos
+	 * @param isInitializing Indica se o aplicativo está inicalizando
+	 * @param isChanging Indica se é alteração de path
+	 * @return Retorna se path é válido
+	 */
 	public boolean createPath( final boolean isInitializing, final boolean isChanging ) {
 		if( this.isPathValid() && !isChanging ) {
 			return true;
@@ -203,6 +223,11 @@ public final class Configuration implements Serializable {
 		}
 	}
 	
+	/**
+	 * Exibe janela para busca do novo path
+	 * @param showNotification Indica se é para exibir mensagem de path não encontrado
+	 * @return Novo path
+	 */
 	private String findPath( final boolean showNotification ) {
 		if( showNotification ) {
 			JOptionPane.showMessageDialog( null, Language.FILE_NOT_FOUND_INFO, "", JOptionPane.WARNING_MESSAGE );
@@ -221,7 +246,7 @@ public final class Configuration implements Serializable {
 	}
 	
 	/**
-	 * Retorna se o usu�rio n�o deseja procurar outro caminho para os arquivos dos termos
+	 * Retorna se o usuário não deseja procurar outro caminho para os arquivos dos termos
 	 * @return
 	 */
 	private boolean confirmExit() {
@@ -229,19 +254,35 @@ public final class Configuration implements Serializable {
 		return choice != JOptionPane.YES_OPTION;
 	}
 	
+	/**
+	 * Altera tema e mostra mensagem
+	 * @param newTheme Novo tema
+	 */
 	public void changeTheme( final String newTheme ) {
 		this.setTheme( newTheme );
 		JOptionPane.showMessageDialog(null, Language.CHANGE_THEME_WARNING, "", JOptionPane.WARNING_MESSAGE);
 	}
 	
+	/**
+	 * Retorna se é o tema default
+	 * @return É tema default
+	 */
 	public boolean isDefaultTheme() {
 		return this.getTheme().equals( Configuration.THEME_DEFAULT );
 	}
 	
+	/**
+	 * Retorna se é o tema do windows
+	 * @return É tema do windows
+	 */
 	public boolean isWindowsTheme() {
 		return this.getTheme().equals( Configuration.THEME_WINDOWS );
 	}
 	
+	/**
+	 * Retorna se é o tema do mac
+	 * @return É tema do mac
+	 */
 	public boolean isMacTheme() {
 		return this.getTheme().equals( Configuration.THEME_MAC );
 	}

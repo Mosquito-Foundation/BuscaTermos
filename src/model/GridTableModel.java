@@ -77,10 +77,10 @@ public class GridTableModel extends DefaultTableModel {
 	}
 
 	/**
-	 * Retorna valor de uma cÈlula
+	 * Retorna valor de uma c√©lula
 	 * @param  row Index da linha
 	 * @param  col Index da coluna
-	 * @return Dados da cÈlula
+	 * @return Dados da c√©lula
 	 */
 	@Override
 	public Object getValueAt(int row, int col) {
@@ -97,10 +97,10 @@ public class GridTableModel extends DefaultTableModel {
 	}
 
 	/**
-	 * Retorna se a cÈlula È edit·vel
+	 * Retorna se a c√©lula √© edit√°vel
 	 * @param  row Index da linha
 	 * @param  col Index da coluna
-	 * @return CÈlula È edit·vel ou n„o
+	 * @return C√©lula √© edit√°vel ou n√£o
 	 */
 	@Override
 	public boolean isCellEditable(int row, int col) {

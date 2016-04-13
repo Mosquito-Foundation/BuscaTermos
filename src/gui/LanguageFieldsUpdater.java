@@ -50,9 +50,6 @@ class FieldUpdater implements Runnable {
 				break;
 			}
 		}
-		
-//		String text = (String) this.pane.getGrid().getTable().getValueAt( this.row, 1 );
-//		this.field.setText( "text_" + row );
 	}
 	
 }

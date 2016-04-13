@@ -16,7 +16,7 @@ import language.Language;
 class TabController extends MouseAdapter {
 
 	/**
-	 * Inst‚ncia da janela
+	 * Inst√¢ncia da janela
 	 */
 	private final MainFrame mainFrame;
 
@@ -37,7 +37,7 @@ class TabController extends MouseAdapter {
 	}
 
 	/**
-	 * AÁ„o disparada ao pressionar botıes do mouse em cima das abas
+	 * A√ß√£o disparada ao pressionar bot√µes do mouse em cima das abas
 	 * @param e Evento do mouse
 	 */
 	public void mousePressed(MouseEvent e) {

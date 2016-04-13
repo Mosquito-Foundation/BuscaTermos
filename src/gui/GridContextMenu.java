@@ -24,7 +24,7 @@ public class GridContextMenu extends ContextMenu {
 	private final Grid grid;
 	
 	/**
-	 * Construtor - Seta atributos e cria opções do menu de contexto
+	 * Construtor - Seta atributos e cria opÃ§Ãµes do menu de contexto
 	 * @param grid
 	 */
 	public GridContextMenu(Grid grid) {
@@ -35,7 +35,7 @@ public class GridContextMenu extends ContextMenu {
 	}
 
 	/**
-	 * Cria opções do menu de contexto
+	 * Cria opÃ§Ãµes do menu de contexto
 	 */
 	private void createOptions() {
 		this.add(this.getCopyOption());
@@ -45,7 +45,7 @@ public class GridContextMenu extends ContextMenu {
 	}
 	
 	/**
-	 * Ação executada no item de menu Copiar
+	 * AÃ§Ã£o executada no item de menu Copiar
 	 */
 	@Override
 	protected void copyAction() {
@@ -55,7 +55,7 @@ public class GridContextMenu extends ContextMenu {
 	}
 	
 	/**
-	 * Ação executada no item de menu Português(Brasil)
+	 * AÃ§Ã£o executada no item de menu PortuguÃªs(Brasil)
 	 */
 	@Override
 	protected void brazilAction() {
@@ -63,7 +63,7 @@ public class GridContextMenu extends ContextMenu {
 	}
 
 	/**
-	 * Ação executada no item de menu Inglês(EUA)
+	 * AÃ§Ã£o executada no item de menu InglÃªs(EUA)
 	 */
 	@Override
 	protected void usaAction() {
@@ -71,7 +71,7 @@ public class GridContextMenu extends ContextMenu {
 	}
 	
 	/**
-	 * Ação executada no item de menu Espanhol
+	 * AÃ§Ã£o executada no item de menu Espanhol
 	 */
 	@Override
 	protected void spainAction() {
@@ -79,7 +79,7 @@ public class GridContextMenu extends ContextMenu {
 	}
 	
 	/**
-	 * Ação executada no item de menu Francês
+	 * AÃ§Ã£o executada no item de menu FrancÃªs
 	 */
 	@Override
 	protected void franceAction() {
@@ -87,7 +87,7 @@ public class GridContextMenu extends ContextMenu {
 	}
 	
 	/**
-	 * Ação executada no item de menu Italiano
+	 * AÃ§Ã£o executada no item de menu Italiano
 	 */
 	@Override
 	protected void italyAction() {
@@ -95,7 +95,7 @@ public class GridContextMenu extends ContextMenu {
 	}
 	
 	/**
-	 * Ação executada no item de menu Alemão
+	 * AÃ§Ã£o executada no item de menu AlemÃ£o
 	 */
 	@Override
 	protected void germanyAction() {
@@ -103,8 +103,8 @@ public class GridContextMenu extends ContextMenu {
 	}
 	
 	/**
-	 * Recupera o index da aba através do titulo
-	 * @param title Título da aba
+	 * Recupera o index da aba atravÃ©s do tÃ­tulo
+	 * @param title TÃ­tulo da aba
 	 * @return Index da aba selecionada
 	 */
 	private int getTabIndexByTitle(String title) {
@@ -119,7 +119,7 @@ public class GridContextMenu extends ContextMenu {
 	
 	/**
 	 * Alterna aba para a selecionada no item e realiza pesquisa
-	 * @param title Título da aba
+	 * @param title TÃ­tulo da aba
 	 * @param viewItem Idioma selecionado
 	 * @param searchPanelItem 
 	 * @param iconName

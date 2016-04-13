@@ -13,7 +13,7 @@ import javax.swing.Action;
 import javax.swing.JTextField;
 
 /**
- * Classe para controle do menu de contexto do campo de pesquisa dos painéis de idioma 
+ * Classe para controle do menu de contexto do campo de pesquisa dos painÃ©is de idioma 
  * @author giovane.oliveira
  */
 public class FieldContextMenu extends ContextMenu {
@@ -31,7 +31,7 @@ public class FieldContextMenu extends ContextMenu {
 	private final JTextField field;
 	
 	/**
-	 * Construtor - Inicializa atributos e constrói itens do menu de contexto
+	 * Construtor - Inicializa atributos e constrÃ³i itens do menu de contexto
 	 * @param searchPanel Painel do idioma
 	 */
 	public FieldContextMenu(SearchPanel searchPanel) {
@@ -42,7 +42,7 @@ public class FieldContextMenu extends ContextMenu {
 	}
 
 	/**
-	 * Cria opções do menu
+	 * Cria opÃ§Ãµes do menu
 	 */
 	private void createOptions() {
 		this.add(this.getCopyOption());
@@ -50,7 +50,7 @@ public class FieldContextMenu extends ContextMenu {
 	}
 
 	/**
-	 * Ação executada no item de menu Copiar
+	 * AÃ§Ã£o executada no item de menu Copiar
 	 */
 	protected void copyAction() {
 		Action copy = this.field.getActionMap().get("copy");
@@ -59,7 +59,7 @@ public class FieldContextMenu extends ContextMenu {
 	}
 	
 	/**
-	 * Ação executada no item de menu Colar
+	 * AÃ§Ã£o executada no item de menu Colar
 	 */
 	protected void pasteAction() {
 		String result = "";

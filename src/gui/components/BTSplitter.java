@@ -19,12 +19,12 @@ public class BTSplitter extends BTPanel {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Painél do idioma
+	 * Painel do idioma
 	 */
 	private SearchPanel searchPanel;
 	
 	/**
-	 * Botão que expande e contrai o item inferior
+	 * BotÃ£o que expande e contrai o item inferior
 	 */
 	private BTButton splitterButton;
 	
@@ -39,7 +39,7 @@ public class BTSplitter extends BTPanel {
 	private LanguageFieldsPanel languagePanel;
 	
 	/**
-	 * Indica se o painél inferior está sendo exibido
+	 * Indica se o painel inferior estï¿½ sendo exibido
 	 */
 	private boolean bottomPaneExpanded;
 	
@@ -96,8 +96,8 @@ public class BTSplitter extends BTPanel {
 	}
 	
 	/**
-	 * Monta e retorna o botão do splitter
-	 * @return Botão do splitter
+	 * Monta e retorna o botÃ£o do splitter
+	 * @return BotÃ£o do splitter
 	 */
 	private BTButton getSplitterButton() {
 		if( this.splitterButton == null ) {
@@ -147,7 +147,7 @@ public class BTSplitter extends BTPanel {
 	}
 	
 	/**
-	 * Retorna se o painel inferior está visivel
+	 * Retorna se o painel inferior estÃ¡ visivel
 	 * @return
 	 */
 	private boolean isBottomPaneVisible() {
