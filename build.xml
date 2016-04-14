@@ -16,7 +16,7 @@
 		<mkdir dir="target" />
 		<jar destfile="target/BuscaTermos.jar" basedir="bin" filesetmanifest="skip">
 			<!--<zipgroupfileset dir="lib" includes="*.jar"/>-->
-			<zipfileset dir="images" includes="*.jpg"></zipfileset>
+			<zipfileset dir="images" includes="flags/*.gif"></zipfileset>
 			<zipfileset dir="images" includes="*.png"></zipfileset>
 			<!--zipgroupfileset dir="images" includes="**"/-->
 			<manifest>

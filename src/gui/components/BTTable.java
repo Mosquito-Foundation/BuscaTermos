@@ -39,14 +39,16 @@ public class BTTable extends JTable {
 	    cellSelectionModel.addListSelectionListener( new ListSelectionListener() {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				final int selectedRow = getInstance().getSelectedRow();
-				String token = "";
-				
-				if( selectedRow >= 0 ) {
-					token = (String) getInstance().getValueAt( selectedRow, 0 );
+				if ( !e.getValueIsAdjusting() ) {
+					final int selectedRow = getInstance().getSelectedRow();
+					String token = "";
+					
+					if( selectedRow >= 0 ) {
+						token = (String) getInstance().getValueAt( selectedRow, 0 );
+					}
+					
+					getGridInstance().fireSelectionTrigger( token );
 				}
-				
-				getGridInstance().fireSelectionTrigger( token );
 			}
 		} );
 		

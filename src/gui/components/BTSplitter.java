@@ -103,6 +103,7 @@ public class BTSplitter extends BTPanel {
 		if( this.splitterButton == null ) {
 			this.splitterButton = new BTButton( this.getButtonIconName(), 12, 12 );
 			this.splitterButton.setToolTipText( this.getButtonTooltip() );
+			this.splitterButton.setBackground( Color.decode("#EEEEEE") );
 			if ( Configuration.getInstance().isWindowsTheme() ) {
 				this.splitterButton.setPreferredSize( new Dimension( this.getWidth(), 16) );
 			}

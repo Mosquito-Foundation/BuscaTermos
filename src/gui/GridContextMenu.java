@@ -103,6 +103,30 @@ public class GridContextMenu extends ContextMenu {
 	}
 	
 	/**
+	 * Ação executada no item de menu Turco
+	 */
+	@Override
+	protected void turkeyAction() {
+		switchTabSearch(Language.TURKEY, this.mainFrame.getViewTurkeyItem(), this.mainFrame.getSearchPanelTurkey(), "turkey");
+	}
+	
+	/**
+	 * Ação executada no item de menu Eslovaco
+	 */
+	@Override
+	protected void slovakiaAction() {
+		switchTabSearch(Language.SLOVAKIA, this.mainFrame.getViewSlovakiaItem(), this.mainFrame.getSearchPanelSlovakia(), "slovakia");
+	}
+	
+	/**
+	 * Ação executada no item de menu Chinês
+	 */
+	@Override
+	protected void chinaAction() {
+		switchTabSearch(Language.CHINA, this.mainFrame.getViewChinaItem(), this.mainFrame.getSearchPanelChina(), "china");
+	}
+	
+	/**
 	 * Recupera o index da aba através do título
 	 * @param title Título da aba
 	 * @return Index da aba selecionada

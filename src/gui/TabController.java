@@ -90,6 +90,15 @@ class TabController extends MouseAdapter {
 		case Language.GERMANY:
 			mainFrame.getViewGermanyItem().setSelected(false);
 			break;
+		case Language.TURKEY:
+			mainFrame.getViewTurkeyItem().setSelected(false);
+			break;
+		case Language.SLOVAKIA:
+			mainFrame.getViewSlovakiaItem().setSelected(false);
+			break;
+		case Language.CHINA:
+			mainFrame.getViewChinaItem().setSelected(false);
+			break;
 		}
 
 		tabbedPane.removeTabAt(index);

@@ -54,12 +54,12 @@ public final class Configuration implements Serializable {
 	/**
 	 * Indicadores de visibilidade das abas
 	 */
-	private boolean tabBrazil, tabUsa, tabSpain, tabFrance, tabItaly, tabGermany;
+	private boolean tabBrazil, tabUsa, tabSpain, tabFrance, tabItaly, tabGermany, tabTurkey, tabSlovakia, tabChina;
 	
 	/**
 	 * Indicadores de visibilidade dos painéis inferiores das abas
 	 */
-	private boolean tabBrazilSplit, tabUsaSplit, tabSpainSplit, tabFranceSplit, tabItalySplit, tabGermanySplit; 
+	private boolean tabBrazilSplit, tabUsaSplit, tabSpainSplit, tabFranceSplit, tabItalySplit, tabGermanySplit, tabTurkeySplit, tabSlovakiaSplit, tabChinaSplit; 
 	
 	/**
 	 * Tema utilizado
@@ -149,14 +149,20 @@ public final class Configuration implements Serializable {
 		this.setTabFrance( false );
 		this.setTabItaly( false );	
 		this.setTabGermany( false );
+		this.setTabTurkey( false );
+		this.setTabSlovakia( false );
+		this.setTabChina( false );
 		
 		// Splits
-		this.setTabBrazilSplit( false );
-		this.setTabUsaSplit( false );
-		this.setTabSpainSplit( false );
-		this.setTabFranceSplit( false );
-		this.setTabItalySplit( false );
-		this.setTabGermanySplit( false );
+		this.setTabBrazilSplit( true );
+		this.setTabUsaSplit( true );
+		this.setTabSpainSplit( true );
+		this.setTabFranceSplit( true );
+		this.setTabItalySplit( true );
+		this.setTabGermanySplit( true );
+		this.setTabTurkeySplit( true );
+		this.setTabSlovakiaSplit( true );
+		this.setTabChinaSplit( true );
 	}
 	
 	/**
@@ -375,6 +381,30 @@ public final class Configuration implements Serializable {
 		this.tabGermany = tabGermany;
 	}
 
+	public boolean isTabTurkey() {
+		return this.tabTurkey;
+	}
+
+	public void setTabTurkey( final boolean tabTurkey ) {
+		this.tabTurkey = tabTurkey;
+	}
+	
+	public boolean isTabSlovakia() {
+		return this.tabSlovakia;
+	}
+
+	public void setTabSlovakia( final boolean tabSlovakia ) {
+		this.tabSlovakia = tabSlovakia;
+	}
+	
+	public boolean isTabChina() {
+		return this.tabChina;
+	}
+
+	public void setTabChina( final boolean tabChina ) {
+		this.tabChina = tabChina;
+	}
+	
 	public boolean isTabBrazilSplit() {
 		return this.tabBrazilSplit;
 	}
@@ -421,6 +451,30 @@ public final class Configuration implements Serializable {
 
 	public void setTabGermanySplit( final boolean tabGermanySplit ) {
 		this.tabGermanySplit = tabGermanySplit;
+	}
+	
+	public boolean isTabTurkeySplit() {
+		return this.tabTurkeySplit;
+	}
+
+	public void setTabTurkeySplit( final boolean tabTurkeySplit ) {
+		this.tabTurkeySplit = tabTurkeySplit;
+	}
+	
+	public boolean isTabSlovakiaSplit() {
+		return this.tabSlovakiaSplit;
+	}
+
+	public void setTabSlovakiaSplit( final boolean tabSlovakiaSplit ) {
+		this.tabSlovakiaSplit = tabSlovakiaSplit;
+	}
+	
+	public boolean isTabChinaSplit() {
+		return this.tabChinaSplit;
+	}
+
+	public void setTabChinaSplit( final boolean tabChinaSplit ) {
+		this.tabChinaSplit = tabChinaSplit;
 	}
 
  	public String getTheme() {

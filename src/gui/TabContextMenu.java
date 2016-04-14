@@ -86,6 +86,33 @@ public class TabContextMenu extends ContextMenu {
 	}
 	
 	/**
+	 * Ação da opção Turco
+	 */
+	@Override
+	protected void turkeyAction() {
+		this.mainFrame.getViewTurkeyItem().setSelected(true);
+		this.mainFrame.addRemoveTabs(Language.TURKEY, "turkey", this.mainFrame.getSearchPanelTurkey());
+	}
+	
+	/**
+	 * Ação da opção Eslovaco
+	 */
+	@Override
+	protected void slovakiaAction() {
+		this.mainFrame.getViewSlovakiaItem().setSelected(true);
+		this.mainFrame.addRemoveTabs(Language.SLOVAKIA, "slovakia", this.mainFrame.getSearchPanelSlovakia());
+	}
+
+	/**
+	 * Ação da opção Chinês
+	 */
+	@Override
+	protected void chinaAction() {
+		this.mainFrame.getViewChinaItem().setSelected(true);
+		this.mainFrame.addRemoveTabs(Language.CHINA, "china", this.mainFrame.getSearchPanelChina());
+	}
+	
+	/**
 	 * Ação da opção Adicionar todos
 	 */
 	protected void addAllAction() {
@@ -94,6 +121,9 @@ public class TabContextMenu extends ContextMenu {
 		if(!this.mainFrame.getViewFranceItem().isSelected()) this.franceAction();
 		if(!this.mainFrame.getViewItalyItem().isSelected()) this.italyAction();
 		if(!this.mainFrame.getViewGermanyItem().isSelected()) this.germanyAction();
+		if(!this.mainFrame.getViewTurkeyItem().isSelected()) this.turkeyAction();
+		if(!this.mainFrame.getViewSlovakiaItem().isSelected()) this.slovakiaAction();
+		if(!this.mainFrame.getViewChinaItem().isSelected()) this.chinaAction();
 	}
 
 	/**
@@ -152,6 +182,15 @@ public class TabContextMenu extends ContextMenu {
 			break;
 		case Language.GERMANY:
 			mainFrame.getViewGermanyItem().setSelected(false);
+			break;
+		case Language.TURKEY:
+			mainFrame.getViewTurkeyItem().setSelected(false);
+			break;
+		case Language.SLOVAKIA:
+			mainFrame.getViewSlovakiaItem().setSelected(false);
+			break;
+		case Language.CHINA:
+			mainFrame.getViewChinaItem().setSelected(false);
 			break;
 		}
 

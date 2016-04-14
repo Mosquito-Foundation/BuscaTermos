@@ -45,7 +45,7 @@ public class MainFrame extends JFrame {
 	/**
 	 * Itens de menu da opção Exibir
 	 */
-	private BTCheckBoxMenuItem viewUSAItem, viewSpainItem, viewFranceItem, viewItalyItem, viewGermanyItem;
+	private BTCheckBoxMenuItem viewUSAItem, viewSpainItem, viewFranceItem, viewItalyItem, viewGermanyItem, viewTurkeyItem, viewSlovakiaItem, viewChinaItem;
 	
 	/**
 	 * Itens de menu da opção Opções
@@ -65,7 +65,7 @@ public class MainFrame extends JFrame {
 	/**
 	 * Paineis de pesquisa de cada idioma
 	 */
-	private SearchPanel searchPanelBrazil, searchPanelUSA, searchPanelSpain, searchPanelFrance, searchPanelItaly, searchPanelGermany;
+	private SearchPanel searchPanelBrazil, searchPanelUSA, searchPanelSpain, searchPanelFrance, searchPanelItaly, searchPanelGermany, searchPanelTurkey, searchPanelSlovakia, searchPanelChina;
 	
 	/**
 	 * Abas
@@ -130,6 +130,9 @@ public class MainFrame extends JFrame {
 			this.displayMenu.add( this.getViewFranceItem() );
 			this.displayMenu.add( this.getViewItalyItem() );
 			this.displayMenu.add( this.getViewGermanyItem() );
+			this.displayMenu.add( this.getViewTurkeyItem() );
+			this.displayMenu.add( this.getViewSlovakiaItem() );
+			this.displayMenu.add( this.getViewChinaItem() );
 		}
 		
 		return this.displayMenu;
@@ -231,6 +234,63 @@ public class MainFrame extends JFrame {
 	}
 	
 	/**
+	 * Monta e retorna item de menu Turco
+	 * @return item de menu para o idioma Turco
+	 */
+	protected BTCheckBoxMenuItem getViewTurkeyItem() {
+		if( this.viewTurkeyItem == null ) {
+			this.viewTurkeyItem = new BTCheckBoxMenuItem( Language.TURKEY );
+			this.viewTurkeyItem.setSelected( this.configuration.isTabTurkey() );
+			this.viewTurkeyItem.addActionListener( new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					addRemoveTabs( Language.TURKEY, "turkey", searchPanelTurkey );
+				}
+			} );
+		}
+		
+		return this.viewTurkeyItem;
+	}
+	
+	/**
+	 * Monta e retorna item de menu Eslovaco
+	 * @return item de menu para o idioma Eslovaco
+	 */
+	protected BTCheckBoxMenuItem getViewSlovakiaItem() {
+		if( this.viewSlovakiaItem == null ) {
+			this.viewSlovakiaItem = new BTCheckBoxMenuItem( Language.SLOVAKIA );
+			this.viewSlovakiaItem.setSelected( this.configuration.isTabSlovakia() );
+			this.viewSlovakiaItem.addActionListener( new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					addRemoveTabs( Language.SLOVAKIA, "slovakia", searchPanelSlovakia );
+				}
+			} );
+		}
+		
+		return this.viewSlovakiaItem;
+	}
+	
+	/**
+	 * Monta e retorna item de menu Chinês
+	 * @return item de menu para o idioma Chinês
+	 */
+	protected BTCheckBoxMenuItem getViewChinaItem() {
+		if( this.viewChinaItem == null ) {
+			this.viewChinaItem = new BTCheckBoxMenuItem( Language.CHINA );
+			this.viewChinaItem.setSelected( this.configuration.isTabChina() );
+			this.viewChinaItem.addActionListener( new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					addRemoveTabs( Language.CHINA, "china", searchPanelChina );
+				}
+			});
+		}
+		
+		return this.viewChinaItem;
+	}
+	
+	/**
 	 * Monta e retorna menu Opções
 	 * @return menu Opções
 	 */
@@ -277,9 +337,11 @@ public class MainFrame extends JFrame {
 			this.changePathItem.addActionListener( new ActionListener() {
 				@Override
 				public void actionPerformed( ActionEvent e ) {
+					getInstance().setAlwaysOnTop( false );
 					if( getConfiguration().changePath() ) {
 							saveCurrentConfiguration( true, true );
 					}
+					getInstance().setAlwaysOnTop( getAlwaysOnTopItem().isSelected() );
 				}
 			} );
 		}
@@ -445,6 +507,9 @@ public class MainFrame extends JFrame {
 			this.searchPanelFrance = new SearchPanel( Language.FILE_FRANCE, this, this.getConfiguration().isTabFranceSplit() );
 			this.searchPanelItaly = new SearchPanel( Language.FILE_ITALY, this, this.getConfiguration().isTabItalySplit() );
 			this.searchPanelGermany = new SearchPanel( Language.FILE_GERMANY, this, this.getConfiguration().isTabGermanySplit() );
+			this.searchPanelTurkey = new SearchPanel( Language.FILE_TURKEY, this, this.getConfiguration().isTabTurkey() );
+			this.searchPanelSlovakia = new SearchPanel( Language.FILE_SLOVAKIA, this, this.getConfiguration().isTabSlovakia() );
+			this.searchPanelChina = new SearchPanel( Language.FILE_CHINA, this, this.getConfiguration().isTabChina() );
 			
 			this.tabbedPane = new BTTabbedPane();
 			this.showInitialTabs();
@@ -461,29 +526,40 @@ public class MainFrame extends JFrame {
 		this.tabbedPane.addMouseListener( new TabController( this.tabbedPane, this ) );
 		
 		if(this.configuration.isTabBrazil()) {
-			this.tabbedPane.addTab(Language.BRAZIL, this.getIcon("brazil.jpg"), this.searchPanelBrazil);
+			this.tabbedPane.addTab(Language.BRAZIL, this.getIcon("flags/brazil.gif"), this.searchPanelBrazil);
 		}
 		
 		if(this.configuration.isTabUsa()) {
-			this.tabbedPane.addTab(Language.USA, this.getIcon("usa.jpg"), this.searchPanelUSA);
+			this.tabbedPane.addTab(Language.USA, this.getIcon("flags/usa.gif"), this.searchPanelUSA);
 		}
 		
 		if(this.configuration.isTabSpain()) {
-			this.tabbedPane.addTab(Language.SPAIN, this.getIcon("spain.jpg"), this.searchPanelSpain);
+			this.tabbedPane.addTab(Language.SPAIN, this.getIcon("flags/spain.gif"), this.searchPanelSpain);
 		}
 		
 		if(this.configuration.isTabFrance()) {
-			this.tabbedPane.addTab(Language.FRANCE, this.getIcon("france.jpg"), this.searchPanelFrance);
+			this.tabbedPane.addTab(Language.FRANCE, this.getIcon("flags/france.gif"), this.searchPanelFrance);
 		}
 		
 		if(this.configuration.isTabItaly()) {
-			this.tabbedPane.addTab(Language.ITALY, this.getIcon("italy.jpg"), this.searchPanelItaly);
+			this.tabbedPane.addTab(Language.ITALY, this.getIcon("flags/italy.gif"), this.searchPanelItaly);
 		}
 		
 		if(this.configuration.isTabGermany()) {
-			this.tabbedPane.addTab(Language.GERMANY, this.getIcon("germany.jpg"), this.searchPanelGermany);
+			this.tabbedPane.addTab(Language.GERMANY, this.getIcon("flags/germany.gif"), this.searchPanelGermany);
 		}
 		
+		if(this.configuration.isTabTurkey()) {
+			this.tabbedPane.addTab(Language.TURKEY, this.getIcon("flags/turkey.gif"), this.searchPanelTurkey);
+		}
+
+		if(this.configuration.isTabSlovakia()) {
+			this.tabbedPane.addTab(Language.SLOVAKIA, this.getIcon("flags/slovakia.gif"), this.searchPanelSlovakia);
+		}
+		
+		if(this.configuration.isTabChina()) {
+			this.tabbedPane.addTab(Language.CHINA, this.getIcon("flags/china.gif"), this.searchPanelChina);
+		}
 	}
 	
 	/**
@@ -544,7 +620,7 @@ public class MainFrame extends JFrame {
 		}
 		
 		if(!hasRemoved) {
-			this.tabbedPane.addTab(title, this.getIcon(icon + ".jpg"), panel);
+			this.tabbedPane.addTab(title, this.getIcon("flags/" + icon + ".gif"), panel);
 			this.tabbedPane.setSelectedIndex(this.tabbedPane.getTabCount()-1);
 			panel.getSearchField().setText("");
 			panel.doGridSearch();
@@ -571,6 +647,9 @@ public class MainFrame extends JFrame {
 		this.getConfiguration().setTabFrance( this.getViewFranceItem().isSelected() );
 		this.getConfiguration().setTabItaly( this.getViewItalyItem().isSelected() );
 		this.getConfiguration().setTabGermany( this.getViewGermanyItem().isSelected() );
+		this.getConfiguration().setTabTurkey( this.getViewTurkeyItem().isSelected() );
+		this.getConfiguration().setTabSlovakia( this.getViewSlovakiaItem().isSelected() );
+		this.getConfiguration().setTabChina( this.getViewChinaItem().isSelected() );
 		
 		final boolean saved = this.getConfiguration().save();
 		
@@ -622,6 +701,9 @@ public class MainFrame extends JFrame {
 		this.searchPanelFrance.doGridSearch();
 		this.searchPanelItaly.doGridSearch();
 		this.searchPanelGermany.doGridSearch();
+		this.searchPanelTurkey.doGridSearch();
+		this.searchPanelSlovakia.doGridSearch();
+		this.searchPanelChina.doGridSearch();
 	}
 
 	/**
@@ -637,6 +719,9 @@ public class MainFrame extends JFrame {
 			this.searchPanelList.add( this.searchPanelFrance );
 			this.searchPanelList.add( this.searchPanelItaly );
 			this.searchPanelList.add( this.searchPanelGermany );
+			this.searchPanelList.add( this.searchPanelTurkey );
+			this.searchPanelList.add( this.searchPanelSlovakia );
+			this.searchPanelList.add( this.searchPanelChina );
 		}
 		return this.searchPanelList;
 	}
@@ -720,6 +805,30 @@ public class MainFrame extends JFrame {
 		return this.searchPanelGermany;
 	}
 
+	/**
+	 * Retorna painel do idioma Turco
+	 * @return painel do idioma Turco
+	 */
+	public SearchPanel getSearchPanelTurkey() {
+		return this.searchPanelTurkey;
+	}
+	
+	/**
+	 * Retorna painel do idioma Eslovaco
+	 * @return painel do idioma Eslovaco
+	 */
+	public SearchPanel getSearchPanelSlovakia() {
+		return this.searchPanelSlovakia;
+	}
+	
+	/**
+	 * Retorna painel do idioma Chinês
+	 * @return painel do idioma Chinês
+	 */
+	public SearchPanel getSearchPanelChina() {
+		return this.searchPanelChina;
+	}
+	
 	/**
 	 * Retorna configurações atuais
 	 * @return configurações atuais do aplicativo

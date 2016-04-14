@@ -25,7 +25,7 @@ public class LanguageFieldsPanel extends BTPanel {
 	/**
 	 * Campos dos idiomas
 	 */
-	private BTTextField brazilField, usaField, spainField, franceField, italyField, germanyField;
+	private BTTextField brazilField, usaField, spainField, franceField, italyField, germanyField, turkeyField, slovakiaField, chinaField;
 	
 	/**
 	 * Lista de campos do painel
@@ -53,10 +53,10 @@ public class LanguageFieldsPanel extends BTPanel {
 		BTPanel container;
 		// Corrigir espaçamento
 		if ( Configuration.getInstance().isMacTheme() ) {
-			containerLayout = new GridLayout( 2, 3, 0, 0 );
+			containerLayout = new GridLayout( 3, 3, 0, 0 );
 			container = new BTPanel( containerLayout );
 		} else {
-			containerLayout = new GridLayout( 2, 3, 10, 5 );
+			containerLayout = new GridLayout( 3, 3, 10, 5 );
 			container = new BTPanel( containerLayout, BorderFactory.createEmptyBorder( 10, 0, 0, 0 ) );
 		}
 		
@@ -66,6 +66,9 @@ public class LanguageFieldsPanel extends BTPanel {
 		container.add( new BTLabelTextField( Language.FRANCE, this.getFranceField() ) );
 		container.add( new BTLabelTextField( Language.ITALY, this.getItalyField() ) );
 		container.add( new BTLabelTextField( Language.GERMANY, this.getGermanyField() ) );
+		container.add( new BTLabelTextField( Language.TURKEY, this.getTurkeyField() ) );
+		container.add( new BTLabelTextField( Language.SLOVAKIA, this.getSlovakiaField() ) );
+		container.add( new BTLabelTextField( Language.CHINA, this.getChinaField() ) );
 		
 		return container;
 	}
@@ -145,6 +148,38 @@ public class LanguageFieldsPanel extends BTPanel {
 		return this.germanyField;
 	}
 	
+	/**
+	 * Monta e retorna campo referente ao idioma Turco
+	 * @return Campo referente ao idioma Turco
+	 */
+	public BTTextField getTurkeyField() {
+		if( this.turkeyField == null ) {
+			this.turkeyField = new BTTextField( false );
+		}
+		return this.turkeyField;
+	}
+	
+	/**
+	 * Monta e retorna campo referente ao idioma Eslovaco
+	 * @return Campo referente ao idioma Eslovaco
+	 */
+	public BTTextField getSlovakiaField() {
+		if( this.slovakiaField == null ) {
+			this.slovakiaField = new BTTextField( false );
+		}
+		return this.slovakiaField;
+	}
+	
+	/**
+	 * Monta e retorna campo referente ao idioma Chinês
+	 * @return Campo referente ao idioma Chinês
+	 */
+	public BTTextField getChinaField() {
+		if( this.chinaField == null ) {
+			this.chinaField = new BTTextField( false );
+		}
+		return this.chinaField;
+	}
 
 	/**
 	 * Monta e retorna lista de campos do painel
@@ -159,6 +194,9 @@ public class LanguageFieldsPanel extends BTPanel {
 			this.fieldList.add( this.getFranceField() );
 			this.fieldList.add( this.getItalyField() );
 			this.fieldList.add( this.getGermanyField() );
+			this.fieldList.add( this.getTurkeyField() );
+			this.fieldList.add( this.getSlovakiaField() );
+			this.fieldList.add( this.getChinaField() );
 		}
 		return this.fieldList;
 	}

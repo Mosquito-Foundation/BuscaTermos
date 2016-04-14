@@ -85,8 +85,11 @@ public class ContextMenu extends JPopupMenu {
 		if(!this.mainFrame.getViewFranceItem().isSelected()) menu.add(this.getFranceOption());
 		if(!this.mainFrame.getViewItalyItem().isSelected()) menu.add(this.getItalyOption());
 		if(!this.mainFrame.getViewGermanyItem().isSelected()) menu.add(this.getGermanyOption());
+		if(!this.mainFrame.getViewTurkeyItem().isSelected()) menu.add(this.getTurkeyOption());
+		if(!this.mainFrame.getViewSlovakiaItem().isSelected()) menu.add(this.getSlovakiaOption());
+		if(!this.mainFrame.getViewChinaItem().isSelected()) menu.add(this.getChinaOption());
 		
-		if(this.mainFrame.getTabbedPane().getTabCount() < 6) {
+		if(this.mainFrame.getTabbedPane().getTabCount() < 9) {
 			menu.add(this.getSeparator());
 			menu.add(this.getAddAllOption());
 		} else {
@@ -109,6 +112,9 @@ public class ContextMenu extends JPopupMenu {
 		menu.add(this.getFranceOption());
 		menu.add(this.getItalyOption());
 		menu.add(this.getGermanyOption());
+		menu.add(this.getTurkeyOption());
+		menu.add(this.getSlovakiaOption());
+		menu.add(this.getChinaOption());
 		
 		return menu;
 	}
@@ -118,7 +124,7 @@ public class ContextMenu extends JPopupMenu {
 	 * @return <b>BTMenuItem</b> item
 	 */
 	protected BTMenuItem getBrazilOption() {
-		BTMenuItem item = new BTMenuItem(Language.BRAZIL, this.getIcon("brazil.jpg"));
+		BTMenuItem item = new BTMenuItem(Language.BRAZIL, this.getIcon("flags/brazil.gif"));
 		item.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -134,7 +140,7 @@ public class ContextMenu extends JPopupMenu {
 	 * @return <b>BTMenuItem</b> item
 	 */
 	protected BTMenuItem getUSAOption() {
-		BTMenuItem item = new BTMenuItem(Language.USA, this.getIcon("usa.jpg"));
+		BTMenuItem item = new BTMenuItem(Language.USA, this.getIcon("flags/usa.gif"));
 		item.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -150,7 +156,7 @@ public class ContextMenu extends JPopupMenu {
 	 * @return <b>BTMenuItem</b> item
 	 */
 	protected BTMenuItem getSpainOption() {
-		BTMenuItem item = new BTMenuItem(Language.SPAIN, this.getIcon("spain.jpg"));
+		BTMenuItem item = new BTMenuItem(Language.SPAIN, this.getIcon("flags/spain.gif"));
 		item.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -166,7 +172,7 @@ public class ContextMenu extends JPopupMenu {
 	 * @return <b>BTMenuItem</b> item
 	 */
 	protected BTMenuItem getFranceOption() {
-		BTMenuItem item = new BTMenuItem(Language.FRANCE, this.getIcon("france.jpg"));
+		BTMenuItem item = new BTMenuItem(Language.FRANCE, this.getIcon("flags/france.gif"));
 		item.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -182,7 +188,7 @@ public class ContextMenu extends JPopupMenu {
 	 * @return <b>BTMenuItem</b> item
 	 */
 	protected BTMenuItem getItalyOption() {
-		BTMenuItem item = new BTMenuItem(Language.ITALY, this.getIcon("italy.jpg"));
+		BTMenuItem item = new BTMenuItem(Language.ITALY, this.getIcon("flags/italy.gif"));
 		item.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -198,11 +204,59 @@ public class ContextMenu extends JPopupMenu {
 	 * @return <b>BTMenuItem</b> item
 	 */
 	protected BTMenuItem getGermanyOption() {
-		BTMenuItem item = new BTMenuItem(Language.GERMANY, this.getIcon("germany.jpg"));
+		BTMenuItem item = new BTMenuItem(Language.GERMANY, this.getIcon("flags/germany.gif"));
 		item.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				germanyAction();
+			}
+		});
+		
+		return item;
+	}
+	
+	/**
+	 * Monta e retorna item de menu com os idiomas Turco
+	 * @return <b>BTMenuItem</b> item
+	 */
+	protected BTMenuItem getTurkeyOption() {
+		BTMenuItem item = new BTMenuItem(Language.TURKEY, this.getIcon("flags/turkey.gif"));
+		item.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				turkeyAction();
+			}
+		});
+		
+		return item;
+	}
+	
+	/**
+	 * Monta e retorna item de menu com os idiomas Eslovaco
+	 * @return <b>BTMenuItem</b> item
+	 */
+	protected BTMenuItem getSlovakiaOption() {
+		BTMenuItem item = new BTMenuItem(Language.SLOVAKIA, this.getIcon("flags/slovakia.gif"));
+		item.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				slovakiaAction();
+			}
+		});
+		
+		return item;
+	}
+	
+	/**
+	 * Monta e retorna item de menu com os idiomas Chinês
+	 * @return <b>BTMenuItem</b> item
+	 */
+	protected BTMenuItem getChinaOption() {
+		BTMenuItem item = new BTMenuItem(Language.CHINA, this.getIcon("flags/china.gif"));
+		item.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				chinaAction();
 			}
 		});
 		
@@ -283,6 +337,9 @@ public class ContextMenu extends JPopupMenu {
 	protected void franceAction() { this.unimplementedMethod(); }
 	protected void italyAction() { this.unimplementedMethod(); }
 	protected void germanyAction() { this.unimplementedMethod(); }
+	protected void turkeyAction() { this.unimplementedMethod(); }
+	protected void slovakiaAction() { this.unimplementedMethod(); }
+	protected void chinaAction() { this.unimplementedMethod(); }
 	protected void addAllAction() { this.unimplementedMethod(); }
 	protected void closeAction() { this.unimplementedMethod(); }
 	protected void closeOthersAction() { this.unimplementedMethod(); }

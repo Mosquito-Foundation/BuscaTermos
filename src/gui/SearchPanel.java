@@ -225,6 +225,15 @@ public class SearchPanel extends JPanel implements Runnable {
 		case Language.FILE_GERMANY:
 			this.configuration.setTabGermanySplit( isExpanded );
 			break;
+		case Language.FILE_TURKEY:
+			this.configuration.setTabTurkeySplit( isExpanded );
+			break;
+		case Language.FILE_SLOVAKIA:
+			this.configuration.setTabSlovakia( isExpanded );
+			break;
+		case Language.FILE_CHINA:
+			this.configuration.setTabChina( isExpanded );
+			break;
 		}
 	}
 	
@@ -251,5 +260,10 @@ public class SearchPanel extends JPanel implements Runnable {
 		if( !this.fileLanguage.equals( "pt-br" ) ) {
 			this.add( this.getSplitter(), BorderLayout.CENTER );
 		}
+	}
+	
+	@Override
+	public String toString() {
+		return "SearchPanel -> " + this.fileLanguage;
 	}
 }

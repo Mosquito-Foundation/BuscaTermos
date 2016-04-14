@@ -34,6 +34,18 @@ public class Language {
 	
 	public static final String FILE_GERMANY = "de";
 	
+	public static final String TURKEY = "Turco";
+	
+	public static final String FILE_TURKEY = "tr";
+	
+	public static final String SLOVAKIA = "Eslovaco";
+	
+	public static final String FILE_SLOVAKIA = "sk";
+	
+	public static final String CHINA = "Chinês";
+	
+	public static final String FILE_CHINA = "zh";
+	
 	public static final String OPTIONS = "Preferências";
 	
 	public static final String ALWAYS_ON_TOP = "Sempre no topo";
