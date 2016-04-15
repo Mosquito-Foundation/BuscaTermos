@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     4 de fev de 2016 13:50:48                                                        
+     BuscaTermos    
+     Aplicativo para facilitar busca de termos do sistema
+                   
+     giovane.oliveira                                                                
+     ====================================================================== -->
+<project name="BuscaTermos" default="build">
+	<description>
+            Aplicativo para facilitar busca de termos do sistema
+    </description>
+
+	<target name="build" depends="compile">
+		<mkdir dir="target" />
+		<jar destfile="target/BuscaTermos.jar" basedir="bin" filesetmanifest="skip">
+			<zipgroupfileset dir="lib" includes="*.jar"/>
+			<zipfileset dir="images" includes="flags/*.gif"></zipfileset>
+			<zipfileset dir="images" includes="*.png"></zipfileset>
+			<!--zipgroupfileset dir="images" includes="**"/-->
+			<manifest>
+		        <attribute name="Main-Class" value="run.Run"/>
+		        <!--attribute name="Class-Path" value="${mf.classpath}"/-->
+		    </manifest>
+		</jar>
+	</target>
+	
+	<target name="compile">
+		<delete dir="bin" />
+		<mkdir dir="bin" />
+
+		<javac srcdir="src" destdir="bin" encoding="UTF-8">
+			<classpath>
+				<!--pathelement path="lib/*.jar"/-->
+				<fileset dir="lib">
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+	</target>
+
+</project>
