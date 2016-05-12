@@ -24,7 +24,6 @@ public final class Configuration implements Serializable {
 	
 	public static final String THEME_WINDOWS = "windows";
 	
-	public static final String THEME_MAC = "mac";
 	
 	/**
 	 * Unica instância da classe
@@ -105,10 +104,6 @@ public final class Configuration implements Serializable {
 				INSTANCE.setTheme( Configuration.THEME_WINDOWS );
 				UIManager.setLookAndFeel( UIManager.getSystemLookAndFeelClassName() );
 				break;
-			/*case Configuration.THEME_MAC:
-				INSTANCE.setTheme( Configuration.THEME_MAC );
-				UIManager.setLookAndFeel("ch.randelshofer.quaqua.QuaquaLookAndFeel");
-				break;*/
 			default:
 				INSTANCE.setTheme( Configuration.THEME_DEFAULT );
 				UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName() );
@@ -284,15 +279,7 @@ public final class Configuration implements Serializable {
 	public boolean isWindowsTheme() {
 		return this.getTheme().equals( Configuration.THEME_WINDOWS );
 	}
-	
-	/**
-	 * Retorna se é o tema do mac
-	 * @return É tema do mac
-	 */
-	public boolean isMacTheme() {
-		return this.getTheme().equals( Configuration.THEME_MAC );
-	}
-	
+		
 	public String getPath() {
 		return this.path;
 	}

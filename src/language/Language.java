@@ -104,7 +104,5 @@ public class Language {
 	
 	public static final String THEME_WINDOWS = "Windows";
 	
-	public static final String THEME_MAC = "MacOS";
-	
 	public static final String CHANGE_THEME_WARNING = "As alterações de tema serão aplicadas ao reiniciar o aplicativo";
 }
