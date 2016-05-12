@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.swing.BorderFactory;
 
-import conf.Configuration;
 import gui.components.BTLabelTextField;
 import gui.components.BTPanel;
 import gui.components.BTTextField;
@@ -51,14 +50,9 @@ public class LanguageFieldsPanel extends BTPanel {
 	private BTPanel getFields() {
 		GridLayout containerLayout;
 		BTPanel container;
-		// Corrigir espaçamento
-		if ( Configuration.getInstance().isMacTheme() ) {
-			containerLayout = new GridLayout( 3, 3, 0, 0 );
-			container = new BTPanel( containerLayout );
-		} else {
-			containerLayout = new GridLayout( 3, 3, 10, 5 );
-			container = new BTPanel( containerLayout, BorderFactory.createEmptyBorder( 10, 0, 0, 0 ) );
-		}
+
+		containerLayout = new GridLayout( 3, 3, 10, 5 );
+		container = new BTPanel( containerLayout, BorderFactory.createEmptyBorder( 10, 0, 0, 0 ) );
 		
 		container.add( new BTLabelTextField( Language.BRAZIL, this.getBrazilField() ) );
 		container.add( new BTLabelTextField( Language.USA, this.getUsaField() ) );

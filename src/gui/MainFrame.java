@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +12,6 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JRootPane;
 
 import conf.Configuration;
 import gui.components.BTCheckBoxMenuItem;
@@ -55,7 +53,7 @@ public class MainFrame extends JFrame {
 	/**
 	 * Opções de temas
 	 */
-	private BTCheckBoxMenuItem themeDefaultItem, themeWindowsItem, themeMacItem;
+	private BTCheckBoxMenuItem themeDefaultItem, themeWindowsItem;
 	
 	/**
 	 * Itens de menu
@@ -358,7 +356,6 @@ public class MainFrame extends JFrame {
 			this.themeMenu = new BTMenu( Language.THEMES );
 			this.themeMenu.add( this.getThemeDefaultItem() );
 			this.themeMenu.add( this.getThemeWindowsItem() );
-//			this.themeMenu.add( this.getThemeMacItem() );
 		}
 		return this.themeMenu;
 	}
@@ -401,24 +398,6 @@ public class MainFrame extends JFrame {
 		return this.themeWindowsItem;
 	}
 	
-	/**
-	 * Monta e retorna item de menu com tema MacOS
-	 * @return
- 	 */
-	private BTCheckBoxMenuItem getThemeMacItem() {
-		if ( this.themeMacItem == null ) {
-			this.themeMacItem = new BTCheckBoxMenuItem( Language.THEME_MAC );
-			this.themeMacItem.setSelected( this.getConfiguration().getTheme().equals( Configuration.THEME_MAC ) );
-			this.themeMacItem.addActionListener( new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					clearThemeSelection( Configuration.THEME_MAC );
-					getConfiguration().changeTheme( Configuration.THEME_MAC );
-				}
-			} );
-		}
-		return this.themeMacItem;
-	}
 	
 	/**
 	 * Monta e retorna item de menu Salvar configurações
@@ -575,15 +554,6 @@ public class MainFrame extends JFrame {
 			this.getContentPane().setBackground( Color.decode("#E8F0F7") );
 		}
 		
-		// Altera estilo da barra de título
-		if ( this.getConfiguration().isMacTheme() ) {
-			this.setUndecorated( true );
-			this.getRootPane().setWindowDecorationStyle( JRootPane.FRAME );
-			
-			ComponentResizer cr = new ComponentResizer();
-			cr.registerComponent( this );
-			cr.setSnapSize(new Dimension(10, 10));
-		}
 			
 		// Salva configurações ao fechar app
 		this.addWindowListener(new WindowAdapter() {
@@ -675,7 +645,6 @@ public class MainFrame extends JFrame {
 	private void clearThemeSelection( final String selected ) {
 		this.getThemeDefaultItem().setSelected( selected.equals( Configuration.THEME_DEFAULT ) );
 		this.getThemeWindowsItem().setSelected( selected.equals( Configuration.THEME_WINDOWS ) );
-		this.getThemeMacItem().setSelected( selected.equals( Configuration.THEME_MAC ) );
 	}
 	
 	/**

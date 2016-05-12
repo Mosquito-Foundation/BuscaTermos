@@ -9,7 +9,6 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import conf.Configuration;
 import gui.GridContextMenu;
 import model.Grid;
 
@@ -52,12 +51,6 @@ public class BTTable extends JTable {
 			}
 		} );
 		
-	    if ( Configuration.getInstance().isMacTheme() ) {
-	    	this.putClientProperty("Quaqua.Table.style", "striped");
-	    	this.setShowHorizontalLines(true);
-	    	this.setShowVerticalLines(true);
-	    }
-	    
 	    this.setRowHeight( 20 );
 	    
 //		this.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
