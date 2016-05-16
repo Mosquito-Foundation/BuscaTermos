@@ -9,13 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import conf.Configuration;
-import model.Term;
+import pojo.Term;
 
 /**
  * Classe para leitura dos arquivos de termos
  * @author giovane.oliveira
  */
-public class FileToList {
+public class LanguageFileParser {
 
 	/**
 	 * Nome do arquivo que vai ser aberto
@@ -37,7 +37,7 @@ public class FileToList {
 	 * @param fileName Nome do arquivo que vai ser lido
 	 * @param configuration Configurações atuais do aplicativo
 	 */
-	public FileToList(String fileName, Configuration configuration) {
+	public LanguageFileParser(String fileName, Configuration configuration) {
 		this.fileName = fileName;
 		this.configuration = configuration;
 		this.terms = new ArrayList<>();

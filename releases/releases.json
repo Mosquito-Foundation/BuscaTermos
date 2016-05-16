@@ -1,0 +1,23 @@
+{
+    "releases": [
+        {
+            "version": "1.0.0",
+            "description": "Lançamento"
+        },
+        {
+            "version": "1.1.0",
+            "changelog": {
+                "features": [
+                    "Foram adicionados novos idiomas para consulta: Turco, Eslovaco e Chinês.",
+                    "Agora os termos são buscados nos arquivos UTF-8.",
+                    "Foram alterados os ícones dos idiomas.",
+                    "A cor do botão [Expandir/contrair painel inferior] foi alterada para branco."
+                ],
+                "fixes": [
+                    "Correção do problema que era apresentado ocasionalmente, onde os campos inferiores exibiam duas vezes o mesmo termo.",
+                    "Correção do problema que ocorria ao trocar o caminho dos arquivos utilizando a opção \"Sempre no topo\" marcada."
+                ]
+            }
+        }
+    ]
+}

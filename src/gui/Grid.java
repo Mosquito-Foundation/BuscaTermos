@@ -1,4 +1,4 @@
-package model;
+package gui;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -11,7 +11,6 @@ import javax.swing.RowFilter;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
-import gui.SearchPanel;
 import gui.components.BTTable;
 
 

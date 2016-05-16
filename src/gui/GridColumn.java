@@ -1,4 +1,4 @@
-package model;
+package gui;
 
 import javax.swing.table.DefaultTableCellRenderer;
 

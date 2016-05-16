@@ -29,7 +29,7 @@ public final class Configuration implements Serializable {
 	 * Unica instância da classe
 	 */
 	private static Configuration INSTANCE;
-
+	
 	/**
 	 * Caminho dos arquivos
 	 */
@@ -64,6 +64,11 @@ public final class Configuration implements Serializable {
 	 * Tema utilizado
 	 */
 	private String theme;
+
+	/**
+	 * Última versão aberta
+	 */
+	private String version;
 	
 	/**
 	 * Construtor
@@ -120,7 +125,7 @@ public final class Configuration implements Serializable {
 	 */
 	public boolean save() {
 		try {
-			final ObjectOutputStream out = new ObjectOutputStream( new FileOutputStream( CONF_PATH ) );
+			final ObjectOutputStream out = new ObjectOutputStream( new FileOutputStream( Configuration.CONF_PATH ) );
 			out.writeObject( this );
 			out.close();
 			return true;
@@ -136,6 +141,7 @@ public final class Configuration implements Serializable {
 		this.setHeight( 500 );
 		this.setAlwaysOnTop( false );
 		this.setTheme( Configuration.THEME_DEFAULT );
+		this.setVersion( "1.0.0" );
 		
 		// Abas
 		this.setTabBrazil( true );
@@ -472,4 +478,12 @@ public final class Configuration implements Serializable {
 		this.theme = theme;
 	}
 	
+	public String getVersion() {
+		return this.version == null ? "2.1.0" : this.version;
+	}
+	
+	public void setVersion( final String version ) {
+		this.version = version;
+	}
+
 }

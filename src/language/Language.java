@@ -105,4 +105,12 @@ public class Language {
 	public static final String THEME_WINDOWS = "Windows";
 	
 	public static final String CHANGE_THEME_WARNING = "As alterações de tema serão aplicadas ao reiniciar o aplicativo";
+	
+	public static final String OK = "OK";
+	
+	public static final String CHANGELOG = "Changelog";
+	
+	public static final String FEATURES = "Alterações";
+	
+	public static final String FIXES = "Correções";
 }

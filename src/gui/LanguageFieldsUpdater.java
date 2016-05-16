@@ -3,7 +3,7 @@ package gui;
 import java.util.List;
 
 import gui.components.BTTextField;
-import model.Term;
+import pojo.Term;
 
 public class LanguageFieldsUpdater implements Runnable {
 
