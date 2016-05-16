@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JPopupMenu;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
@@ -48,7 +47,7 @@ public class ContextMenu extends JPopupMenu {
 	 * @return <b>BTMenuItem</b> copy
 	 */
 	protected BTMenuItem getCopyOption() {
-		BTMenuItem copy = new BTMenuItem(Language.COPY, this.getIcon("copy.png"));
+		BTMenuItem copy = new BTMenuItem(Language.COPY, IconManager.getInstance().getIcon("copy.png"));
 		copy.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -63,7 +62,7 @@ public class ContextMenu extends JPopupMenu {
 	 * @return <b>BTMenuItem</b> paste
 	 */
 	protected BTMenuItem getPasteOption() {
-		BTMenuItem paste = new BTMenuItem(Language.PASTE, this.getIcon("paste.png"));
+		BTMenuItem paste = new BTMenuItem(Language.PASTE, IconManager.getInstance().getIcon("paste.png"));
 		paste.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -124,7 +123,7 @@ public class ContextMenu extends JPopupMenu {
 	 * @return <b>BTMenuItem</b> item
 	 */
 	protected BTMenuItem getBrazilOption() {
-		BTMenuItem item = new BTMenuItem(Language.BRAZIL, this.getIcon("flags/brazil.gif"));
+		BTMenuItem item = new BTMenuItem(Language.BRAZIL, IconManager.getInstance().getIcon("flags/brazil.gif"));
 		item.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -140,7 +139,7 @@ public class ContextMenu extends JPopupMenu {
 	 * @return <b>BTMenuItem</b> item
 	 */
 	protected BTMenuItem getUSAOption() {
-		BTMenuItem item = new BTMenuItem(Language.USA, this.getIcon("flags/usa.gif"));
+		BTMenuItem item = new BTMenuItem(Language.USA, IconManager.getInstance().getIcon("flags/usa.gif"));
 		item.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -156,7 +155,7 @@ public class ContextMenu extends JPopupMenu {
 	 * @return <b>BTMenuItem</b> item
 	 */
 	protected BTMenuItem getSpainOption() {
-		BTMenuItem item = new BTMenuItem(Language.SPAIN, this.getIcon("flags/spain.gif"));
+		BTMenuItem item = new BTMenuItem(Language.SPAIN, IconManager.getInstance().getIcon("flags/spain.gif"));
 		item.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -172,7 +171,7 @@ public class ContextMenu extends JPopupMenu {
 	 * @return <b>BTMenuItem</b> item
 	 */
 	protected BTMenuItem getFranceOption() {
-		BTMenuItem item = new BTMenuItem(Language.FRANCE, this.getIcon("flags/france.gif"));
+		BTMenuItem item = new BTMenuItem(Language.FRANCE, IconManager.getInstance().getIcon("flags/france.gif"));
 		item.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -188,7 +187,7 @@ public class ContextMenu extends JPopupMenu {
 	 * @return <b>BTMenuItem</b> item
 	 */
 	protected BTMenuItem getItalyOption() {
-		BTMenuItem item = new BTMenuItem(Language.ITALY, this.getIcon("flags/italy.gif"));
+		BTMenuItem item = new BTMenuItem(Language.ITALY, IconManager.getInstance().getIcon("flags/italy.gif"));
 		item.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -204,7 +203,7 @@ public class ContextMenu extends JPopupMenu {
 	 * @return <b>BTMenuItem</b> item
 	 */
 	protected BTMenuItem getGermanyOption() {
-		BTMenuItem item = new BTMenuItem(Language.GERMANY, this.getIcon("flags/germany.gif"));
+		BTMenuItem item = new BTMenuItem(Language.GERMANY, IconManager.getInstance().getIcon("flags/germany.gif"));
 		item.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -220,7 +219,7 @@ public class ContextMenu extends JPopupMenu {
 	 * @return <b>BTMenuItem</b> item
 	 */
 	protected BTMenuItem getTurkeyOption() {
-		BTMenuItem item = new BTMenuItem(Language.TURKEY, this.getIcon("flags/turkey.gif"));
+		BTMenuItem item = new BTMenuItem(Language.TURKEY, IconManager.getInstance().getIcon("flags/turkey.gif"));
 		item.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -236,7 +235,7 @@ public class ContextMenu extends JPopupMenu {
 	 * @return <b>BTMenuItem</b> item
 	 */
 	protected BTMenuItem getSlovakiaOption() {
-		BTMenuItem item = new BTMenuItem(Language.SLOVAKIA, this.getIcon("flags/slovakia.gif"));
+		BTMenuItem item = new BTMenuItem(Language.SLOVAKIA, IconManager.getInstance().getIcon("flags/slovakia.gif"));
 		item.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -252,7 +251,7 @@ public class ContextMenu extends JPopupMenu {
 	 * @return <b>BTMenuItem</b> item
 	 */
 	protected BTMenuItem getChinaOption() {
-		BTMenuItem item = new BTMenuItem(Language.CHINA, this.getIcon("flags/china.gif"));
+		BTMenuItem item = new BTMenuItem(Language.CHINA, IconManager.getInstance().getIcon("flags/china.gif"));
 		item.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -353,21 +352,6 @@ public class ContextMenu extends JPopupMenu {
 		JSeparator separator = new JSeparator( SwingConstants.HORIZONTAL );
         separator.setBackground( Color.WHITE );
 		return separator;
-	}
-	
-	/**
-	 * Retorna um ícone
-	 * @param name Nome da imagem
-	 * @return ícone
-	 */
-	protected ImageIcon getIcon(String name) {
-		ImageIcon icon;
-		try {
-			icon = new ImageIcon(getClass().getResource("/" + name));
-		} catch(NullPointerException e) {
-			icon = new ImageIcon("images/" + name);
-		}
-		return icon;
 	}
 	
 	/**

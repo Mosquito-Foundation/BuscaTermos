@@ -2,7 +2,6 @@ package gui.components;
 
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.Image;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -14,28 +13,30 @@ public class BTButton extends JButton {
 
 	private static final long serialVersionUID = 1L;
 
-	private String iconName;
+	private final String label;
 	
-	private int iconWidth = 0;
+	private ImageIcon icon = null;
 	
-	private int iconHeight = 0;
-	
-	public BTButton( String iconName ) {
+	public BTButton( final String label ) {
 		super();
-		this.iconName = iconName;
+		this.label = label;
 		this.init();
 	}
 	
-	public BTButton( String iconName, int iconWidth, int iconHeight ) {
+	public BTButton( final String label, final ImageIcon icon ) {
 		super();
-		this.iconName = iconName;
-		this.iconWidth = iconWidth;
-		this.iconHeight = iconHeight;
+		this.label = label;
+		this.icon = icon;
 		this.init();
 	}
 	
 	private void init() {
-		this.setIcon( this.getButtonIcon() );
+		if ( !this.hasIcon() ) {
+			this.setIcon( this.icon );
+			this.setToolTipText( this.label );
+		} else {
+			this.setText( this.label );
+		}
 		this.setFocusable( false );
 		this.setCursor( new Cursor( Cursor.HAND_CURSOR ) );
 		if ( Configuration.getInstance().isDefaultTheme() ) {
@@ -43,43 +44,9 @@ public class BTButton extends JButton {
 			this.setBorder( BorderFactory.createMatteBorder( 1, 0, 1, 1, Color.GRAY ) );
 		}
 	}
-	
-	public void setIcon( final String iconName ) {
-		this.iconName = iconName;
-		super.setIcon( this.getButtonIcon() );
-	}
-	
-	private ImageIcon getButtonIcon() {
-		ImageIcon icon;
-		try {
-			icon = new ImageIcon(getClass().getResource("/" + this.getIconName()));
-		} catch(NullPointerException e) {
-			icon = new ImageIcon("images/" + this.getIconName());
-		}
-		
-		if( this.iconWidth > 0 && this.iconHeight > 0 ) {
-			icon = this.resizeIcon( icon, this.iconWidth, this.iconHeight );
-		}
-		
-		return icon;
-	}
 
-	public String getIconName() {
-		return iconName;
-	}
-	
-	/**
-	 * Redimensiona icones
-	 * @param icon Icone para ser redimensionado
-	 * @param width Nova largura
-	 * @param height Nova altura
-	 * @return Icone redimensionado
-	 */
-	private ImageIcon resizeIcon( ImageIcon icon, final int width, final int height ) {
-		Image img = icon.getImage();
-		img = img.getScaledInstance( width, height, Image.SCALE_SMOOTH );
-		icon = new ImageIcon( img );
-		return icon;
+	public boolean hasIcon() {
+		return this.icon == null;
 	}
 	
 }

@@ -1,8 +1,10 @@
-package model;
+package gui;
 
 import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
+
+import pojo.Term;
 
 /**
  * Classe para modelo da grid

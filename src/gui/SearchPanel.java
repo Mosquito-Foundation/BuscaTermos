@@ -19,9 +19,7 @@ import gui.components.BTPanel;
 import gui.components.BTSplitter;
 import gui.components.BTTextField;
 import language.Language;
-import model.Grid;
-import model.GridColumn;
-import reader.FileToList;
+import reader.LanguageFileParser;
 
 public class SearchPanel extends JPanel implements Runnable {
 
@@ -141,9 +139,8 @@ public class SearchPanel extends JPanel implements Runnable {
 	 * @return Botão que limpa o campo texto
 	 */
 	private BTButton getClearButton() {
-		BTButton clearButton = new BTButton( "clear.png" );
+		BTButton clearButton = new BTButton( Language.CLEAR, IconManager.getInstance().getIcon( "clear.png" ) );
 		clearButton.setPreferredSize( new Dimension(20, 20) );
-		clearButton.setToolTipText( Language.CLEAR );
 		clearButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -173,7 +170,7 @@ public class SearchPanel extends JPanel implements Runnable {
 	 */
 	protected Grid getGrid() {
 		this.grid = new Grid( this );
-		final FileToList file = new FileToList( this.fileLanguage, this.getMainFrame().getConfiguration() );
+		final LanguageFileParser file = new LanguageFileParser( this.fileLanguage, this.getMainFrame().getConfiguration() );
 		this.gridData = file.getTermsList();
 		this.grid.setData( this.gridData );
 		

@@ -9,10 +9,11 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 
 import conf.Configuration;
+import gui.Grid;
+import gui.IconManager;
 import gui.LanguageFieldsPanel;
 import gui.SearchPanel;
 import language.Language;
-import model.Grid;
 
 public class BTSplitter extends BTPanel {
 
@@ -101,8 +102,7 @@ public class BTSplitter extends BTPanel {
 	 */
 	private BTButton getSplitterButton() {
 		if( this.splitterButton == null ) {
-			this.splitterButton = new BTButton( this.getButtonIconName(), 12, 12 );
-			this.splitterButton.setToolTipText( this.getButtonTooltip() );
+			this.splitterButton = new BTButton( this.getButtonTooltip(), IconManager.getInstance().getIcon( this.getButtonIconName(), 12, 12 ) );
 			this.splitterButton.setBackground( Color.decode("#EEEEEE") );
 			if ( Configuration.getInstance().isWindowsTheme() ) {
 				this.splitterButton.setPreferredSize( new Dimension( this.getWidth(), 16) );
@@ -142,7 +142,7 @@ public class BTSplitter extends BTPanel {
 	public void showHideBottomPane() {
 		this.bottomPaneExpanded = !this.bottomPaneExpanded;
 		this.searchPanel.fireBottomPaneTrigger( this.bottomPaneExpanded );
-		this.splitterButton.setIcon( this.getButtonIconName() );
+		this.splitterButton.setIcon( IconManager.getInstance().getIcon( this.getButtonIconName(), 12, 12 ) );
 		this.splitterButton.setToolTipText( this.getButtonTooltip() );
 		this.splitterButton.revalidate();
 	}

@@ -17,6 +17,7 @@
 		<mkdir dir="target" />
 		<jar destfile="target/BuscaTermos.jar" basedir="bin" filesetmanifest="skip">
 			<zipgroupfileset dir="lib" includes="*.jar" />
+			<zipfileset dir="releases" includes="releases-min.json" fullpath="releases/releases-min.json"></zipfileset>
 			<zipfileset dir="images" includes="flags/*.gif" />
 			<zipfileset dir="images" includes="*.png" />
 			<manifest>

@@ -8,7 +8,6 @@ import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JTabbedPane;
 
 import language.Language;
-import model.Grid;
 
 /**
  * Classe para controle do menu de contexto da grid

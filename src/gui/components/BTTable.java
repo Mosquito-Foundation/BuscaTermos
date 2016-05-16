@@ -10,7 +10,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import gui.GridContextMenu;
-import model.Grid;
+import gui.Grid;
 
 /**
  * Classe para montagem da tabela utilizada na grid

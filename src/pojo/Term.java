@@ -1,4 +1,4 @@
-package model;
+package pojo;
 
 /**
  * Classe que representa um termo

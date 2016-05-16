@@ -1,6 +1,8 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Dialog.ModalityType;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,7 +11,6 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -20,6 +21,7 @@ import gui.components.BTMenuBar;
 import gui.components.BTMenuItem;
 import gui.components.BTTabbedPane;
 import language.Language;
+import version.VersionControl;
 
 public class MainFrame extends JFrame {
 	
@@ -505,39 +507,39 @@ public class MainFrame extends JFrame {
 		this.tabbedPane.addMouseListener( new TabController( this.tabbedPane, this ) );
 		
 		if(this.configuration.isTabBrazil()) {
-			this.tabbedPane.addTab(Language.BRAZIL, this.getIcon("flags/brazil.gif"), this.searchPanelBrazil);
+			this.tabbedPane.addTab(Language.BRAZIL, IconManager.getInstance().getIcon("flags/brazil.gif"), this.searchPanelBrazil);
 		}
 		
 		if(this.configuration.isTabUsa()) {
-			this.tabbedPane.addTab(Language.USA, this.getIcon("flags/usa.gif"), this.searchPanelUSA);
+			this.tabbedPane.addTab(Language.USA, IconManager.getInstance().getIcon("flags/usa.gif"), this.searchPanelUSA);
 		}
 		
 		if(this.configuration.isTabSpain()) {
-			this.tabbedPane.addTab(Language.SPAIN, this.getIcon("flags/spain.gif"), this.searchPanelSpain);
+			this.tabbedPane.addTab(Language.SPAIN, IconManager.getInstance().getIcon("flags/spain.gif"), this.searchPanelSpain);
 		}
 		
 		if(this.configuration.isTabFrance()) {
-			this.tabbedPane.addTab(Language.FRANCE, this.getIcon("flags/france.gif"), this.searchPanelFrance);
+			this.tabbedPane.addTab(Language.FRANCE, IconManager.getInstance().getIcon("flags/france.gif"), this.searchPanelFrance);
 		}
 		
 		if(this.configuration.isTabItaly()) {
-			this.tabbedPane.addTab(Language.ITALY, this.getIcon("flags/italy.gif"), this.searchPanelItaly);
+			this.tabbedPane.addTab(Language.ITALY, IconManager.getInstance().getIcon("flags/italy.gif"), this.searchPanelItaly);
 		}
 		
 		if(this.configuration.isTabGermany()) {
-			this.tabbedPane.addTab(Language.GERMANY, this.getIcon("flags/germany.gif"), this.searchPanelGermany);
+			this.tabbedPane.addTab(Language.GERMANY, IconManager.getInstance().getIcon("flags/germany.gif"), this.searchPanelGermany);
 		}
 		
 		if(this.configuration.isTabTurkey()) {
-			this.tabbedPane.addTab(Language.TURKEY, this.getIcon("flags/turkey.gif"), this.searchPanelTurkey);
+			this.tabbedPane.addTab(Language.TURKEY, IconManager.getInstance().getIcon("flags/turkey.gif"), this.searchPanelTurkey);
 		}
 
 		if(this.configuration.isTabSlovakia()) {
-			this.tabbedPane.addTab(Language.SLOVAKIA, this.getIcon("flags/slovakia.gif"), this.searchPanelSlovakia);
+			this.tabbedPane.addTab(Language.SLOVAKIA, IconManager.getInstance().getIcon("flags/slovakia.gif"), this.searchPanelSlovakia);
 		}
 		
 		if(this.configuration.isTabChina()) {
-			this.tabbedPane.addTab(Language.CHINA, this.getIcon("flags/china.gif"), this.searchPanelChina);
+			this.tabbedPane.addTab(Language.CHINA, IconManager.getInstance().getIcon("flags/china.gif"), this.searchPanelChina);
 		}
 	}
 	
@@ -548,7 +550,7 @@ public class MainFrame extends JFrame {
 		this.setLayout( new GridLayout(1, 2) );
 		this.setTitle( Language.TITLE );
 		this.setAlwaysOnTop( this.getAlwaysOnTopItem().isSelected() );
-		this.setIconImage( this.getIcon("icon3.png").getImage() );
+		this.setIconImage( IconManager.getInstance().getIcon("icon3.png").getImage() );
 		
 		if( this.getConfiguration().isDefaultTheme() ) {
 			this.getContentPane().setBackground( Color.decode("#E8F0F7") );
@@ -571,6 +573,10 @@ public class MainFrame extends JFrame {
 		
 		this.setLocationRelativeTo( null );
 		this.setVisible( true );
+		
+		if ( VersionControl.getInstance().isNewerVersion() ) {
+			new ChangelogDialog( this, ModalityType.APPLICATION_MODAL );
+		}
 	}
 	
 	/**
@@ -590,7 +596,7 @@ public class MainFrame extends JFrame {
 		}
 		
 		if(!hasRemoved) {
-			this.tabbedPane.addTab(title, this.getIcon("flags/" + icon + ".gif"), panel);
+			this.tabbedPane.addTab(title, IconManager.getInstance().getIcon("flags/" + icon + ".gif"), panel);
 			this.tabbedPane.setSelectedIndex(this.tabbedPane.getTabCount()-1);
 			panel.getSearchField().setText("");
 			panel.doGridSearch();
@@ -701,21 +707,6 @@ public class MainFrame extends JFrame {
 	public void reinitialize() {
 		new MainFrame();
 		this.dispose();
-	}
-	
-	/**
-	 * Retorna um ícone
-	 * @param name Nome da imagem
-	 * @return Ícone
-	 */
-	protected ImageIcon getIcon(String name) {
-		ImageIcon icon;
-		try {
-			icon = new ImageIcon(getClass().getResource("/" + name));
-		} catch(NullPointerException e) {
-			icon = new ImageIcon("images/" + name);
-		}
-		return icon;
 	}
 
 	/**
