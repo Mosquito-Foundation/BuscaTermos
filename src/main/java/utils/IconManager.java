@@ -1,4 +1,4 @@
-package gui;
+package utils;
 
 import java.awt.Image;
 
@@ -6,6 +6,10 @@ import javax.swing.ImageIcon;
 
 public class IconManager {
 
+	public enum Flags {
+		
+	}
+	
 	/**
 	 * Instância única
 	 */
@@ -41,13 +45,7 @@ public class IconManager {
 	 * @return
 	 */
 	public ImageIcon getIcon( final String name ) {
-		ImageIcon icon;
-		try {
-			icon = new ImageIcon( getClass().getResource( "/" + name ) );
-		} catch( NullPointerException e ) {
-			icon = new ImageIcon( "images/" + name );
-		}
-		return icon;
+		return new ImageIcon( getClass().getClassLoader().getResource( "images/" + name ) );
 	}
 	
 	/**

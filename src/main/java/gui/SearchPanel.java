@@ -20,6 +20,7 @@ import gui.components.BTSplitter;
 import gui.components.BTTextField;
 import language.Language;
 import reader.LanguageFileParser;
+import utils.IconManager;
 
 public class SearchPanel extends JPanel implements Runnable {
 
@@ -139,7 +140,7 @@ public class SearchPanel extends JPanel implements Runnable {
 	 * @return Botão que limpa o campo texto
 	 */
 	private BTButton getClearButton() {
-		BTButton clearButton = new BTButton( Language.CLEAR, IconManager.getInstance().getIcon( "clear.png" ) );
+		BTButton clearButton = new BTButton( Language.CLEAR, IconManager.getInstance().getIcon( "icons/clear.png" ) );
 		clearButton.setPreferredSize( new Dimension(20, 20) );
 		clearButton.addActionListener(new ActionListener() {
 			@Override

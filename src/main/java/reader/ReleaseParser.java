@@ -1,7 +1,6 @@
 package reader;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -16,7 +15,7 @@ public class ReleaseParser {
 	private static BufferedReader br = null;
 	
 	public static ReleaseManager getReleasesFromJson() {
-		try {
+		/*try {
 			return ReleaseParser.getReleasesForJar();
 		} catch ( NullPointerException e ) {
 			return ReleaseParser.getReleasesForLocalRun();
@@ -29,10 +28,25 @@ public class ReleaseParser {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}*/
+		try {
+			Gson gson = new Gson();
+			InputStream in = ReleaseManager.class.getClassLoader().getResourceAsStream( "json/releases-min.json" );
+			br = new BufferedReader( new InputStreamReader( in ) );
+			return gson.fromJson( br.readLine(), ReleaseManager.class );
+		} catch (JsonSyntaxException | IOException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			try {
+				br.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
-	private static ReleaseManager getReleasesForJar() throws JsonSyntaxException, IOException, NullPointerException {
+	/*private static ReleaseManager getReleasesForJar() throws JsonSyntaxException, IOException, NullPointerException {
 		Gson gson = new Gson();
 		InputStream in = ReleaseManager.class.getResourceAsStream( "/releases/releases-min.json" );
 		br = new BufferedReader( new InputStreamReader( in ) );
@@ -42,12 +56,13 @@ public class ReleaseParser {
 	private static ReleaseManager getReleasesForLocalRun() {
 		try {
 			Gson gson = new Gson();
-			br = new BufferedReader( new FileReader( "releases/releases-min.json" ) );
+			InputStream in = ReleaseManager.class.getClassLoader().getResourceAsStream( "json/releases-min.json" );
+			br = new BufferedReader( new InputStreamReader( in ) );
 			return gson.fromJson( br.readLine(), ReleaseManager.class );
 		} catch ( JsonSyntaxException | IOException e ) {
 			e.printStackTrace();
 			return null;
 		}
-	}
+	}*/
 	
 }

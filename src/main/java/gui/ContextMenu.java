@@ -12,6 +12,7 @@ import conf.Configuration;
 import gui.components.BTMenu;
 import gui.components.BTMenuItem;
 import language.Language;
+import utils.IconManager;
 
 /**
  * Classe para controle dos menus de contexto
@@ -47,7 +48,7 @@ public class ContextMenu extends JPopupMenu {
 	 * @return <b>BTMenuItem</b> copy
 	 */
 	protected BTMenuItem getCopyOption() {
-		BTMenuItem copy = new BTMenuItem(Language.COPY, IconManager.getInstance().getIcon("copy.png"));
+		BTMenuItem copy = new BTMenuItem(Language.COPY, IconManager.getInstance().getIcon("icons/copy.png"));
 		copy.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -62,7 +63,7 @@ public class ContextMenu extends JPopupMenu {
 	 * @return <b>BTMenuItem</b> paste
 	 */
 	protected BTMenuItem getPasteOption() {
-		BTMenuItem paste = new BTMenuItem(Language.PASTE, IconManager.getInstance().getIcon("paste.png"));
+		BTMenuItem paste = new BTMenuItem(Language.PASTE, IconManager.getInstance().getIcon("icons/paste.png"));
 		paste.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
