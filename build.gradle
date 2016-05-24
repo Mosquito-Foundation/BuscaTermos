@@ -5,26 +5,25 @@ sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
 eclipseJdt {
-    File f = file('.settings/org.eclipse.core.resources.prefs')
-    f.write('eclipse.preferences.version=1\n')
-    f.append('encoding/<project>=UTF-8')
+	delete('.settings')
+	mkdir('.settings')
+	File f = file('.settings/org.eclipse.core.resources.prefs')
+	f.write('eclipse.preferences.version=1\n')
+	f.append('encoding/<project>=UTF-8')
 }
 
 task buildJar(type: Jar) {
-	
-	manifest {
-		attributes 'Main-Class' : 'run.Run'
-	}
-	
+
+	manifest { attributes 'Main-Class' : 'run.Run' }
+
 	baseName = project.name
-	
+
 	doFirst {
-		from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+		from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it)	} }
 	}
 	exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
-	
+
 	with jar
-	
 }
 
 repositories {
