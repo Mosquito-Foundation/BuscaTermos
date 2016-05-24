@@ -20,6 +20,7 @@ import gui.components.BTMenuBar;
 import gui.components.BTMenuItem;
 import gui.components.BTTabbedPane;
 import language.Language;
+import utils.IconManager;
 import version.VersionControl;
 
 public class MainFrame extends JFrame {
@@ -549,7 +550,7 @@ public class MainFrame extends JFrame {
 		this.setLayout( new GridLayout(1, 2) );
 		this.setTitle( Language.TITLE );
 		this.setAlwaysOnTop( this.getAlwaysOnTopItem().isSelected() );
-		this.setIconImage( IconManager.getInstance().getIcon("icon3.png").getImage() );
+		this.setIconImage( IconManager.getInstance().getIcon("icons/icon3.png").getImage() );
 		
 		if( this.getConfiguration().isDefaultTheme() ) {
 			this.getContentPane().setBackground( Color.decode("#E8F0F7") );

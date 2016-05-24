@@ -10,10 +10,10 @@ import javax.swing.BorderFactory;
 
 import conf.Configuration;
 import gui.Grid;
-import gui.IconManager;
 import gui.LanguageFieldsPanel;
 import gui.SearchPanel;
 import language.Language;
+import utils.IconManager;
 
 public class BTSplitter extends BTPanel {
 
@@ -125,7 +125,7 @@ public class BTSplitter extends BTPanel {
 	 * @return Nome do icone para o botao Expandir/Contrair
 	 */
 	private String getButtonIconName() {
-		return this.isBottomPaneVisible() ? "collapse.png" : "expand.png";
+		return this.isBottomPaneVisible() ? "icons/collapse.png" : "icons/expand.png";
 	}
 	
 	/**

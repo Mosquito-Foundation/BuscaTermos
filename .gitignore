@@ -1,6 +1,8 @@
 target
 bin
 lib
+build
 .settings
 .classpath
 .project
+.gradle
