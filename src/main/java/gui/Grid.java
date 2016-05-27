@@ -156,6 +156,7 @@ public class Grid extends JScrollPane {
 				escaped = escaped.replace( "*", "\\*" );
 				escaped = escaped.replace( "{", "\\{" );
 				escaped = escaped.replace( "(", "\\(" );
+				escaped = escaped.replace( ")", "\\)" );
 				escaped = escaped.replace( "|", "\\|" );
 				
 				// Qualquer letra
