@@ -243,7 +243,7 @@ public final class Configuration implements Serializable {
 		return this.alwaysOnTop;
 	}
 	
-	private void setAlwaysOnTop( final boolean bool ) {
+	public void setAlwaysOnTop( final boolean bool ) {
 		this.alwaysOnTop = bool;
 	}
 	

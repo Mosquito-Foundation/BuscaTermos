@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -22,12 +21,8 @@ public class RegexDialog extends BTDialog {
 
 	public RegexDialog() {
 		super();
-		super.setDefaultCloseOperation( JDialog.DISPOSE_ON_CLOSE );
 		
 		this.setLayout( new BorderLayout() );
-		if ( Configuration.getInstance().isDefaultTheme() ) {
-			this.getContentPane().setBackground( Color.decode( "#E8F0F7" ) );
-		}
 		
 		this.add( this.getMessage(), BorderLayout.CENTER );
 		this.add( this.getButton(), BorderLayout.SOUTH );

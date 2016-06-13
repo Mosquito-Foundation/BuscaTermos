@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 
 import configuration.Configuration;
@@ -103,6 +104,7 @@ public class MainFrame extends BTMainFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				MainFrame.getInstance().setAlwaysOnTop( ((BTCheckBoxMenuItem) e.getSource()).isSelected() );
+				Configuration.getInstance().setAlwaysOnTop( ((BTCheckBoxMenuItem) e.getSource()).isSelected() );
 			}
 		});
 		return alwaysOnTopItem;
@@ -119,7 +121,7 @@ public class MainFrame extends BTMainFrame {
 					Configuration.getInstance().save();
 				}
 				
-				MainFrame.getInstance().setAlwaysOnTop( getAlwaysOnTopItem().isSelected() );
+				MainFrame.getInstance().setAlwaysOnTop( Configuration.getInstance().isAlwaysOnTop() );
 			}
 		});
 		return changePathItem;
@@ -127,32 +129,28 @@ public class MainFrame extends BTMainFrame {
 	
 	private BTMenu getThemeMenu() {
 		final BTMenu themeMenu = new BTMenu( Token.THEMES );
-		themeMenu.add( this.getDefaultThemeItem() );
-		themeMenu.add( this.getSystemThemeItem() );
+		final ButtonGroup themeGroup = new ButtonGroup();
+		for ( Themes theme : Themes.values() ) {
+			final BTRadioButtonMenuItem themeItem = this.getThemeItem( theme );
+			themeMenu.add( themeItem );
+			themeGroup.add( themeItem );
+			
+		}
 		return themeMenu;
 	}
 	
-	// FIXME Fazer criação das opções de tema dinamicamente
-	private BTRadioButtonMenuItem getDefaultThemeItem() {
-		final BTRadioButtonMenuItem defaultTheme = new BTRadioButtonMenuItem( Token.THEME_DEFAULT, Configuration.getInstance().isDefaultTheme() );
-		defaultTheme.addActionListener( new ActionListener() {
+	private BTRadioButtonMenuItem getThemeItem( final Themes theme ) {
+		final BTRadioButtonMenuItem themeItem = new BTRadioButtonMenuItem( Themes.name( theme ), Configuration.getInstance().getTheme().equals( theme ) );
+		themeItem.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Configuration.getInstance().changeTheme( Themes.DEFAULT );
+				MainFrame.getInstance().setAlwaysOnTop( false );
+				Configuration.getInstance().changeTheme( theme );
+				MainFrame.getInstance().setAlwaysOnTop( Configuration.getInstance().isAlwaysOnTop() );
+				
 			}
 		});
-		return defaultTheme;
-	}
-	
-	private BTRadioButtonMenuItem getSystemThemeItem() {
-		final BTRadioButtonMenuItem systemTheme = new BTRadioButtonMenuItem( Token.THEME_SYSTEM, Configuration.getInstance().isSystemTheme() );
-		systemTheme.addActionListener( new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				Configuration.getInstance().changeTheme( Themes.SYSTEM );
-			}
-		});
-		return systemTheme;
+		return themeItem;
 	}
 	
 	private BTMenuItem getSaveConfigurationItem() {
