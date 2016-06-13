@@ -11,10 +11,6 @@ import javax.swing.event.ListSelectionListener;
 
 import gui.context.menu.GridContextMenu;
 
-/**
- * Classe para montagem da tabela utilizada na grid
- * @author giovane.oliveira
- */
 public class BTTable extends JTable {
 
 	private static final long serialVersionUID = 1L;

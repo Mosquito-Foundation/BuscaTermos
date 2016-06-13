@@ -47,7 +47,6 @@ public class MainFrame extends BTMainFrame {
 	}
 	
 	public static MainFrame getInstance() {
-//		System.out.println( "MainFrame INSTANCE: " + INSTANCE );
 		if ( INSTANCE == null ) {
 			INSTANCE = new MainFrame();
 		}

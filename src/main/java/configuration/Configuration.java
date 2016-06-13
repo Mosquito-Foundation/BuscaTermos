@@ -116,9 +116,6 @@ public final class Configuration implements Serializable {
 			this.setDimension( MainFrame.getInstance().getSize() );
 		}
 		
-		// FIXME
-		System.out.println( this.toString() );
-		
 		try {
 			final ObjectOutputStream out = new ObjectOutputStream( new FileOutputStream( Configuration.CONF_PATH ) );
 			out.writeObject( this );

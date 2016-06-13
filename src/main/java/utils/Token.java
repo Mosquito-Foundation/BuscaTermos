@@ -1,9 +1,5 @@
 package utils;
 
-/**
- * Classe que contém todos os textos exibidos ao usuário
- * @author giovane.oliveira
- */
 public class Token {
 
 	public static final String TITLE = "Buscador de Termos";
