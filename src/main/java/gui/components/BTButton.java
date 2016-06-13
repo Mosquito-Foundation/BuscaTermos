@@ -7,7 +7,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-import conf.Configuration;
+import configuration.Configuration;
 
 public class BTButton extends JButton {
 

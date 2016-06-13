@@ -9,7 +9,7 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import gui.components.BTGridBagConstraints;
-import language.Language;
+import utils.Token;
 
 public class ReleaseView extends JPanel {
 
@@ -88,12 +88,12 @@ public class ReleaseView extends JPanel {
 		BTGridBagConstraints changesContainerLayout = new BTGridBagConstraints.Builder().insets( new Insets(5, 5, 0, 5) ).build();
 		
 		if(!this.features.isEmpty()) {
-			container.add( new ReleaseSubtitle( Language.FEATURES ), subtitleLayout );
+			container.add( new ReleaseSubtitle( Token.FEATURES ), subtitleLayout );
 			container.add( this.getChanges( this.features ), changesContainerLayout );
 		}
 		
 		if(!this.fixes.isEmpty()) {
-			container.add( new ReleaseSubtitle( Language.FIXES ), subtitleLayout );
+			container.add( new ReleaseSubtitle( Token.FIXES ), subtitleLayout );
 			container.add( this.getChanges( this.fixes ), changesContainerLayout );
 		}
 		

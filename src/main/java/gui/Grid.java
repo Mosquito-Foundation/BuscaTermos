@@ -11,136 +11,81 @@ import javax.swing.RowFilter;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+import configuration.language.Languages;
+import control.ComparisonPaneUpdater;
 import gui.components.BTTable;
+import gui.components.BTTableListener;
 
-
-/**
- * Classe para montagem da grid
- * @author giovane.oliveira
- */
-public class Grid extends JScrollPane {
+public class Grid extends JScrollPane implements BTTableListener {
 
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * Painel do idioma
-	 */
-	private final SearchPanel searchPanel;
-
-	/**
-	 * Tabela da grid
-	 */
-	private BTTable table;
-
-	/**
-	 * Configurações das colunas
-	 */
-	private List<GridColumn> gridColumns;
-
-	/**
-	 * Dados da grid
-	 */
-	private List<Object> data;
-
-	/**
-	 * Modelo da tabela da grid
-	 */
+	
+	private final Languages language;
+	
+	private final BTTable table;
+	
+	private final List<GridColumn> columns;
+	
 	private GridTableModel model;
-
-	/**
-	 * Ordenação dos registros
-	 */
+	
 	private TableRowSorter<TableModel> sorter;
-
-	/**
-	 * Ordenação padrão
-	 */
-	private int defaultColumnSort;
-
-	/**
-	 * Constutor
-	 * @param  searchPanel Painel que contém a grid
-	 */
-	public Grid(SearchPanel searchPanel) {
-		this.searchPanel = searchPanel;
-
-		this.table = new BTTable( this );
-		this.gridColumns = new ArrayList<>();
-		this.defaultColumnSort = 0;
+	
+	private List<Object> data;
+	
+	public Grid( final Languages language ) {
+		super();
+		
+		this.language = language;
+		this.table = new BTTable();
+		this.columns = new ArrayList<>();
 	}
 
-	/**
-	 * Seta dados da grid
-	 * @param data Dados provenientes da leitura dos arquivos de idiomas
-	 */
-	public void setData(List<Object> data) {
+	public void setData(final List<Object> data) {
 		this.data = data;
 	}
 	
-	/**
-	 * Adiciona uma nova coluna à grid
-	 * @param column
-	 */
-	public void addColumn( final GridColumn column ) {
-		this.gridColumns.add( column );
+	public void addColumn(final GridColumn column) {
+		this.columns.add(column);
 	}
 	
-	/**
-	 * Seta coluna para ordenação padrão
-	 * @param col Index da coluna
-	 */
-	public void setDefaultColumnSort(int col) {
-		this.defaultColumnSort = col;
-	}
-	
-	/**
-	 * Monta e retorna listagem
-	 * @return JScrollPane com a BTTable dentro
-	 */
 	public Grid output() {
-		this.model = new GridTableModel( this.data, this.gridColumns );
-		this.sorter = new TableRowSorter<TableModel>( this.model );
-		this.table.setModel( this.model );
-		this.table.setRowSorter( this.sorter );
-		this.sorter.toggleSortOrder( this.defaultColumnSort );
-
-		String[] columnsNames = new String[ this.gridColumns.size() ];
-		GridColumn column;
-
-		for (int i = 0; i < this.gridColumns.size(); i++) {
-			column = this.gridColumns.get( i );
-			columnsNames[i] = column.getName();
-			
-			this.table.getColumnModel().getColumn(i).setCellRenderer( column.getAlign() );
-			this.table.getColumnModel().getColumn(i).setPreferredWidth( column.getWidth() );
-			this.table.getColumnModel().getColumn(i).setResizable( column.isResizable() );
-
-			if( !column.isResizable() ) {
-				this.table.getColumnModel().getColumn( i ).setMinWidth( column.getWidth() );
-				this.table.getColumnModel().getColumn( i ).setMaxWidth( column.getWidth() );
-			}
-			
-			if ( !column.isVisible() ) {
-				this.table.getColumnModel().getColumn( i ).setMinWidth( 0 );
-				this.table.getColumnModel().getColumn( i ).setMaxWidth( 0 );
-			}
-		}
-
-		this.setViewportView( this.table );
+		this.getTable().setModel(this.getModel());
+		this.getTable().setRowSorter(this.getSorter());
+		
+		this.parseColumns();
+		
+		this.setViewportView(this.getTable());
 		this.setBorder( BorderFactory.createLineBorder(Color.decode("#79838E")) );
-
+		
 		return this;
 	}
 	
-	/**
-	 * Filtra grid por texto
-	 * @param text
-	 */
-	public void find( final String text ) {
+	private void parseColumns() {
+		GridColumn column;
+		for(int i = 0; i < this.getColumns().size(); i++) {
+			column = this.getColumns().get(i);
+			
+			this.getTable().getColumnModel().getColumn(i).setCellRenderer(column.getAlign());
+			this.getTable().getColumnModel().getColumn(i).setPreferredWidth(column.getWidth());
+			this.getTable().getColumnModel().getColumn(i).setResizable(column.isResizable());
+
+			if(!column.isResizable()) {
+				this.getTable().getColumnModel().getColumn(i).setMinWidth(column.getWidth());
+				this.getTable().getColumnModel().getColumn(i).setMaxWidth(column.getWidth());
+			}
+			
+			if (!column.isVisible()) {
+				this.getTable().getColumnModel().getColumn(i).setMinWidth(0);
+				this.getTable().getColumnModel().getColumn(i).setMaxWidth(0);
+			}
+		}
+	}
+	
+	public void find(final String text) {
 		try {
 			if (text.length() > 0 && !text.equals( "\"\"" )) {
 				final boolean perfectMatch = text.charAt(0) == '\"' && text.charAt(text.length()-1) == '\"';
-				
+
 				String escaped = text;
 
 				// Qualquer letra
@@ -179,71 +124,40 @@ public class Grid extends JScrollPane {
 		}
 	}
 	
-	/**
-	 * Callback de seleção de célula
-	 * @param token Código do termo selecionado
-	 */
-	public void fireSelectionTrigger( final String token ) {
-		this.getSearchPanel().updateLanguageFields( token );
-	}
-	
-	/**
-	 * Retorna colunas da grid
-	 * @return colunas da grid
-	 */
-	public List<GridColumn> getGridColumns() {
-		return this.gridColumns;
-	}
-	
-	/**
-	 * Retorna linha selecionada
-	 * @return Index da linha
-	 */
-	public int getSelectedRow() {
-		try {
-			return this.table.convertRowIndexToModel( this.table.getSelectedRow() );
-		} catch (ArrayIndexOutOfBoundsException e) {
-			return -1;
-		}
+	@Override
+	public void fireTableSelection(final String token) {
+		new Thread( new ComparisonPaneUpdater( MainFrame.getInstance().getLanguagePanelMap().get( this.getLanguage() ).getComparisonFields(), token ) ).start();
 	}
 
-	/**
-	 * Retorna grid
-	 * @return BTTable da grid
-	 */
-	public BTTable getTable() {
+	private BTTable getTable() {
 		return this.table;
 	}
-
-	/**
-	 * Retorna modelo da grid
-	 * @return Modelo da grid
-	 */
-	public GridTableModel getTableModel() {
+	
+	private GridTableModel getModel() {
+		if(this.model == null) {
+			this.model = new GridTableModel(this.getData(), this.getColumns());
+		}
 		return this.model;
 	}
-
-	/**
-	 * Retorna ordenador da grid
-	 * @return Ordenador da grid
-	 */
-	public TableRowSorter<TableModel> getSorter() {
+	
+	private TableRowSorter<TableModel> getSorter() {
+		if(this.sorter == null) {
+			this.sorter = new TableRowSorter<TableModel>(this.getModel());
+			this.sorter.toggleSortOrder(0);
+		}
 		return this.sorter;
 	}
 	
-	/**
-	 * Retorna painel do idioma
-	 * @return Painel do idioma
-	 */
-	public SearchPanel getSearchPanel() {
-		return this.searchPanel;
+	public List<Object> getData() {
+		return this.data;
 	}
 	
-	/**
-	 * Retorna própria instância
-	 * @return Grid
-	 */
-	public Grid getInstance() {
-		return this;
+	private List<GridColumn> getColumns() {
+		return this.columns;
 	}
+	
+	public Languages getLanguage() {
+		return this.language;
+	}
+	
 }

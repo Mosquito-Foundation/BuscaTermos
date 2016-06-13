@@ -2,41 +2,18 @@ package gui;
 
 import javax.swing.table.DefaultTableCellRenderer;
 
-/**
- * Classe para modelo de colunas da grid
- * @author giovane.oliveira
- */
 public class GridColumn {
 
-	/**
-	 * Nome/Label da coluna
-	 */
 	private String name;
 
-	/**
-	 * Alinhamento da coluna
-	 */
 	private DefaultTableCellRenderer align;
 
-	/**
-	 * Largura da coluna
-	 */
 	private int width;
 
-	/**
-	 * Indica se a coluna pode ser redimensionada
-	 */
 	private boolean resizable;
 
-	/**
-	 * Indica se a coluna é invisível
-	 */
 	private boolean visible;
 
-	/**
-	 * Classe para criação de uma coluna 
-	 * @author giovane.oliveira
-	 */
 	public static class Builder {
 		
 		private String name = "";
@@ -88,10 +65,6 @@ public class GridColumn {
 		}
 	}
 	
-	/**
-	 * Construtor - Utiliza builder para montagem da coluna
-	 * @param builder
-	 */
 	private GridColumn( final GridColumn.Builder builder ) {
 		this.name = builder.name;
 		this.width = builder.width;
@@ -100,42 +73,22 @@ public class GridColumn {
 		this.visible = builder.visible;
 	}
 
-	/**
-	 * Retorna nome
-	 * @return Nome/Label da coluna
-	 */
 	public String getName() {
 		return this.name;
 	}
 
-	/**
-	 * Retorna largura
-	 * @return Largura da coluna
-	 */
 	public int getWidth() {
 		return this.width;
 	}
 
-	/**
-	 * Retorna alinhamento
-	 * @return Alinhamento da coluna
-	 */
 	public DefaultTableCellRenderer getAlign() {
 		return this.align;
 	}
 
-	/**
-	 * Retorna se é redimensionável
-	 * @return Coluna é redimensionável ou não
-	 */
 	public boolean isResizable() {
 		return this.resizable;
 	}
 
-	/**
-	 * Retorna se é invisível
-	 * @return Coluna é invisível ou não
-	 */
 	public boolean isVisible() {
 		return this.visible;
 	}

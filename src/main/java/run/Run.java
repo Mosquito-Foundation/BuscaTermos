@@ -2,7 +2,7 @@ package run;
 
 import javax.swing.SwingUtilities;
 
-import conf.Configuration;
+import configuration.Configuration;
 import gui.MainFrame;
 
 public class Run {
@@ -14,7 +14,7 @@ public class Run {
 		SwingUtilities.invokeLater( new Runnable() {
 			@Override
 			public void run() {
-				new MainFrame();
+				MainFrame.getInstance().setVisible( true );
 			}
 		} );
 	}

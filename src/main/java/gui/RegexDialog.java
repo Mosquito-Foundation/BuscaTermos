@@ -11,9 +11,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import conf.Configuration;
+import configuration.Configuration;
 import gui.components.BTDialog;
-import language.Language;
+import utils.Token;
 
 public class RegexDialog extends BTDialog {
 
@@ -23,16 +23,15 @@ public class RegexDialog extends BTDialog {
 		super();
 		
 		this.setLayout( new BorderLayout() );
-		if ( Configuration.getInstance().isDefaultTheme() ) {
-			this.getContentPane().setBackground( Color.decode( "#E8F0F7" ) );
-		}
 		
 		this.add( this.getMessage(), BorderLayout.CENTER );
 		this.add( this.getButton(), BorderLayout.SOUTH );
+		
+		this.output();
 	}
 
 	private JLabel getMessage() {
-		JLabel message = new JLabel( Language.REGULAR_EXPRESSIONS_MESSAGE );
+		JLabel message = new JLabel( Token.REGULAR_EXPRESSIONS_MESSAGE );
 		message.setBorder( BorderFactory.createEmptyBorder(10, 10, 10, 10) );
 		message.setFont( new Font("Dialog", Font.PLAIN, 13) );
 		return message;

@@ -6,7 +6,7 @@ import java.awt.LayoutManager;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
-import conf.Configuration;
+import configuration.Configuration;
 
 public class BTPanel extends JPanel {
 

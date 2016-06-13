@@ -18,6 +18,14 @@
                     "Correção do problema que ocorria ao trocar o caminho dos arquivos utilizando a opção \"Sempre no topo\" marcada."
                 ]
             }
+        },
+        {
+            "version": "1.2.0",
+            "changelog": {
+                "fixes": [
+                    "Correção do problema na pesquisa que ocorria ao pesquisar utilizando o caractere \")\""
+                ]
+            }
         }
     ]
 }

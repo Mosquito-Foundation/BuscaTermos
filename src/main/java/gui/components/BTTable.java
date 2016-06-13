@@ -9,26 +9,14 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import gui.Grid;
-import gui.GridContextMenu;
+import gui.context.menu.GridContextMenu;
 
-/**
- * Classe para montagem da tabela utilizada na grid
- * @author giovane.oliveira
- */
 public class BTTable extends JTable {
 
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Instância da grid que a tabela pertence
-	 */
-	private Grid gridInstance;
-	
-	public BTTable( final Grid gridInstance ) {
+	public BTTable() {
 		super();
-		
-		this.gridInstance = gridInstance;
 		
 		this.setCellSelectionEnabled( true );
 		
@@ -39,14 +27,7 @@ public class BTTable extends JTable {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
 				if ( !e.getValueIsAdjusting() ) {
-					final int selectedRow = getInstance().getSelectedRow();
-					String token = "";
-					
-					if( selectedRow >= 0 ) {
-						token = (String) getInstance().getValueAt( selectedRow, 0 );
-					}
-					
-					getGridInstance().fireSelectionTrigger( token );
+					triggerTableSelection();
 				}
 			}
 		} );
@@ -58,43 +39,45 @@ public class BTTable extends JTable {
 		this.addMouseListener(new MouseAdapter() {
 		    @Override
 		    public void mouseReleased(MouseEvent e) {
-		        int r = getInstance().rowAtPoint(e.getPoint());
-		        int c = getInstance().columnAtPoint(e.getPoint());
-		        
-		        if (r >= 0 && r < getInstance().getRowCount()) {
-		        	getInstance().setRowSelectionInterval(r, r);
-		        	getInstance().setColumnSelectionInterval(c, c);
-		        } else {
-		        	getInstance().clearSelection();
-		        }
-
-		        final int rowindex = getInstance().getSelectedRow();
-		        
-		        if (rowindex < 0) {
-		            return;
-		        }
-		        
-		        if (e.isPopupTrigger() && e.getComponent() instanceof JTable ) {
-		            JPopupMenu popup = new GridContextMenu( getGridInstance() );
-		            popup.show(e.getComponent(), e.getX(), e.getY());
-		        }
+		        triggerMouseClick(e);
 		    }
 		});
 	}
 	
-	/**
-	 * Retorna própria inst�ncia
-	 * @return
-	 */
-	public BTTable getInstance() {
-		return this;
+	private void triggerTableSelection() {
+		final int rowindex = this.getSelectedRow();
+		String token = "";
+
+		if( rowindex >= 0 ) {
+			token = (String) this.getValueAt( rowindex, 0 );
+		}
+
+		if( this.getParent().getParent() instanceof BTTableListener ) {
+			( (BTTableListener) this.getParent().getParent() ).fireTableSelection( token );
+		}
+	}
+
+	private void triggerMouseClick(final MouseEvent e) {
+		final int r = this.rowAtPoint(e.getPoint());
+        final int c = this.columnAtPoint(e.getPoint());
+        
+        if (r >= 0 && r < this.getRowCount()) {
+        	this.setRowSelectionInterval(r, r);
+        	this.setColumnSelectionInterval(c, c);
+        } else {
+        	this.clearSelection();
+        }
+
+        final int rowindex = this.getSelectedRow();
+        
+        if (rowindex < 0) {
+            return;
+        }
+        
+        if (e.isPopupTrigger() && e.getComponent() instanceof JTable ) {
+            JPopupMenu popup = new GridContextMenu( this );
+            popup.show(e.getComponent(), e.getX(), e.getY());
+        }
 	}
 	
-	/**
-	 * Retorna instância da grid que a tabela pertence
-	 * @return
-	 */
-	public Grid getGridInstance() {
-		return this.gridInstance;
-	}
 }
