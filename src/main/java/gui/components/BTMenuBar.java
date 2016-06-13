@@ -5,7 +5,7 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JMenuBar;
 
-import conf.Configuration;
+import configuration.Configuration;
 
 public class BTMenuBar extends JMenuBar {
 

@@ -1,4 +1,4 @@
-package reader;
+package parser;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -8,48 +8,60 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import conf.Configuration;
+import configuration.Configuration;
 import pojo.Term;
 
-/**
- * Classe para leitura dos arquivos de termos
- * @author giovane.oliveira
- */
 public class LanguageFileParser {
 
-	/**
-	 * Nome do arquivo que vai ser aberto
-	 */
-	private final String fileName;
+	private String fileName;
 	
-	/**
-	 * Configurações do aplicativo
-	 */
-	private final Configuration configuration;
+	private List<Object> terms;
 	
-	/**
-	 * Lista de termos contidos no arquivo
-	 */
-	private final List<Object> terms;
-
-	/**
-	 * Construtor
-	 * @param fileName Nome do arquivo que vai ser lido
-	 * @param configuration Configurações atuais do aplicativo
-	 */
-	public LanguageFileParser(String fileName, Configuration configuration) {
+	public LanguageFileParser(String fileName ) {
 		this.fileName = fileName;
-		this.configuration = configuration;
 		this.terms = new ArrayList<>();
 	}
 
+	public static List<Object> getTerms(final String fileName) {
+		final File file = new File(Configuration.getInstance().getPath().replace("\\", "/") + "sesuite." + fileName + ".utf-8.inc");
+		final List<Object> terms = new ArrayList<>();
+		
+		try {
+			final FileReader fr = new FileReader(file);
+			final BufferedReader br = new BufferedReader(fr);
+			
+			String data = null;
+			
+			do {
+				data = br.readLine();
+				if(data != null && data.charAt(0) == '$') {
+					Term term = new Term();
+					term.setId(data.substring(5, 11));
+					term.setText(data.substring(14, data.length() - 2));
+					terms.add(term);
+				}
+			} while(data != null);
+			
+			fr.close();
+			br.close();
+			
+			return terms;
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return terms;
+		
+	}
+	
 	/**
 	 * Monta e retorna lista de termos do arquivo para uma grid
 	 * @return terms
 	 */
 	public List<Object> getTermsList() {
 		
-		File file = new File(this.configuration.getPath().replace("\\", "/") + "sesuite." + fileName + ".utf-8.inc");
+		File file = new File( Configuration.getInstance().getPath().replace("\\", "/") + "sesuite." + fileName + ".utf-8.inc" );
 		
 		try {
 			FileReader fileReader = new FileReader(file);

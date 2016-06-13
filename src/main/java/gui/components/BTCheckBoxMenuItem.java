@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import javax.swing.JCheckBoxMenuItem;
 
-import conf.Configuration;
+import configuration.Configuration;
 
 public class BTCheckBoxMenuItem extends JCheckBoxMenuItem {
 
@@ -12,6 +12,11 @@ public class BTCheckBoxMenuItem extends JCheckBoxMenuItem {
 
 	public BTCheckBoxMenuItem( final String label ) {
 		super( label );
+		this.init();
+	}
+	
+	public BTCheckBoxMenuItem( final String label, final boolean isChecked ) {
+		super( label, isChecked );
 		this.init();
 	}
 	

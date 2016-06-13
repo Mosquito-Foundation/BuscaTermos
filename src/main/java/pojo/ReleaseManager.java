@@ -3,7 +3,7 @@ package pojo;
 import java.util.Collections;
 import java.util.List;
 
-import reader.ReleaseParser;
+import parser.ReleaseParser;
 
 public class ReleaseManager {
 

@@ -5,10 +5,6 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class IconManager {
-
-	public enum Flags {
-		
-	}
 	
 	/**
 	 * Instância única
@@ -38,7 +34,7 @@ public class IconManager {
 		icon = this.resizeIcon( icon, width, height );
 		return icon;
 	}
-	
+
 	/**
 	 * Retorna ícone em seu tamanho normal
 	 * @param name Nome do ícone
@@ -61,4 +57,5 @@ public class IconManager {
 		icon = new ImageIcon( img );
 		return icon;
 	}
+	
 }

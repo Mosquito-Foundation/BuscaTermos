@@ -5,7 +5,7 @@ import java.awt.Color;
 import javax.swing.Icon;
 import javax.swing.JMenuItem;
 
-import conf.Configuration;
+import configuration.Configuration;
 
 public class BTMenuItem extends JMenuItem {
 

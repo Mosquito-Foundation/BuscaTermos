@@ -10,27 +10,27 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
 
-import conf.Configuration;
+import configuration.Configuration;
 import gui.components.BTButton;
 import gui.components.BTGridBagConstraints;
+import gui.components.BTMainFrame;
 import gui.components.BTPanel;
 import gui.template.ReleaseView;
-import language.Language;
 import pojo.Release;
 import pojo.ReleaseManager;
+import utils.Token;
 import version.VersionControl;
 
 public class ChangelogDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 
-	public ChangelogDialog( final JFrame parent, final ModalityType modality ) {
-		super( parent, modality );
+	public ChangelogDialog( final BTMainFrame owner ) {
+		super( owner, ModalityType.APPLICATION_MODAL );
 
 		this.add( this.createComponents() );
 		this.showDialog();
@@ -86,7 +86,7 @@ public class ChangelogDialog extends JDialog {
 	}
 	
 	private BTButton getOkButton() {
-		BTButton okButton = new BTButton( Language.OK );
+		BTButton okButton = new BTButton( Token.OK );
 		okButton.setPreferredSize( new Dimension( 100, 30) );
 		okButton.setBorder( BorderFactory.createLineBorder( Color.GRAY ) );
 		okButton.addActionListener( new ActionListener() {
@@ -99,7 +99,7 @@ public class ChangelogDialog extends JDialog {
 	}
 	
 	private void showDialog() {
-		this.setTitle( Language.CHANGELOG );
+		this.setTitle( Token.CHANGELOG );
 		this.setResizable( false );
 		this.setSize( 500, 500 );
 		this.setLocationRelativeTo( null );

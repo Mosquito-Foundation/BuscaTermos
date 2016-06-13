@@ -4,7 +4,7 @@ import java.util.Collections;
 
 import com.github.zafarkhaja.semver.Version;
 
-import conf.Configuration;
+import configuration.Configuration;
 import pojo.ReleaseManager;
 
 public class VersionControl {
@@ -31,10 +31,6 @@ public class VersionControl {
 
 	public boolean isNewerVersion() {
 		return Version.valueOf( Configuration.getInstance().getVersion() ).compareTo( this.getCurrentVersion() ) < 0;
-	}
-	
-	public boolean isFirstTimeOpen() {
-		return Configuration.getInstance().getVersion() == null;
 	}
 	
 }

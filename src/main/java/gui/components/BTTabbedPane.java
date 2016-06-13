@@ -5,7 +5,8 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JTabbedPane;
 
-import conf.Configuration;
+import configuration.Configuration;
+import control.TabController;
 
 public class BTTabbedPane extends JTabbedPane {
 
@@ -17,6 +18,7 @@ public class BTTabbedPane extends JTabbedPane {
 	}
 	
 	private void init() {
+		this.addMouseListener( new TabController( this ) );
 		this.setFocusable( false );
 		this.setBorder( BorderFactory.createEmptyBorder(5, 5, 5, 5) );
 		if ( Configuration.getInstance().isDefaultTheme() ) {

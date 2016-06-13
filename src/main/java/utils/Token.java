@@ -1,10 +1,10 @@
-package language;
+package utils;
 
 /**
  * Classe que contém todos os textos exibidos ao usuário
  * @author giovane.oliveira
  */
-public class Language {
+public class Token {
 
 	public static final String TITLE = "Buscador de Termos";
 	
@@ -102,7 +102,7 @@ public class Language {
 	
 	public static final String THEME_DEFAULT = "Padrão";
 	
-	public static final String THEME_WINDOWS = "Windows";
+	public static final String THEME_SYSTEM = "Sistema";
 	
 	public static final String CHANGE_THEME_WARNING = "As alterações de tema serão aplicadas ao reiniciar o aplicativo";
 	

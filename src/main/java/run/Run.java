@@ -2,7 +2,7 @@ package run;
 
 import javax.swing.SwingUtilities;
 
-import conf.Configuration;
+import configuration.Configuration;
 import gui.MainFrame;
 
 public class Run {
@@ -11,10 +11,16 @@ public class Run {
 		
 		Configuration.getInstance();
 		
+//		JFrame.setDefaultLookAndFeelDecorated( true );
+//		JDialog.setDefaultLookAndFeelDecorated( true );
+		
 		SwingUtilities.invokeLater( new Runnable() {
 			@Override
 			public void run() {
-				new MainFrame();
+//				MainFrame.getInstance().setVisible( true );
+//				SubstanceLookAndFeel.setSkin( new BusinessSkin() );
+//				SubstanceLookAndFeel.setFontPolicy( FontPolicies.getLogicalFontsPolicy() );
+				MainFrame.getInstance().setVisible( true );
 			}
 		} );
 	}

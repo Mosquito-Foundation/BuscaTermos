@@ -26,5 +26,6 @@ public class BTDialog extends JDialog {
 	public void output() {
 		this.pack();
 		this.setLocationRelativeTo( null );
+		this.setVisible( true );
 	}
 }
