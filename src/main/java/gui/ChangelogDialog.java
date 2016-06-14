@@ -31,7 +31,7 @@ public class ChangelogDialog extends JDialog {
 
 	public ChangelogDialog( final BTMainFrame owner ) {
 		super( owner, ModalityType.APPLICATION_MODAL );
-
+		this.setAlwaysOnTop( MainFrame.getInstance().isAlwaysOnTop() );
 		this.add( this.createComponents() );
 		this.showDialog();
 	}
