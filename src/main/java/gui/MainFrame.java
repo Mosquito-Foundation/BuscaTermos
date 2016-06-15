@@ -2,6 +2,8 @@ package gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.HashMap;
 
 import javax.swing.ButtonGroup;
@@ -21,7 +23,7 @@ import gui.components.BTRadioButtonMenuItem;
 import gui.components.BTTabbedPane;
 import utils.Token;
 
-public class MainFrame extends BTMainFrame {
+public class MainFrame extends BTMainFrame implements KeyListener{
 
 	private static final long serialVersionUID = 1L;
 
@@ -32,6 +34,7 @@ public class MainFrame extends BTMainFrame {
 	private HashMap<Languages, BTCheckBoxMenuItem> languageCheckMap;
 	
 	private BTTabbedPane tabbedPane;
+		  
 	
 	private MainFrame() {
 		// Validação para o path, se o usuário informar um path inválido e não quiser mais procurar um válido, sai da aplicação
@@ -40,12 +43,28 @@ public class MainFrame extends BTMainFrame {
 				System.exit( 0 );
 			}
 		}
-		
 		this.languagePanelMap = new HashMap<>();
 		this.languageCheckMap = new HashMap<>();
 		
 		this.setJMenuBar( this.getToolbar() );
 		this.add( this.getLanguageTabs() );
+		addKeyListener(this);
+
+
+	}
+	
+	@Override 
+	public void keyPressed(KeyEvent e){
+		System.out.println("opa");
+	}
+	@Override 
+	public void keyReleased(KeyEvent e){}
+	@Override 
+	public void keyTyped(KeyEvent e){
+		System.out.println("opa");
+		JOptionPane.showMessageDialog( null, Token.FILE_NOT_FOUND_INFO, "", JOptionPane.WARNING_MESSAGE );
+		
+		
 	}
 	
 	public static MainFrame getInstance() {
@@ -96,6 +115,7 @@ public class MainFrame extends BTMainFrame {
 		optionsMenu.add( this.getThemeMenu() );
 		optionsMenu.addSeparator();
 		optionsMenu.add( this.getSaveConfigurationItem() );
+		
 		return optionsMenu;
 	}
 	
@@ -160,7 +180,7 @@ public class MainFrame extends BTMainFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(Configuration.getInstance().save()){
-					JOptionPane.showMessageDialog( MainFrame.getInstance(), Token.CONFIGURATION_SAVE_SUCCESS, Token.CLEAR1, JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog( MainFrame.getInstance(), Token.CONFIGURATION_SAVE_SUCCESS, Token.WARNING, JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		});
@@ -180,18 +200,18 @@ public class MainFrame extends BTMainFrame {
 		regexItem.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new BTDialog(null, Token.REGULAR_EXPRESSIONS_MESSAGE);
+				new BTDialog(MainFrame.getInstance(), Token.REGULAR_EXPRESSIONS_MESSAGE);
 			}
 		});
 		return regexItem;
 	}
 	
 	private BTMenuItem getChangelogItem() {
-		final BTMenuItem changelog = new BTMenuItem( Token.SHOWCHANGELOG );
+		final BTMenuItem changelog = new BTMenuItem( Token.SHOW_CHANGELOG );
 		changelog.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new ChangelogDialog(null);
+				new ChangelogDialog(MainFrame.getInstance());
 			}
 		});
 		return changelog;
@@ -202,7 +222,7 @@ public class MainFrame extends BTMainFrame {
 		aboutItem.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new BTDialog(null, Token.ABOUT_INFO);
+				new BTDialog(MainFrame.getInstance(), Token.ABOUT_INFO);
 			}
 		});
 		return aboutItem;

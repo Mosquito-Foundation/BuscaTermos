@@ -72,7 +72,7 @@ public class Token {
 	
 	public static final String HELP = "Ajuda";
 	
-	public static final String SHOWCHANGELOG = "Exibir changelog";
+	public static final String SHOW_CHANGELOG = "Exibir changelog";
 	
 	public static final String ABOUT = "Sobre o BuscaTermos";
 	
@@ -90,7 +90,7 @@ public class Token {
 	
 	public static final String CLEAR = "Limpar";
 	
-	public static final String CLEAR1 = "Aviso";
+	public static final String WARNING = "Aviso";
 	
 	public static final String COLLAPSE = "Contrair";
 	
