@@ -160,7 +160,7 @@ public class MainFrame extends BTMainFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(Configuration.getInstance().save()){
-					JOptionPane.showMessageDialog( MainFrame.getInstance(), Token.CONFIGURATION_SAVE_SUCCESS, Token.CLEAR1, JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog( MainFrame.getInstance(), Token.CONFIGURATION_SAVE_SUCCESS, Token.WARNING, JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		});
@@ -180,18 +180,18 @@ public class MainFrame extends BTMainFrame {
 		regexItem.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new BTDialog(null, Token.REGULAR_EXPRESSIONS_MESSAGE);
+				new BTDialog(MainFrame.getInstance(), Token.REGULAR_EXPRESSIONS_MESSAGE);
 			}
 		});
 		return regexItem;
 	}
 	
 	private BTMenuItem getChangelogItem() {
-		final BTMenuItem changelog = new BTMenuItem( Token.SHOWCHANGELOG );
+		final BTMenuItem changelog = new BTMenuItem( Token.SHOW_CHANGELOG );
 		changelog.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new ChangelogDialog(null);
+				new ChangelogDialog(MainFrame.getInstance());
 			}
 		});
 		return changelog;
@@ -202,7 +202,7 @@ public class MainFrame extends BTMainFrame {
 		aboutItem.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new BTDialog(null, Token.ABOUT_INFO);
+				new BTDialog(MainFrame.getInstance(), Token.ABOUT_INFO);
 			}
 		});
 		return aboutItem;

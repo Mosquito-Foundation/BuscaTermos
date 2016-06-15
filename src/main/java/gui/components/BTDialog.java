@@ -18,23 +18,19 @@ import gui.MainFrame;
 public class BTDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
-
-	public BTDialog( final MainFrame frame , String description) {
+    private final String message;
+	public BTDialog( final MainFrame frame , String message) {
 		super( frame );
+		this.message = message;
 		this.init();
-		this.setLayout( new BorderLayout() );
-		this.add( this.getMessage(description), BorderLayout.CENTER );
-		this.add( this.getButton(), BorderLayout.SOUTH );
 		
 		this.output();
 	}
 	
-	public BTDialog() {
-		super();
-		this.init();
-	}
-	
 	private void init() {
+		this.setLayout( new BorderLayout() );
+		this.add( this.getMessage(), BorderLayout.CENTER );
+		this.add( this.getButton(), BorderLayout.SOUTH );
 		this.setAlwaysOnTop( MainFrame.getInstance().isAlwaysOnTop() );
 		this.setDefaultCloseOperation( JDialog.DISPOSE_ON_CLOSE );
 		this.setResizable( false );
@@ -43,8 +39,8 @@ public class BTDialog extends JDialog {
 		}
 	}
 	
-	private JLabel getMessage(String description) {
-		JLabel message = new JLabel( description );
+	private JLabel getMessage() {
+		JLabel message = new JLabel( this.message );
 		message.setBorder( BorderFactory.createEmptyBorder(10, 10, 10, 10) );
 		message.setFont( new Font("Dialog", Font.PLAIN, 13) );
 		return message;
