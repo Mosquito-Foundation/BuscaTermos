@@ -4,7 +4,7 @@ import version.VersionControl;
 
 public class Token {
 
-	public static final String TITLE = "Buscador de Termos";
+	public static final String TITLE = "BuscaTermos";
 	
 	public static final String DISPLAY = "Exibir";
 	
@@ -89,8 +89,6 @@ public class Token {
 	public static final String CONFIGURATION_SAVE_ERROR = "Houve um erro ao salvar as configurações";
 	
 	public static final String CLEAR = "Limpar";
-	
-	public static final String WARNING = "Aviso";
 	
 	public static final String COLLAPSE = "Contrair";
 	

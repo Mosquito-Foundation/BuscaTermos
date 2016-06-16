@@ -160,7 +160,7 @@ public class MainFrame extends BTMainFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(Configuration.getInstance().save()){
-					JOptionPane.showMessageDialog( MainFrame.getInstance(), Token.CONFIGURATION_SAVE_SUCCESS, Token.WARNING, JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog( MainFrame.getInstance(), Token.CONFIGURATION_SAVE_SUCCESS, "", JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		});
@@ -180,7 +180,7 @@ public class MainFrame extends BTMainFrame {
 		regexItem.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new BTDialog(MainFrame.getInstance(), Token.REGULAR_EXPRESSIONS_MESSAGE);
+				new BTDialog( MainFrame.getInstance(), Token.REGULAR_EXPRESSIONS_MESSAGE );
 			}
 		});
 		return regexItem;
@@ -202,7 +202,7 @@ public class MainFrame extends BTMainFrame {
 		aboutItem.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new BTDialog(MainFrame.getInstance(), Token.ABOUT_INFO);
+				new BTDialog( MainFrame.getInstance(), Token.ABOUT_INFO );
 			}
 		});
 		return aboutItem;

@@ -43,7 +43,6 @@ public class GridContextMenu extends ContextMenu {
 		}
 		
 		MainFrame.getInstance().getLanguagePanelMap().get( language.getId() ).getFilterField().setText( token );
-		// TODO gridSearch
 	}
 	
 }

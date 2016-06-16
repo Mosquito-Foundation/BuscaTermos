@@ -18,9 +18,12 @@ import gui.MainFrame;
 public class BTDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
-    private final String message;
-	public BTDialog( final MainFrame frame , String message) {
-		super( frame );
+
+	private final String message;
+	
+	public BTDialog( final MainFrame frame, final String message ) {
+		super( frame, ModalityType.APPLICATION_MODAL );
+
 		this.message = message;
 		this.init();
 		
