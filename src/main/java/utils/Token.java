@@ -1,8 +1,10 @@
 package utils;
 
+import version.VersionControl;
+
 public class Token {
 
-	public static final String TITLE = "Buscador de Termos";
+	public static final String TITLE = "BuscaTermos";
 	
 	public static final String DISPLAY = "Exibir";
 	
@@ -70,10 +72,12 @@ public class Token {
 	
 	public static final String HELP = "Ajuda";
 	
+	public static final String SHOW_CHANGELOG = "Exibir changelog";
+	
 	public static final String ABOUT = "Sobre o BuscaTermos";
 	
-	public static final String ABOUT_INFO = "BuscaTermos\n\nDesenvolvido por:\n Giovane de Oliveira\n giovane.oliveira@softexpert.com";
-	
+	public static final String ABOUT_INFO = "<html><div align='center'><font size='5'><b>BuscaTermos</b></font><br><div align='center'><font size='3'>Versão: "+VersionControl.getInstance().getCurrentVersion()+"</font></div></div><br> <b>Desenvolvido por:</b><br><br>• Giovane de Oliveira (giovane.oliveira@softexpert.com)<br>• Vinícius Lopes (vinicius.lopes@softexpert.com)<br><div align='center'><br>Copyright © 2014-2016 SoftExpert<br>Todos os direitos reservados</div>";
+
 	public static final String CHANGE_PATH = "Alterar caminho dos arquivos";
 	
 	public static final String FILE_NOT_FOUND_INFO = "Arquivo de termos não encontrado. É necessário encontrar um caminho válido.";

@@ -183,7 +183,6 @@ public class ContextMenu extends JPopupMenu {
 
 		// FIXME quando colar em uma parada q ja ta selecionada deve substituir o q ta selecionado
 		( (JTextComponent) this.getInvoker() ).setText( ( (JTextComponent) this.getInvoker() ).getText() + result );
-		// TODO gridSearch
 	}
 	
 	protected void closeAction() { this.unimplementedMethod(); }

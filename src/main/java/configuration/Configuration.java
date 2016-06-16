@@ -134,7 +134,6 @@ public final class Configuration implements Serializable {
 		this.setTheme( Themes.DEFAULT );
 		this.setVersion( "1.0.0" );
 		
-		// FIXME
 		// Abas
 		this.visibleTabs = new HashMap<>();
 		for (Languages languageId : Languages.values()) {

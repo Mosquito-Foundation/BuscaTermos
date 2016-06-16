@@ -42,8 +42,6 @@ public class BTMainFrame extends JFrame {
 		this.addWindowListener(new WindowAdapter() {
 		    @Override
 		    public void windowClosing( final WindowEvent windowEvent ) {
-		        // FIXME de novo saporra de saveConfiguration
-//		    	saveCurrentConfiguration( false, true );
 		    	Configuration.getInstance().save();
 		        System.exit( 0 );
 		    }

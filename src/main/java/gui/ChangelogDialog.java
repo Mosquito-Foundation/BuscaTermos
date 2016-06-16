@@ -7,6 +7,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
@@ -31,7 +33,7 @@ public class ChangelogDialog extends JDialog {
 
 	public ChangelogDialog( final BTMainFrame owner ) {
 		super( owner, ModalityType.APPLICATION_MODAL );
-
+		this.setAlwaysOnTop( owner.isAlwaysOnTop() );
 		this.add( this.createComponents() );
 		this.showDialog();
 	}
@@ -99,6 +101,13 @@ public class ChangelogDialog extends JDialog {
 	}
 	
 	private void showDialog() {
+		this.addWindowListener(new WindowAdapter() {
+		    @Override
+		    public void windowClosing( final WindowEvent windowEvent ) {
+		    	closeDialog();
+		    }
+		});
+		
 		this.setTitle( Token.CHANGELOG );
 		this.setResizable( false );
 		this.setSize( 500, 500 );

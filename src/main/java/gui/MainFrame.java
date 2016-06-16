@@ -12,6 +12,7 @@ import configuration.language.Language;
 import configuration.language.Languages;
 import configuration.themes.Themes;
 import gui.components.BTCheckBoxMenuItem;
+import gui.components.BTDialog;
 import gui.components.BTMainFrame;
 import gui.components.BTMenu;
 import gui.components.BTMenuBar;
@@ -158,7 +159,9 @@ public class MainFrame extends BTMainFrame {
 		saveItem.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Configuration.getInstance().save();
+				if(Configuration.getInstance().save()){
+					JOptionPane.showMessageDialog( MainFrame.getInstance(), Token.CONFIGURATION_SAVE_SUCCESS, "", JOptionPane.INFORMATION_MESSAGE);
+				}
 			}
 		});
 		return saveItem;
@@ -167,6 +170,7 @@ public class MainFrame extends BTMainFrame {
 	private BTMenu getHelpMenu() {
 		final BTMenu helpMenu = new BTMenu( Token.HELP );
 		helpMenu.add( this.getRegexItem() );
+		helpMenu.add( this.getChangelogItem() );
 		helpMenu.add( this.getAboutItem() );
 		return helpMenu;
 	}
@@ -176,10 +180,21 @@ public class MainFrame extends BTMainFrame {
 		regexItem.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new RegexDialog();
+				new BTDialog( MainFrame.getInstance(), Token.REGULAR_EXPRESSIONS_MESSAGE );
 			}
 		});
 		return regexItem;
+	}
+	
+	private BTMenuItem getChangelogItem() {
+		final BTMenuItem changelog = new BTMenuItem( Token.SHOW_CHANGELOG );
+		changelog.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new ChangelogDialog(MainFrame.getInstance());
+			}
+		});
+		return changelog;
 	}
 	
 	private BTMenuItem getAboutItem() {
@@ -187,7 +202,7 @@ public class MainFrame extends BTMainFrame {
 		aboutItem.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog( MainFrame.getInstance(), Token.ABOUT_INFO, Token.ABOUT, JOptionPane.INFORMATION_MESSAGE);
+				new BTDialog( MainFrame.getInstance(), Token.ABOUT_INFO );
 			}
 		});
 		return aboutItem;
