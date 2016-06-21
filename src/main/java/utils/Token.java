@@ -96,7 +96,7 @@ public class Token {
 	
 	public static final String REGULAR_EXPRESSIONS = "Expressões regulares";
 	
-	public static final String REGULAR_EXPRESSIONS_MESSAGE = "<html><b>Atualmente suportado:</b><br><br><b>\"</b>texto<b>\"</b> - A pesquisa buscará por exatamente o que estiver escrito.<br><br>te<b>?</b>to - Substitui um caractere. Ex: Ao digitar te?to, o resultado poderá retornar texto, testo, tento.<br><br></html>";
+	public static final String REGULAR_EXPRESSIONS_MESSAGE = "<html><b>Atualmente suportado:</b><br><br><b>\"</b>texto<b>\"</b> - A pesquisa buscará por exatamente o que estiver escrito.<br><br><b>\"</b>tent - A pesquisa buscará por tudo que começa com \"tent\". Ex: Ao digitar \"tent, o resultado poderá retornar tentar, tentativa, tentei, etc.<br><br>tiva<b>\"</b> - A pesquisa buscará por tudo que termina com \"tiva\". Ex: Ao digitar tiva\", o resultado poderá retornar tentativa, expectativa, etc.<br><br>te<b>?</b>to - Substitui um caractere. Ex: Ao digitar te?to, o resultado poderá retornar texto, testo, tento, etc.<br><br></html>";
 
 	public static final String THEMES = "Temas";
 	
