@@ -10,6 +10,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import gui.context.menu.GridContextMenu;
+import gui.shortcut.ShortcutFactory;
 
 public class BTTable extends JTable {
 
@@ -42,6 +43,8 @@ public class BTTable extends JTable {
 		        triggerMouseClick(e);
 		    }
 		});
+		
+		this.addKeyListener( ShortcutFactory.createFilterFocusShortcut() );
 	}
 	
 	private void triggerTableSelection() {
