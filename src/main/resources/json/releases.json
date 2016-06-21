@@ -22,6 +22,10 @@
         {
             "version": "1.2.0",
             "changelog": {
+                "features": [
+                    "Adicionado atalho para foco no campo de pesquisa (Ctrl + F)",
+                    "Adicionada opção de exportação da listagem de termos para XLS"
+                ],
                 "fixes": [
                     "Correção do problema na pesquisa que ocorria ao pesquisar utilizando o caractere \")\""
                 ]

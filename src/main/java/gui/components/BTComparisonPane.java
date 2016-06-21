@@ -9,6 +9,7 @@ import javax.swing.BorderFactory;
 
 import configuration.Configuration;
 import configuration.language.Language;
+import gui.shortcut.ShortcutFactory;
 
 public class BTComparisonPane extends BTPanel {
 
@@ -35,7 +36,9 @@ public class BTComparisonPane extends BTPanel {
 		if(this.fields == null) {
 			this.fields = new ArrayList<>();
 			for (Language language : Configuration.getInstance().getLanguages().values()) {
-				this.fields.add( new BTLabelTextField( language.getTitle(), new BTTextField(false) ) );
+				BTTextField textField = new BTTextField(false);
+				textField.addKeyListener( ShortcutFactory.createFilterFocusShortcut() );
+				this.fields.add( new BTLabelTextField( language.getTitle(), textField ) );
 			}
 		}
 		return this.fields;
