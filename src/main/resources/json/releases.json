@@ -25,7 +25,7 @@
                 "features": [
                     "Adicionado atalho (Ctrl + F) para o foco no campo de pesquisa.",
                     "Adicionada a opção de exportação da listagem de termos para XLS.",
-                    "Adicionada nova opção de filtro. Consulte a seção \"Expressões regulares\"."
+                    "Adicionada nova opção de filtro. Consulte a seção \"Filtros de consulta\"."
                 ],
                 "fixes": [
                     "Correção do problema que ocorria ao pesquisar utilizando o caractere \")\"."
