@@ -4,8 +4,6 @@ import java.awt.BorderLayout;
 
 import javax.swing.JLabel;
 
-
-
 public class BTLabelTextField extends BTPanel {
 
 	private static final long serialVersionUID = 1L;

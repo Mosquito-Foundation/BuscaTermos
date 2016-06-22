@@ -15,8 +15,10 @@ public class VersionControl {
 
 	private ReleaseManager releaseManager = ReleaseManager.getInstance();
 	
-	private VersionControl(){}
-	
+	private VersionControl() {
+		
+	}
+
 	public static VersionControl getInstance() {
 		if ( INSTANCE == null ) {
 			INSTANCE = new VersionControl();

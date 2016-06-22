@@ -59,6 +59,7 @@ public class MainFrame extends BTMainFrame {
 		final BTMenuBar toolbar = new BTMenuBar();
 		toolbar.add( this.getDisplayMenu() );
 		toolbar.add( this.getOptionsMenu() );
+		toolbar.add( this.getToolsMenu() );
 		toolbar.add( this.getHelpMenu() );
 		return toolbar;
 	}
@@ -165,6 +166,23 @@ public class MainFrame extends BTMainFrame {
 			}
 		});
 		return saveItem;
+	}
+	
+	private BTMenu getToolsMenu() {
+		final BTMenu toolsMenu = new BTMenu( Token.TOOLS );
+		toolsMenu.add( this.getExportToXLSItem() );
+		return toolsMenu;
+	}
+	
+	private BTMenuItem getExportToXLSItem() {
+		final BTMenuItem exportToXLSItem = new BTMenuItem( Token.EXPORT_TO_XLS );
+		exportToXLSItem.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new ExportToXLSDialog();
+			}
+		});
+		return exportToXLSItem;
 	}
 	
 	private BTMenu getHelpMenu() {
