@@ -84,7 +84,8 @@ public class Grid extends JScrollPane implements BTTableListener {
 	public void find(final String text) {
 		try {
 			if (text.length() > 0 && !text.equals( "\"\"" )) {
-				final boolean perfectMatch = text.charAt(0) == '\"' && text.charAt(text.length()-1) == '\"';
+				final boolean startMatch = text.charAt( 0 ) == '\"';
+				final boolean endMatch = text.charAt( text.length() - 1 ) == '\"';
 
 				String escaped = text;
 
@@ -108,12 +109,17 @@ public class Grid extends JScrollPane implements BTTableListener {
 				escaped = escaped.replace("?", ".");
 				escaped = escaped.replace("#question#", "\\?");
 						
-				if ( perfectMatch ) {
-					StringBuilder sb = new StringBuilder(escaped);
+				StringBuilder sb = new StringBuilder( escaped );
+				
+				if ( startMatch ) {
 					sb.setCharAt(0, '^');
-					sb.setCharAt(sb.length()-1, '$');
-					escaped = sb.toString();
 				}
+				
+				if ( endMatch ) {
+					sb.setCharAt( sb.length() - 1, '$' );
+				}
+				
+				escaped = sb.toString();
 				
 				this.getSorter().setRowFilter( RowFilter.regexFilter( "(?i)" + escaped ));
 			} else {

@@ -180,7 +180,7 @@ public class MainFrame extends BTMainFrame {
 		regexItem.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new BTDialog( MainFrame.getInstance(), Token.REGULAR_EXPRESSIONS_MESSAGE );
+				new BTDialog( MainFrame.getInstance(), Token.REGULAR_EXPRESSIONS_MESSAGE, Token.REGULAR_EXPRESSIONS );
 			}
 		});
 		return regexItem;
@@ -202,7 +202,7 @@ public class MainFrame extends BTMainFrame {
 		aboutItem.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new BTDialog( MainFrame.getInstance(), Token.ABOUT_INFO );
+				new BTDialog( MainFrame.getInstance(), Token.ABOUT_INFO, Token.ABOUT );
 			}
 		});
 		return aboutItem;
