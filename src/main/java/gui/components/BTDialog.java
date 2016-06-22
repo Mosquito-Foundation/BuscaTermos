@@ -22,7 +22,12 @@ public class BTDialog extends JDialog {
 	private final String message;
 	
 	public BTDialog( final MainFrame frame, final String message ) {
+		this( frame, message, "" );
+	}
+	
+	public BTDialog( final MainFrame frame, final String message, final String title ) {
 		super( frame, ModalityType.APPLICATION_MODAL );
+		super.setTitle( title );
 
 		this.message = message;
 		this.init();
