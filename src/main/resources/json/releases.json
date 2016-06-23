@@ -20,9 +20,10 @@
             }
         },
         {
-            "version": "1.2.0",
+            "version": "2.0.0",
             "changelog": {
                 "features": [
+                    "Foram adicionados novos temas. Consulte as novas opções disponíveis na seção \"Preferências > Temas\".",
                     "Adicionado atalho (Ctrl + F) para o foco no campo de pesquisa.",
                     "Adicionada a opção de exportação da listagem de termos para XLS.",
                     "Adicionada nova opção de filtro. Consulte a seção \"Filtros de consulta\"."
