@@ -10,7 +10,6 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import configuration.language.Language;
-import configuration.language.Languages;
 import gui.components.BTButton;
 import gui.components.BTComparisonPane;
 import gui.components.BTFilterPanel;
@@ -23,7 +22,7 @@ import parser.LanguageFileParser;
 import utils.IconManager;
 import utils.Token;
 
-public class LanguagePanel extends BTLanguagePanel implements Runnable {
+public class LanguagePanel extends BTLanguagePanel{
 
 	private static final long serialVersionUID = 1L;
 
@@ -40,24 +39,10 @@ public class LanguagePanel extends BTLanguagePanel implements Runnable {
 	public LanguagePanel( final Language language ) {
 		this.language = language;
 
-		// FIXME demora pra carregar e app fica meio travado
-//		SwingUtilities.invokeLater( this );
-		
-		// FIXME gambiarra pra corrigir item acima
-		if ( language.getId().equals( Languages.BRAZIL ) ) {
-			this.add( new BTFilterPanel( this.getFilterField(), this.getClearFilterButton() ), BorderLayout.NORTH );
-			this.add( this.getSplitPane() );
-		} else {
-			new Thread( this ).start();
-		}
-	}
-	
-	@Override
-	public void run() {
 		this.add( new BTFilterPanel( this.getFilterField(), this.getClearFilterButton() ), BorderLayout.NORTH );
 		this.add( this.getSplitPane() );
 	}
-
+	
 	public BTTextField getFilterField() {
 		if ( this.filterField == null ) {
 			this.filterField = new BTTextField();

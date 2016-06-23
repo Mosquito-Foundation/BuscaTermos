@@ -1,6 +1,5 @@
 package gui.components;
 
-import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -32,10 +31,6 @@ public class BTMainFrame extends JFrame {
 			this.setExtendedState( JFrame.MAXIMIZED_BOTH );
 		}
 		
-		if( Configuration.getInstance().isDefaultTheme() ) {
-			this.getContentPane().setBackground( Color.decode( "#E8F0F7" ) );
-		}
-		
 		this.setLocationRelativeTo( null );
 		this.setAlwaysOnTop( Configuration.getInstance().isAlwaysOnTop() );
 		
@@ -55,9 +50,9 @@ public class BTMainFrame extends JFrame {
 	@Override
 	public void setVisible( final boolean b ) {
 		super.setVisible( b );
+	
 		if ( VersionControl.getInstance().isNewerVersion() ) {
 			new ChangelogDialog( this );
 		}
 	}
-	
 }

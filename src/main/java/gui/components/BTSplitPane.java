@@ -1,15 +1,11 @@
 package gui.components;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 
-import configuration.Configuration;
 import utils.IconManager;
 import utils.Token;
 
@@ -54,12 +50,6 @@ public class BTSplitPane extends BTPanel {
 	private BTButton getSplit() {
 		if(this.split == null) {
 			this.split = new BTButton(this.getSplitTooltip(), IconManager.getInstance().getIcon( this.getSplitIconName(), 12, 12 ));
-			this.split.setBackground(Color.decode("#EEEEEE"));
-			if(Configuration.getInstance().isDefaultTheme()) {
-				this.split.setBorder(BorderFactory.createMatteBorder(0, 1, 1, 1, Color.GRAY));
-			} else if(Configuration.getInstance().isSystemTheme()) {
-				this.split.setPreferredSize(new Dimension(this.getWidth(), 16));
-			}
 			this.split.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {

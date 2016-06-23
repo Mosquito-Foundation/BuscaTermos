@@ -1,6 +1,5 @@
 package gui.template;
 
-import java.awt.Color;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.util.ArrayList;
@@ -66,7 +65,6 @@ public class ReleaseView extends JPanel {
 	
 	private ReleaseView( final ReleaseView.Builder builder ) {
 		super( new GridBagLayout() );
-		super.setBackground( Color.WHITE );
 
 		this.features = builder.features;
 		this.fixes = builder.fixes;
@@ -82,7 +80,6 @@ public class ReleaseView extends JPanel {
 	
 	private JPanel getChangeContainer() {
 		JPanel container = new JPanel( new GridBagLayout() );
-		container.setBackground( Color.WHITE );
 		
 		BTGridBagConstraints subtitleLayout = new BTGridBagConstraints.Builder().insets( new Insets(10, 0, 0, 0) ).build();
 		BTGridBagConstraints changesContainerLayout = new BTGridBagConstraints.Builder().insets( new Insets(5, 5, 0, 5) ).build();

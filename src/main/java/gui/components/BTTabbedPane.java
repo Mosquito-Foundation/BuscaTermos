@@ -1,11 +1,8 @@
 package gui.components;
 
-import java.awt.Color;
-
 import javax.swing.BorderFactory;
 import javax.swing.JTabbedPane;
 
-import configuration.Configuration;
 import control.TabController;
 
 public class BTTabbedPane extends JTabbedPane {
@@ -21,8 +18,5 @@ public class BTTabbedPane extends JTabbedPane {
 		this.addMouseListener( new TabController( this ) );
 		this.setFocusable( false );
 		this.setBorder( BorderFactory.createEmptyBorder(5, 5, 5, 5) );
-		if ( Configuration.getInstance().isDefaultTheme() ) {
-			this.setBackground( Color.decode( "#E8F0F7" ) );
-		}
 	}
 }

@@ -15,6 +15,7 @@ class ReleaseChange extends JTextArea {
 		this.setEditable( false );
 		this.setFocusable( false );
 		this.setFont( new Font( "Verdana", Font.PLAIN, this.getFont().getSize() ) );
+		this.setOpaque(false);
 	}
 	
 }

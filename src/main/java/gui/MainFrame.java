@@ -3,14 +3,17 @@ package gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 
+import org.pushingpixels.substance.api.SubstanceLookAndFeel;
+import org.pushingpixels.substance.api.skin.SkinInfo;
+
 import configuration.Configuration;
 import configuration.language.Language;
 import configuration.language.Languages;
-import configuration.themes.Themes;
 import gui.components.BTCheckBoxMenuItem;
 import gui.components.BTDialog;
 import gui.components.BTMainFrame;
@@ -131,24 +134,21 @@ public class MainFrame extends BTMainFrame {
 	private BTMenu getThemeMenu() {
 		final BTMenu themeMenu = new BTMenu( Token.THEMES );
 		final ButtonGroup themeGroup = new ButtonGroup();
-		for ( Themes theme : Themes.values() ) {
-			final BTRadioButtonMenuItem themeItem = this.getThemeItem( theme );
+		Map<String, SkinInfo> skins = SubstanceLookAndFeel.getAllSkins();
+		for(final Map.Entry<String, SkinInfo> skin : skins.entrySet()){
+			final BTRadioButtonMenuItem themeItem = this.getThemeItem( skin.getValue() );
 			themeMenu.add( themeItem );
 			themeGroup.add( themeItem );
-			
 		}
 		return themeMenu;
 	}
 	
-	private BTRadioButtonMenuItem getThemeItem( final Themes theme ) {
-		final BTRadioButtonMenuItem themeItem = new BTRadioButtonMenuItem( Themes.name( theme ), Configuration.getInstance().getTheme().equals( theme ) );
+	private BTRadioButtonMenuItem getThemeItem( final SkinInfo skin) {
+		final BTRadioButtonMenuItem themeItem = new BTRadioButtonMenuItem(skin.getDisplayName(), skin.getClassName().equals(Configuration.getInstance().getTheme()));
 		themeItem.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainFrame.getInstance().setAlwaysOnTop( false );
-				Configuration.getInstance().changeTheme( theme );
-				MainFrame.getInstance().setAlwaysOnTop( Configuration.getInstance().isAlwaysOnTop() );
-				
+				Configuration.getInstance().changeTheme( skin );
 			}
 		});
 		return themeItem;

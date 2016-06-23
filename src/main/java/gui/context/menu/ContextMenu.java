@@ -1,6 +1,5 @@
 package gui.context.menu;
 
-import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
@@ -30,13 +29,7 @@ public class ContextMenu extends JPopupMenu {
 	private static final long serialVersionUID = 1L;
 
 	private boolean isBrazilTab;
-	
-	public ContextMenu() {
-		if ( Configuration.getInstance().isDefaultTheme() ) {
-			this.setBackground( Color.decode( "#E8F0F7" ) );
-		}
-	}
-	
+
 	protected BTMenuItem getCopyOption() {
 		BTMenuItem copy = new BTMenuItem(Token.COPY, IconManager.getInstance().getIcon("icons/copy.png"));
 		copy.addActionListener(new ActionListener() {
@@ -191,7 +184,6 @@ public class ContextMenu extends JPopupMenu {
 
 	protected JSeparator getSeparator() {
 		JSeparator separator = new JSeparator( SwingConstants.HORIZONTAL );
-        separator.setBackground( Color.WHITE );
 		return separator;
 	}
 	
