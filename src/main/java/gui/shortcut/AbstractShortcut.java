@@ -1,5 +1,6 @@
 package gui.shortcut;
 
+import java.awt.Window;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -21,6 +22,11 @@ abstract class AbstractShortcut implements KeyListener {
 	public void fireFilterFocus() {
 		((LanguagePanel) MainFrame.getInstance().getLanguageTabs().getSelectedComponent()).getFilterField().requestFocus();
 		((LanguagePanel) MainFrame.getInstance().getLanguageTabs().getSelectedComponent()).getFilterField().selectAll();
+	}
+	
+	public void fireDisposeWindow( final Object windowToDispose ) {
+
+		((Window) windowToDispose).dispose();
 	}
 	
 }
