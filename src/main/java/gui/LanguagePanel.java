@@ -6,6 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -14,21 +17,19 @@ import gui.components.BTButton;
 import gui.components.BTComparisonPane;
 import gui.components.BTFilterPanel;
 import gui.components.BTLabelTextField;
-import gui.components.BTLanguagePanel;
 import gui.components.BTSplitPane;
-import gui.components.BTTextField;
 import gui.context.menu.FieldContextMenu;
 import parser.LanguageFileParser;
 import utils.IconManager;
 import utils.Token;
 
-public class LanguagePanel extends BTLanguagePanel{
+public class LanguagePanel extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 
 	private final Language language;
 	
-	private BTTextField filterField;
+	private JTextField filterField;
 	
 	private BTSplitPane splitPane;
 	
@@ -38,14 +39,15 @@ public class LanguagePanel extends BTLanguagePanel{
 	
 	public LanguagePanel( final Language language ) {
 		this.language = language;
-
+		this.setLayout( new BorderLayout() );
+		this.setBorder( BorderFactory.createEmptyBorder(5, 5, 5, 5) );
 		this.add( new BTFilterPanel( this.getFilterField(), this.getClearFilterButton() ), BorderLayout.NORTH );
 		this.add( this.getSplitPane() );
 	}
 	
-	public BTTextField getFilterField() {
+	public JTextField getFilterField() {
 		if ( this.filterField == null ) {
-			this.filterField = new BTTextField();
+			this.filterField = new JTextField();
 			this.filterField.setComponentPopupMenu( new FieldContextMenu() );
 			this.filterField.getDocument().addDocumentListener(new DocumentListener() {
 				@Override
