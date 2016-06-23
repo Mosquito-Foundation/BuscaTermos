@@ -3,18 +3,20 @@ package gui.components;
 import java.awt.BorderLayout;
 
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 
 
-public class BTLabelTextField extends BTPanel {
+public class BTLabelTextField extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	private BTTextField textField;
+	private JTextField textField;
 	
 	private String label;
 	
-	public BTLabelTextField( final String label, final BTTextField textField ) {
+	public BTLabelTextField( final String label, final JTextField textField ) {
 		super( new BorderLayout() );
 	
 		this.label = label;
@@ -24,7 +26,7 @@ public class BTLabelTextField extends BTPanel {
 		this.add( textField );
 	}
 	
-	public BTTextField getTextField() {
+	public JTextField getTextField() {
 		return this.textField;
 	}
 	

@@ -6,12 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import configuration.Configuration;
 import configuration.language.Language;
 import gui.shortcut.ShortcutFactory;
 
-public class BTComparisonPane extends BTPanel {
+public class BTComparisonPane extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -24,7 +26,8 @@ public class BTComparisonPane extends BTPanel {
 	}
 	
 	private void createComponents() {
-		final BTPanel container = new BTPanel( new GridLayout(3, 3, 10, 5), BorderFactory.createEmptyBorder( 10, 0, 0, 0 ) );
+		final JPanel container = new JPanel( new GridLayout(3, 3, 10, 5) );
+		container.setBorder( BorderFactory.createEmptyBorder( 10, 0, 0, 0 ) );
 		for (BTLabelTextField field: this.getFields()) {
 			container.add(field);
 		}
@@ -36,7 +39,8 @@ public class BTComparisonPane extends BTPanel {
 		if(this.fields == null) {
 			this.fields = new ArrayList<>();
 			for (Language language : Configuration.getInstance().getLanguages().values()) {
-				BTTextField textField = new BTTextField(false);
+				JTextField textField = new JTextField();
+				textField.setEditable(false);
 				textField.addKeyListener( ShortcutFactory.createFilterFocusShortcut() );
 				this.fields.add( new BTLabelTextField( language.getTitle(), textField ) );
 			}

@@ -6,7 +6,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButtonMenuItem;
 
 import org.pushingpixels.substance.api.SubstanceLookAndFeel;
 import org.pushingpixels.substance.api.skin.SkinInfo;
@@ -14,13 +19,9 @@ import org.pushingpixels.substance.api.skin.SkinInfo;
 import configuration.Configuration;
 import configuration.language.Language;
 import configuration.language.Languages;
-import gui.components.BTCheckBoxMenuItem;
+
 import gui.components.BTDialog;
 import gui.components.BTMainFrame;
-import gui.components.BTMenu;
-import gui.components.BTMenuBar;
-import gui.components.BTMenuItem;
-import gui.components.BTRadioButtonMenuItem;
 import gui.components.BTTabbedPane;
 import utils.Token;
 
@@ -32,7 +33,7 @@ public class MainFrame extends BTMainFrame {
 	
 	private HashMap<Languages, LanguagePanel> languagePanelMap;
 	
-	private HashMap<Languages, BTCheckBoxMenuItem> languageCheckMap;
+	private HashMap<Languages, JCheckBoxMenuItem> languageCheckMap;
 	
 	private BTTabbedPane tabbedPane;
 	
@@ -58,24 +59,24 @@ public class MainFrame extends BTMainFrame {
 		return INSTANCE;
 	}
 
-	private BTMenuBar getToolbar() {
-		final BTMenuBar toolbar = new BTMenuBar();
+	private JMenuBar getToolbar() {
+		final JMenuBar toolbar = new JMenuBar();
 		toolbar.add( this.getDisplayMenu() );
 		toolbar.add( this.getOptionsMenu() );
 		toolbar.add( this.getHelpMenu() );
 		return toolbar;
 	}
 	
-	private BTMenu getDisplayMenu() {
-		final BTMenu displayMenu = new BTMenu( Token.DISPLAY );
+	private JMenu getDisplayMenu() {
+		final JMenu displayMenu = new JMenu( Token.DISPLAY );
 		for ( Language language : Configuration.getInstance().getLanguages().values() ) {
 			displayMenu.add( this.getLanguageItem( language ) );
 		}
 		return displayMenu;
 	}
 	
-	private BTCheckBoxMenuItem getLanguageItem( final Language language ) {
-		final BTCheckBoxMenuItem languageItem = new BTCheckBoxMenuItem( language.getTitle(), language.isVisible() );
+	private JCheckBoxMenuItem getLanguageItem( final Language language ) {
+		final JCheckBoxMenuItem languageItem = new JCheckBoxMenuItem( language.getTitle(), language.isVisible() );
 		if ( language.getId().equals( Languages.BRAZIL ) ) {
 			languageItem.setEnabled( false );
 		}
@@ -91,8 +92,8 @@ public class MainFrame extends BTMainFrame {
 		return languageItem;
 	}
 	
-	private BTMenu getOptionsMenu() {
-		final BTMenu optionsMenu = new BTMenu( Token.OPTIONS );
+	private JMenu getOptionsMenu() {
+		final JMenu optionsMenu = new JMenu( Token.OPTIONS );
 		optionsMenu.add( this.getAlwaysOnTopItem() );
 		optionsMenu.addSeparator();
 		optionsMenu.add( this.getChangePathItem() );
@@ -102,20 +103,20 @@ public class MainFrame extends BTMainFrame {
 		return optionsMenu;
 	}
 	
-	private BTCheckBoxMenuItem getAlwaysOnTopItem() {
-		final BTCheckBoxMenuItem alwaysOnTopItem = new BTCheckBoxMenuItem( Token.ALWAYS_ON_TOP, Configuration.getInstance().isAlwaysOnTop() );
+	private JCheckBoxMenuItem getAlwaysOnTopItem() {
+		final JCheckBoxMenuItem alwaysOnTopItem = new JCheckBoxMenuItem( Token.ALWAYS_ON_TOP, Configuration.getInstance().isAlwaysOnTop() );
 		alwaysOnTopItem.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainFrame.getInstance().setAlwaysOnTop( ((BTCheckBoxMenuItem) e.getSource()).isSelected() );
-				Configuration.getInstance().setAlwaysOnTop( ((BTCheckBoxMenuItem) e.getSource()).isSelected() );
+				MainFrame.getInstance().setAlwaysOnTop( ((JCheckBoxMenuItem) e.getSource()).isSelected() );
+				Configuration.getInstance().setAlwaysOnTop( ((JCheckBoxMenuItem) e.getSource()).isSelected() );
 			}
 		});
 		return alwaysOnTopItem;
 	}
 	
-	private BTMenuItem getChangePathItem() {
-		final BTMenuItem changePathItem = new BTMenuItem( Token.CHANGE_PATH );
+	private JMenuItem getChangePathItem() {
+		final JMenuItem changePathItem = new JMenuItem( Token.CHANGE_PATH );
 		changePathItem.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -131,20 +132,20 @@ public class MainFrame extends BTMainFrame {
 		return changePathItem;
 	}
 	
-	private BTMenu getThemeMenu() {
-		final BTMenu themeMenu = new BTMenu( Token.THEMES );
+	private JMenu getThemeMenu() {
+		final JMenu themeMenu = new JMenu( Token.THEMES );
 		final ButtonGroup themeGroup = new ButtonGroup();
 		Map<String, SkinInfo> skins = SubstanceLookAndFeel.getAllSkins();
 		for(final Map.Entry<String, SkinInfo> skin : skins.entrySet()){
-			final BTRadioButtonMenuItem themeItem = this.getThemeItem( skin.getValue() );
+			final JRadioButtonMenuItem themeItem = this.getThemeItem( skin.getValue() );
 			themeMenu.add( themeItem );
 			themeGroup.add( themeItem );
 		}
 		return themeMenu;
 	}
 	
-	private BTRadioButtonMenuItem getThemeItem( final SkinInfo skin) {
-		final BTRadioButtonMenuItem themeItem = new BTRadioButtonMenuItem(skin.getDisplayName(), skin.getClassName().equals(Configuration.getInstance().getTheme()));
+	private JRadioButtonMenuItem getThemeItem( final SkinInfo skin) {
+		final JRadioButtonMenuItem themeItem = new JRadioButtonMenuItem(skin.getDisplayName(), skin.getClassName().equals(Configuration.getInstance().getTheme()));
 		themeItem.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -154,8 +155,8 @@ public class MainFrame extends BTMainFrame {
 		return themeItem;
 	}
 	
-	private BTMenuItem getSaveConfigurationItem() {
-		final BTMenuItem saveItem = new BTMenuItem( Token.SAVE_CONFIGURATION );
+	private JMenuItem getSaveConfigurationItem() {
+		final JMenuItem saveItem = new JMenuItem( Token.SAVE_CONFIGURATION );
 		saveItem.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -167,16 +168,16 @@ public class MainFrame extends BTMainFrame {
 		return saveItem;
 	}
 	
-	private BTMenu getHelpMenu() {
-		final BTMenu helpMenu = new BTMenu( Token.HELP );
+	private JMenu getHelpMenu() {
+		final JMenu helpMenu = new JMenu( Token.HELP );
 		helpMenu.add( this.getRegexItem() );
 		helpMenu.add( this.getChangelogItem() );
 		helpMenu.add( this.getAboutItem() );
 		return helpMenu;
 	}
 	
-	private BTMenuItem getRegexItem() {
-		final BTMenuItem regexItem = new BTMenuItem( Token.REGULAR_EXPRESSIONS );
+	private JMenuItem getRegexItem() {
+		final JMenuItem regexItem = new JMenuItem( Token.REGULAR_EXPRESSIONS );
 		regexItem.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -186,8 +187,8 @@ public class MainFrame extends BTMainFrame {
 		return regexItem;
 	}
 	
-	private BTMenuItem getChangelogItem() {
-		final BTMenuItem changelog = new BTMenuItem( Token.SHOW_CHANGELOG );
+	private JMenuItem getChangelogItem() {
+		final JMenuItem changelog = new JMenuItem( Token.SHOW_CHANGELOG );
 		changelog.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -197,8 +198,8 @@ public class MainFrame extends BTMainFrame {
 		return changelog;
 	}
 	
-	private BTMenuItem getAboutItem() {
-		final BTMenuItem aboutItem = new BTMenuItem( Token.ABOUT );
+	private JMenuItem getAboutItem() {
+		final JMenuItem aboutItem = new JMenuItem( Token.ABOUT );
 		aboutItem.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -271,7 +272,7 @@ public class MainFrame extends BTMainFrame {
 		return this.languagePanelMap;
 	}
 
-	private HashMap<Languages, BTCheckBoxMenuItem> getLanguageCheckMap() {
+	private HashMap<Languages, JCheckBoxMenuItem> getLanguageCheckMap() {
 		return this.languageCheckMap;
 	}
 	
