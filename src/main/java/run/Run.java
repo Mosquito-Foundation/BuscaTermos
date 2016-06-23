@@ -15,11 +15,12 @@ public class Run {
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		JDialog.setDefaultLookAndFeelDecorated(true);
 		
+		Configuration.getInstance().loadTheme();
+
 		SwingUtilities.invokeLater( new Runnable() {
 			@Override
 			public void run() {
 				MainFrame.getInstance().setVisible( true );
-				Configuration.getInstance().loadTheme();
 			}
 		});	
 	}

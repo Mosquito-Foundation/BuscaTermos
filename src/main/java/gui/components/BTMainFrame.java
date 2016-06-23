@@ -4,10 +4,7 @@ import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import javax.swing.JDialog;
-import javax.swing.SwingUtilities;
-
-import org.pushingpixels.substance.api.SubstanceLookAndFeel;
+import javax.swing.JFrame;
 
 import configuration.Configuration;
 import gui.ChangelogDialog;
@@ -15,7 +12,7 @@ import utils.IconManager;
 import utils.Token;
 import version.VersionControl;
 
-public class BTMainFrame extends JDialog {
+public class BTMainFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
@@ -31,7 +28,7 @@ public class BTMainFrame extends JDialog {
 		this.setSize( Configuration.getInstance().getDimension() );
 		
 		if ( Configuration.getInstance().isMaximized() ) {
-			//this.setExtendedState( JFrame.MAXIMIZED_BOTH );
+			this.setExtendedState( JFrame.MAXIMIZED_BOTH );
 		}
 		
 		this.setLocationRelativeTo( null );
@@ -47,7 +44,7 @@ public class BTMainFrame extends JDialog {
 	}
 
 	public boolean isMaximized() {
-		return false/*this.getExtendedState() == JFrame.MAXIMIZED_BOTH*/;
+		return this.getExtendedState() == JFrame.MAXIMIZED_BOTH;
 	}
 
 	@Override
@@ -56,16 +53,6 @@ public class BTMainFrame extends JDialog {
 		
 		super.setVisible( b );
 	
-
-		SwingUtilities.invokeLater( new Runnable() {
-			@Override
-			public void run() {
-				SubstanceLookAndFeel.setSkin("org.pushingpixels.substance.api.skin.BusinessBlackSteelSkin");
-			}
-		});	
-		
-
-		
 		if ( VersionControl.getInstance().isNewerVersion() ) {
 			new ChangelogDialog( this );
 		}

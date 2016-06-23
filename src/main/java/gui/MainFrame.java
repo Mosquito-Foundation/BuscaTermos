@@ -38,10 +38,8 @@ public class MainFrame extends BTMainFrame {
 	
 	private MainFrame() {
 		
-		
 		// Validação para o path, se o usuário informar um path inválido e não quiser mais procurar um válido, sai da aplicação
 		if( !Configuration.getInstance().isPathValid() ) {
-			Configuration.getInstance().loadTheme();
 			if( !Configuration.getInstance().createInitialPath() ) {
 				System.exit( 0 );
 			}
@@ -147,14 +145,12 @@ public class MainFrame extends BTMainFrame {
 		return themeMenu;
 	}
 	
-	private BTRadioButtonMenuItem getThemeItem(SkinInfo skin) {
+	private BTRadioButtonMenuItem getThemeItem( final SkinInfo skin) {
 		final BTRadioButtonMenuItem themeItem = new BTRadioButtonMenuItem(skin.getDisplayName(), skin.getClassName().equals(Configuration.getInstance().getTheme()));
 		themeItem.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainFrame.getInstance().setAlwaysOnTop( false );
 				Configuration.getInstance().changeTheme( skin );
-				MainFrame.getInstance().setAlwaysOnTop( Configuration.getInstance().isAlwaysOnTop() );
 			}
 		});
 		return themeItem;
