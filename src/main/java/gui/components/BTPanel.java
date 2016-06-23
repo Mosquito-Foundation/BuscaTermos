@@ -11,7 +11,6 @@ public class BTPanel extends JPanel {
 
 	public BTPanel( LayoutManager layout ) {
 		super( layout );
-
 	}
 	
 	public BTPanel( LayoutManager layout, Border border ) {

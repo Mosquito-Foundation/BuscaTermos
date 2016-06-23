@@ -151,7 +151,6 @@ public final class Configuration implements Serializable {
 		if( this.isPathValid() && !isChanging ) {
 			return true;
 		} else {
-			//SubstanceLookAndFeel.setSkin("org.pushingpixels.substance.api.skin.BusinessBlueSteelSkin");
 			String oldPath = this.getPath();
 			
 			// Se vai exibir "arquivo nao encontrado"
@@ -206,16 +205,7 @@ public final class Configuration implements Serializable {
 	public void changeTheme(SkinInfo skin ) {
 		INSTANCE.setTheme(skin.getClassName());
 		INSTANCE.loadTheme();
-		//SubstanceLookAndFeel.setSkin(skin.getClassName());
 	}
-	
-//	public boolean isDefaultTheme() {
-//		return this.getTheme();
-//	}
-//	
-//	public boolean isSystemTheme() {
-//		return this.getTheme().equals( Themes.SYSTEM );
-//	}
 		
 	public String getPath() {
 		return this.path;

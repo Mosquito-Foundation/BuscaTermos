@@ -37,7 +37,6 @@ public class MainFrame extends BTMainFrame {
 	private BTTabbedPane tabbedPane;
 	
 	private MainFrame() {
-		
 		// Validação para o path, se o usuário informar um path inválido e não quiser mais procurar um válido, sai da aplicação
 		if( !Configuration.getInstance().isPathValid() ) {
 			if( !Configuration.getInstance().createInitialPath() ) {
@@ -50,7 +49,6 @@ public class MainFrame extends BTMainFrame {
 		
 		this.setJMenuBar( this.getToolbar() );
 		this.add( this.getLanguageTabs() );
-
 	}
 	
 	public static MainFrame getInstance() {
@@ -216,7 +214,7 @@ public class MainFrame extends BTMainFrame {
 			for ( Language language : Configuration.getInstance().getLanguages().values() ) {
 				this.languagePanelMap.put( language.getId(), new LanguagePanel( language ) );
 				if ( language.isVisible() ) {
-					this.showTab( language, true );
+					this.showTab( language );
 				}
 			}
 		}
@@ -234,15 +232,8 @@ public class MainFrame extends BTMainFrame {
 	}
 	
 	public void showTab( final Language language ) {
-		this.showTab( language, false );
-	}
-	
-	public void showTab( final Language language, final boolean isLoading ) {
 		this.getLanguageTabs().addTab( language.getTitle(), language.getIcon(), this.languagePanelMap.get( language.getId() ) );
 		Configuration.getInstance().setTabState( language.getId(), true );
-		if(!isLoading) {
-			Configuration.getInstance().loadTheme();
-		}
 	}
 	
 	private boolean hideTab( final Language language ) {

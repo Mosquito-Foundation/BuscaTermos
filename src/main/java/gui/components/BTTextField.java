@@ -14,6 +14,4 @@ public class BTTextField extends JTextField {
 		super();
 		this.setEditable( isEditable );
 	}
-	
-
 }

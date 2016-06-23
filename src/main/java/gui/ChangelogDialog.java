@@ -35,7 +35,6 @@ public class ChangelogDialog extends JDialog {
 		this.setAlwaysOnTop( owner.isAlwaysOnTop() );
 		this.add( this.createComponents() );
 		this.showDialog();
-		
 	}
 
 	private BTPanel createComponents() {
@@ -110,7 +109,6 @@ public class ChangelogDialog extends JDialog {
 		this.setSize( 500, 500 );
 		this.setLocationRelativeTo( null );
 		this.setVisible( true );
-
 	}
 	
 	private void closeDialog() {

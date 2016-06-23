@@ -49,13 +49,10 @@ public class BTMainFrame extends JFrame {
 
 	@Override
 	public void setVisible( final boolean b ) {
-	
-		
 		super.setVisible( b );
 	
 		if ( VersionControl.getInstance().isNewerVersion() ) {
 			new ChangelogDialog( this );
 		}
 	}
-	
 }

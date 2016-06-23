@@ -184,7 +184,6 @@ public class ContextMenu extends JPopupMenu {
 
 	protected JSeparator getSeparator() {
 		JSeparator separator = new JSeparator( SwingConstants.HORIZONTAL );
-        //separator.setBackground( Color.WHITE );
 		return separator;
 	}
 	

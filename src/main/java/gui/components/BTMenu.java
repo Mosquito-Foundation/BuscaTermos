@@ -8,6 +8,5 @@ public class BTMenu extends JMenu {
 
 	public BTMenu( final String label ) {
 		super( label );
-
 	}
 }
