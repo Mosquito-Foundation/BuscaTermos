@@ -3,14 +3,17 @@ package gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 
+import org.pushingpixels.substance.api.SubstanceLookAndFeel;
+import org.pushingpixels.substance.api.skin.SkinInfo;
+
 import configuration.Configuration;
 import configuration.language.Language;
 import configuration.language.Languages;
-import configuration.themes.Themes;
 import gui.components.BTCheckBoxMenuItem;
 import gui.components.BTDialog;
 import gui.components.BTMainFrame;
@@ -34,8 +37,11 @@ public class MainFrame extends BTMainFrame {
 	private BTTabbedPane tabbedPane;
 	
 	private MainFrame() {
+		
+		
 		// Validação para o path, se o usuário informar um path inválido e não quiser mais procurar um válido, sai da aplicação
 		if( !Configuration.getInstance().isPathValid() ) {
+			Configuration.getInstance().loadTheme();
 			if( !Configuration.getInstance().createInitialPath() ) {
 				System.exit( 0 );
 			}
@@ -46,6 +52,7 @@ public class MainFrame extends BTMainFrame {
 		
 		this.setJMenuBar( this.getToolbar() );
 		this.add( this.getLanguageTabs() );
+
 	}
 	
 	public static MainFrame getInstance() {
@@ -131,24 +138,23 @@ public class MainFrame extends BTMainFrame {
 	private BTMenu getThemeMenu() {
 		final BTMenu themeMenu = new BTMenu( Token.THEMES );
 		final ButtonGroup themeGroup = new ButtonGroup();
-		for ( Themes theme : Themes.values() ) {
-			final BTRadioButtonMenuItem themeItem = this.getThemeItem( theme );
+		Map<String, SkinInfo> skins = SubstanceLookAndFeel.getAllSkins();
+		for(final Map.Entry<String, SkinInfo> skin : skins.entrySet()){
+			final BTRadioButtonMenuItem themeItem = this.getThemeItem( skin.getValue() );
 			themeMenu.add( themeItem );
 			themeGroup.add( themeItem );
-			
 		}
 		return themeMenu;
 	}
 	
-	private BTRadioButtonMenuItem getThemeItem( final Themes theme ) {
-		final BTRadioButtonMenuItem themeItem = new BTRadioButtonMenuItem( Themes.name( theme ), Configuration.getInstance().getTheme().equals( theme ) );
+	private BTRadioButtonMenuItem getThemeItem(SkinInfo skin) {
+		final BTRadioButtonMenuItem themeItem = new BTRadioButtonMenuItem(skin.getDisplayName(), skin.getClassName().equals(Configuration.getInstance().getTheme()));
 		themeItem.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				MainFrame.getInstance().setAlwaysOnTop( false );
-				Configuration.getInstance().changeTheme( theme );
+				Configuration.getInstance().changeTheme( skin );
 				MainFrame.getInstance().setAlwaysOnTop( Configuration.getInstance().isAlwaysOnTop() );
-				
 			}
 		});
 		return themeItem;
@@ -214,7 +220,7 @@ public class MainFrame extends BTMainFrame {
 			for ( Language language : Configuration.getInstance().getLanguages().values() ) {
 				this.languagePanelMap.put( language.getId(), new LanguagePanel( language ) );
 				if ( language.isVisible() ) {
-					this.showTab( language );
+					this.showTab( language, true );
 				}
 			}
 		}
@@ -232,8 +238,15 @@ public class MainFrame extends BTMainFrame {
 	}
 	
 	public void showTab( final Language language ) {
+		this.showTab( language, false );
+	}
+	
+	public void showTab( final Language language, final boolean isLoading ) {
 		this.getLanguageTabs().addTab( language.getTitle(), language.getIcon(), this.languagePanelMap.get( language.getId() ) );
 		Configuration.getInstance().setTabState( language.getId(), true );
+		if(!isLoading) {
+			Configuration.getInstance().loadTheme();
+		}
 	}
 	
 	private boolean hideTab( final Language language ) {

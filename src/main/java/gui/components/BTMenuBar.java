@@ -1,11 +1,6 @@
 package gui.components;
 
-import java.awt.Color;
-
-import javax.swing.BorderFactory;
 import javax.swing.JMenuBar;
-
-import configuration.Configuration;
 
 public class BTMenuBar extends JMenuBar {
 
@@ -13,14 +8,5 @@ public class BTMenuBar extends JMenuBar {
 
 	public BTMenuBar() {
 		super();
-		this.init();
 	}
-	
-	private void init() {
-		if ( Configuration.getInstance().isDefaultTheme() ) {
-			this.setBackground( Color.decode( "#E8F0F7" ) );
-			this.setBorder( BorderFactory.createEmptyBorder() );
-		}
-	}
-	
 }

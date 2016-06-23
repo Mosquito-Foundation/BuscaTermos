@@ -1,13 +1,9 @@
 package gui.components;
 
-import java.awt.Color;
 import java.awt.Cursor;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-
-import configuration.Configuration;
 
 public class BTButton extends JButton {
 
@@ -39,10 +35,6 @@ public class BTButton extends JButton {
 		}
 		this.setFocusable( false );
 		this.setCursor( new Cursor( Cursor.HAND_CURSOR ) );
-		if ( Configuration.getInstance().isDefaultTheme() ) {
-			this.setBackground( Color.WHITE );
-			this.setBorder( BorderFactory.createMatteBorder( 1, 0, 1, 1, Color.GRAY ) );
-		}
 	}
 
 	public boolean hasIcon() {

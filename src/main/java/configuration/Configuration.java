@@ -13,7 +13,11 @@ import java.util.LinkedHashMap;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
+import javax.swing.SwingUtilities;
+
+import org.pushingpixels.substance.api.SubstanceLookAndFeel;
+import org.pushingpixels.substance.api.skin.SkinInfo;
+import org.pushingpixels.substance.internal.fonts.FontPolicies;
 
 import configuration.language.BrazilLanguage;
 import configuration.language.ChinaLanguage;
@@ -26,7 +30,6 @@ import configuration.language.SlovakiaLanguage;
 import configuration.language.SpainLanguage;
 import configuration.language.TurkeyLanguage;
 import configuration.language.UsaLanguage;
-import configuration.themes.Themes;
 import gui.MainFrame;
 import utils.Token;
 import version.VersionControl;
@@ -42,14 +45,14 @@ public final class Configuration implements Serializable {
 	private String path;
 	
 	private Dimension dimension;
-	
+
 	private boolean alwaysOnTop;
 	
 	private boolean maximized;
 	
 	private HashMap<Languages, Boolean> visibleTabs;
 	
-	private Themes theme;
+	private String theme;
 
 	private String version;
 	
@@ -68,31 +71,19 @@ public final class Configuration implements Serializable {
 			} catch ( IOException | ClassNotFoundException e ) {
 				INSTANCE = new Configuration();
 			}
-			loadTheme();
 			loadLanguages();
 		}
 		return INSTANCE;
 	}
 
-	private static void loadTheme() {
-		if ( INSTANCE.getTheme() == null ) {
-			INSTANCE.setTheme( Themes.DEFAULT );
-		}
-		
-		try {
-			switch ( INSTANCE.getTheme() ) {
-			case SYSTEM:
-				INSTANCE.setTheme( Themes.SYSTEM );
-				UIManager.setLookAndFeel( UIManager.getSystemLookAndFeelClassName() );
-				break;
-			default:
-				INSTANCE.setTheme( Themes.DEFAULT );
-				UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName() );
-				break;
+	public void loadTheme() {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				SubstanceLookAndFeel.setSkin(INSTANCE.getTheme());	
+				SubstanceLookAndFeel.setFontPolicy(FontPolicies.getLogicalFontsPolicy());
 			}
-		} catch ( Exception e ) {
-			e.printStackTrace();
-		}
+		});
 	}
 	
 	// FIXME Instanciar automaticamente classes do package configuration.language
@@ -131,7 +122,6 @@ public final class Configuration implements Serializable {
 		this.setPath( "C:\\" );
 		this.setDimension( new Dimension(600, 500) );
 		this.setAlwaysOnTop( false );
-		this.setTheme( Themes.DEFAULT );
 		this.setVersion( "1.0.0" );
 		
 		// Abas
@@ -139,6 +129,9 @@ public final class Configuration implements Serializable {
 		for (Languages languageId : Languages.values()) {
 			this.visibleTabs.put(languageId, languageId.isDefaultTab());
 		}
+		
+		// Tema
+		this.setTheme("org.pushingpixels.substance.api.skin.BusinessBlackSteelSkin");
 	}
 	
 	public boolean isPathValid() {
@@ -158,6 +151,7 @@ public final class Configuration implements Serializable {
 		if( this.isPathValid() && !isChanging ) {
 			return true;
 		} else {
+			//SubstanceLookAndFeel.setSkin("org.pushingpixels.substance.api.skin.BusinessBlueSteelSkin");
 			String oldPath = this.getPath();
 			
 			// Se vai exibir "arquivo nao encontrado"
@@ -209,18 +203,19 @@ public final class Configuration implements Serializable {
 		return choice != JOptionPane.YES_OPTION;
 	}
 	
-	public void changeTheme( final Themes newTheme ) {
-		this.setTheme( newTheme );
-		JOptionPane.showMessageDialog(null, Token.CHANGE_THEME_WARNING, "", JOptionPane.WARNING_MESSAGE);
+	public void changeTheme(SkinInfo skin ) {
+		INSTANCE.setTheme(skin.getClassName());
+		INSTANCE.loadTheme();
+		//SubstanceLookAndFeel.setSkin(skin.getClassName());
 	}
 	
-	public boolean isDefaultTheme() {
-		return this.getTheme().equals( Themes.DEFAULT );
-	}
-	
-	public boolean isSystemTheme() {
-		return this.getTheme().equals( Themes.SYSTEM );
-	}
+//	public boolean isDefaultTheme() {
+//		return this.getTheme();
+//	}
+//	
+//	public boolean isSystemTheme() {
+//		return this.getTheme().equals( Themes.SYSTEM );
+//	}
 		
 	public String getPath() {
 		return this.path;
@@ -262,11 +257,11 @@ public final class Configuration implements Serializable {
 		this.visibleTabs.put( tabLanguageId, visible );
 	}
 	
- 	public Themes getTheme() {
+ 	public String getTheme() {
 		return this.theme;
 	}
 	
-	private void setTheme( final Themes theme ) {
+	private void setTheme( final String theme ) {
 		this.theme = theme;
 	}
 	

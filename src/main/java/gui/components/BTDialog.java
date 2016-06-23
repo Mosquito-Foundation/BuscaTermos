@@ -1,19 +1,17 @@
 package gui.components;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import configuration.Configuration;
 import gui.MainFrame;
+import utils.Token;
 
 public class BTDialog extends JDialog {
 
@@ -42,9 +40,6 @@ public class BTDialog extends JDialog {
 		this.setAlwaysOnTop( MainFrame.getInstance().isAlwaysOnTop() );
 		this.setDefaultCloseOperation( JDialog.DISPOSE_ON_CLOSE );
 		this.setResizable( false );
-		if ( Configuration.getInstance().isDefaultTheme() ) {
-			this.getContentPane().setBackground( Color.decode( "#E8F0F7" ) );
-		}
 	}
 	
 	private JLabel getMessage() {
@@ -55,10 +50,8 @@ public class BTDialog extends JDialog {
 	}
 	
 	private JPanel getButton() {
-		JButton btn = new JButton( "OK" );
+		BTButton btn = new BTButton(Token.OK);
 		btn.setSize(10, 10);
-		btn.setFocusable( false );
-		btn.setBackground( Color.WHITE );
 		btn.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -67,9 +60,6 @@ public class BTDialog extends JDialog {
 		});
 		
 		JPanel btnPane = new JPanel();
-		if ( Configuration.getInstance().isDefaultTheme() ) {
-			btnPane.setBackground( Color.decode( "#E8F0F7" ) );
-		}
 		btnPane.add( btn );
 		
 		return btnPane;

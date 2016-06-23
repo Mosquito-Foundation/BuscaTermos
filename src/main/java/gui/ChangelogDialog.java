@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -36,6 +35,7 @@ public class ChangelogDialog extends JDialog {
 		this.setAlwaysOnTop( owner.isAlwaysOnTop() );
 		this.add( this.createComponents() );
 		this.showDialog();
+		
 	}
 
 	private BTPanel createComponents() {
@@ -53,7 +53,6 @@ public class ChangelogDialog extends JDialog {
 		final JScrollPane textWrapper = new JScrollPane( this.getReleaseContainer() );
 		textWrapper.getVerticalScrollBar().setUnitIncrement( 12 );
 		textWrapper.setHorizontalScrollBarPolicy( JScrollPane.HORIZONTAL_SCROLLBAR_NEVER );
-		textWrapper.setBorder( BorderFactory.createLineBorder( Color.GRAY ) );
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() { 
 				textWrapper.getVerticalScrollBar().setValue(0);
@@ -69,7 +68,6 @@ public class ChangelogDialog extends JDialog {
 		BTGridBagConstraints layout = new BTGridBagConstraints.Builder().weighty( 0d ).insets( new Insets( 0, 10, 0, 10 ) ).build();
 		
 		BTPanel container = new BTPanel( new GridBagLayout() );
-		container.setBackground(Color.WHITE);
 
 		for ( Release release : ReleaseManager.getInstance().getSortedReleases() ) {
 			container.add( new ReleaseView.Builder().version( release.getVersion().toString() ).description( release.getDescription() ).features( release.getFeatures() ).fixes( release.getFixes() ).build(), layout );
@@ -90,7 +88,6 @@ public class ChangelogDialog extends JDialog {
 	private BTButton getOkButton() {
 		BTButton okButton = new BTButton( Token.OK );
 		okButton.setPreferredSize( new Dimension( 100, 30) );
-		okButton.setBorder( BorderFactory.createLineBorder( Color.GRAY ) );
 		okButton.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
