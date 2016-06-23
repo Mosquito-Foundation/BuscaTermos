@@ -167,7 +167,7 @@ public class MainFrame extends BTMainFrame {
 		return saveItem;
 	}
 	
-	private BTMenu getHelpMenu() {
+	public BTMenu getHelpMenu() {
 		final BTMenu helpMenu = new BTMenu( Token.HELP );
 		helpMenu.add( this.getRegexItem() );
 		helpMenu.add( this.getChangelogItem() );
@@ -175,7 +175,7 @@ public class MainFrame extends BTMainFrame {
 		return helpMenu;
 	}
 	
-	private BTMenuItem getRegexItem() {
+	public BTMenuItem getRegexItem() {
 		final BTMenuItem regexItem = new BTMenuItem( Token.REGULAR_EXPRESSIONS );
 		regexItem.addActionListener( new ActionListener() {
 			@Override

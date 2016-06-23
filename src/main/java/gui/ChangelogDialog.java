@@ -20,6 +20,7 @@ import gui.components.BTButton;
 import gui.components.BTGridBagConstraints;
 import gui.components.BTMainFrame;
 import gui.components.BTPanel;
+import gui.shortcut.ShortcutFactory;
 import gui.template.ReleaseView;
 import pojo.Release;
 import pojo.ReleaseManager;
@@ -33,6 +34,7 @@ public class ChangelogDialog extends JDialog {
 	public ChangelogDialog( final BTMainFrame owner ) {
 		super( owner, ModalityType.APPLICATION_MODAL );
 		this.setAlwaysOnTop( owner.isAlwaysOnTop() );
+		this.addKeyListener( ShortcutFactory.createDisposeWindowShortcut( this ) );
 		this.add( this.createComponents() );
 		this.showDialog();
 	}
