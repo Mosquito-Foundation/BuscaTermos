@@ -111,7 +111,7 @@ public class ChangelogDialog extends JDialog {
 		this.setTitle( Token.CHANGELOG );
 		this.setResizable( false );
 		this.setSize( 500, 500 );
-		this.setLocationRelativeTo( null );
+		this.setLocationRelativeTo( this.getOwner() );
 		this.setVisible( true );
 	}
 	

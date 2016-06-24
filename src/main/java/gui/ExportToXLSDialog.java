@@ -2,7 +2,6 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -41,7 +40,6 @@ public class ExportToXLSDialog extends JDialog {
 		super( MainFrame.getInstance(), ModalityType.APPLICATION_MODAL );
 		
 		this.exportOptionsMap = new LinkedHashMap<>();
-		this.loading = new BTLoading( this );
 		
 		this.add( this.createComponents() );
 		this.showDialog();
@@ -50,7 +48,6 @@ public class ExportToXLSDialog extends JDialog {
 	private JPanel createComponents() {
 		final JPanel mainPanel = new JPanel( new BorderLayout() );
 		mainPanel.setBorder( BorderFactory.createEmptyBorder(10, 10, 10, 10) );
-		this.setBackgroundColor( mainPanel );
 		
 		mainPanel.add( this.getFormPanel() );
 		mainPanel.add( this.getBottomBar(), BorderLayout.SOUTH );
@@ -67,11 +64,9 @@ public class ExportToXLSDialog extends JDialog {
 
 	private JPanel getOptionsList( final String groupTitle, final XLSExporter.Type type ) {
 		final JPanel optionsContainer = new JPanel( new GridLayout( Configuration.getInstance().getLanguages().size(), 1 ) );
-		this.setBackgroundColor( optionsContainer );
 		optionsContainer.setBorder( BorderFactory.createCompoundBorder( BorderFactory.createTitledBorder( groupTitle ), BorderFactory.createEmptyBorder( 0, 5, 0, 0) ) );
 		for ( final Language language : Configuration.getInstance().getLanguages().values() ) {
 			final JCheckBox checkbox = new JCheckBox( language.getTitle() );
-			this.setBackgroundColor( checkbox );
 			checkbox.setFocusable( false );
 			checkbox.setSelected( type.equals( XLSExporter.Type.ALL ) );
 			checkbox.addActionListener(new ActionListener() {
@@ -89,7 +84,6 @@ public class ExportToXLSDialog extends JDialog {
 	
 	private JPanel getBottomBar() {
 		final JPanel bottomBar = new JPanel( new BorderLayout() );
-		this.setBackgroundColor( bottomBar );
 		bottomBar.setBorder( BorderFactory.createEmptyBorder( 10, 10, 0, 10 ) );
 		
 		final BTButton okButton = new BTButton( Token.EXPORT ) {
@@ -117,20 +111,13 @@ public class ExportToXLSDialog extends JDialog {
 	}
 
 	private void showDialog() {
-		this.setBackgroundColor( this.getContentPane() );
 		this.setTitle( Token.EXPORT_TO_XLS );
 		this.setResizable( false );
 		this.setSize( 300, 350 );
-		this.setLocationRelativeTo( null );
+		this.setLocationRelativeTo( this.getOwner() );
 		this.setVisible( true );
 	}
 
-	private void setBackgroundColor( final Component component ) {
-		if ( Configuration.getInstance().isDefaultTheme() ) {
-			component.setBackground( Color.decode( "#E8F0F7" ) );
-		}
-	}
-	
 	private void setExportOption( final XLSExporter.Type type, final Languages language, final boolean enabled ) {
 		if ( this.exportOptionsMap.get( type ) == null ) {
 			final LinkedHashMap<Languages, Boolean> option = new LinkedHashMap<>();
@@ -210,6 +197,9 @@ public class ExportToXLSDialog extends JDialog {
 	}
 	
 	private void showLoading() {
+		if ( this.loading == null ) {
+			this.loading = new BTLoading( this );
+		}
 		this.loading.setVisible( true );
 	}
 

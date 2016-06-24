@@ -3,10 +3,12 @@ package gui.components;
 import java.awt.BorderLayout;
 import java.awt.Window;
 
+import javax.swing.BorderFactory;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-import utils.IconManager;
+import utils.Token;
 
 public class BTLoading extends JDialog  {
 
@@ -22,14 +24,19 @@ public class BTLoading extends JDialog  {
 		this.createComponents();
 
 		this.setDefaultCloseOperation( JDialog.DO_NOTHING_ON_CLOSE );
-		this.setUndecorated( true );
 		this.pack();
-		this.setLocationRelativeTo( null );
+		this.setLocationRelativeTo( this.getOwner() );
 	}
 	
 	private void createComponents() {
 		this.setLayout( new BorderLayout() );
-		this.add( new JLabel( IconManager.getInstance().getIcon( "loading/loading.gif" ) ) );
+		
+		final JPanel container = new JPanel( new BorderLayout() );
+		container.setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );
+		
+		container.add( new JLabel( Token.LOADING ) );
+		
+		this.add( container );
 	}
 
 }

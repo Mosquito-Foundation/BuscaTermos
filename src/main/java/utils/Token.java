@@ -130,9 +130,11 @@ public class Token {
 	
 	public static final String SHEET_MISSING = "Need translation to ";
 	
-	public static final String SELECT_AT_LEAST_ONE_OPTION = "Ao menos uma opção deve estar selecionada";
+	public static final String SELECT_AT_LEAST_ONE_OPTION = "Ao menos uma opção deve estar selecionada.";
 	
-	public static final String EXPORT_SUCCESS = "Arquivo exportado com sucesso";
+	public static final String EXPORT_SUCCESS = "Arquivo exportado com sucesso.";
 	
-	public static final String EXPORT_FILE_IN_USE = "Não foi possível salvar.\nO arquivo destino já está sendo usado por outro processo";
+	public static final String EXPORT_FILE_IN_USE = "Não foi possível salvar.\nO arquivo destino já está sendo usado por outro processo.";
+	
+	public static final String LOADING = "Carregando...";
 }
