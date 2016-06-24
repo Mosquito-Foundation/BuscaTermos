@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import utils.Token;
 
+
 public class BTLoading extends JDialog  {
 
 	private static final long serialVersionUID = 1L;
@@ -30,7 +31,7 @@ public class BTLoading extends JDialog  {
 	
 	private void createComponents() {
 		this.setLayout( new BorderLayout() );
-		
+
 		final JPanel container = new JPanel( new BorderLayout() );
 		container.setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );
 		
