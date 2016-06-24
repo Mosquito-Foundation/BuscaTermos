@@ -67,7 +67,6 @@ public class ExportToXLSDialog extends JDialog {
 		optionsContainer.setBorder( BorderFactory.createCompoundBorder( BorderFactory.createTitledBorder( groupTitle ), BorderFactory.createEmptyBorder( 0, 5, 0, 0) ) );
 		for ( final Language language : Configuration.getInstance().getLanguages().values() ) {
 			final JCheckBox checkbox = new JCheckBox( language.getTitle() );
-			checkbox.setFocusable( false );
 			checkbox.setSelected( type.equals( XLSExporter.Type.ALL ) );
 			checkbox.addActionListener(new ActionListener() {
 				@Override
@@ -94,6 +93,7 @@ public class ExportToXLSDialog extends JDialog {
 				return new Dimension( this.getWidth(), 25 );
 			}
 		};
+		okButton.setFocusable( true );
 		okButton.setBorder( BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY) );
 		okButton.addActionListener( new ActionListener() {
 			@Override

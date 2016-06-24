@@ -120,7 +120,7 @@ public class Token {
 
 	public static final String EXPORT = "Exportar";
 	
-	public static final String CUSTOMIZE_LIST_ALL = "Todos os termos";
+	public static final String CUSTOMIZE_LIST_ALL = "Idiomas";
 	
 	public static final String CUSTOMIZE_LIST_MISSING = "Termos para tradução";
 	
