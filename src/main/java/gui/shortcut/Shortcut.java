@@ -38,8 +38,8 @@ class Shortcut extends AbstractShortcut {
 			return this;
 		}
 		
-		public Builder parameter( final Object extra ) {
-			this.parameter = extra;
+		public Builder parameter( final Object parameter ) {
+			this.parameter = parameter;
 			return this;
 		}
 		
