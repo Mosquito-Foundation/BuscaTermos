@@ -62,17 +62,35 @@ public final class Configuration implements Serializable {
 		this.createDefaultConfiguration();
 	}
 	
+	@SuppressWarnings("deprecation")
 	public static Configuration getInstance() {
-		if( INSTANCE == null ) {
+		if ( INSTANCE == null ) {
+			
+			ObjectInputStream in = null;
 			try {
-				ObjectInputStream in = new ObjectInputStream( new FileInputStream( Configuration.CONF_PATH ) );
-				INSTANCE = (Configuration) in.readObject();
-				in.close();
-			} catch ( IOException | ClassNotFoundException e ) {
-				INSTANCE = new Configuration();
+				in = new ObjectInputStream( new FileInputStream( Configuration.CONF_PATH ) );
+				Object obj = in.readObject();
+				
+				if( obj instanceof conf.Configuration ) {
+					INSTANCE = new Configuration();
+					INSTANCE.setPath( ((conf.Configuration) obj).getPath() );
+				} else {
+					INSTANCE = (configuration.Configuration) obj;
+				}
+			
+			} catch (ClassNotFoundException | IOException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					in.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
+			
 			loadLanguages();
 		}
+		
 		return INSTANCE;
 	}
 
@@ -118,7 +136,7 @@ public final class Configuration implements Serializable {
 	}
 	
 	private void createDefaultConfiguration() {
-		// ConfiguraÃ§Ãµes
+		// Configurações
 		this.setPath( "C:\\" );
 		this.setLastExportPath( "C:\\" );
 		this.setDimension( new Dimension(600, 500) );
