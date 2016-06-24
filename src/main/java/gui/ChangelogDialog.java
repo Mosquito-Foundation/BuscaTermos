@@ -12,6 +12,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
 
@@ -19,7 +20,6 @@ import configuration.Configuration;
 import gui.components.BTButton;
 import gui.components.BTGridBagConstraints;
 import gui.components.BTMainFrame;
-import gui.components.BTPanel;
 import gui.template.ReleaseView;
 import pojo.Release;
 import pojo.ReleaseManager;
@@ -37,17 +37,17 @@ public class ChangelogDialog extends JDialog {
 		this.showDialog();
 	}
 
-	private BTPanel createComponents() {
-		BTPanel container = new BTPanel( new BorderLayout(), BorderFactory.createEmptyBorder( 10, 10, 10, 10 ) );
-
+	private JPanel createComponents() {
+		javax.swing.JPanel container = new JPanel( new BorderLayout() );
+		container.setBorder( BorderFactory.createEmptyBorder( 10, 10, 10, 10 ));
 		container.add( this.getTextPane(), BorderLayout.CENTER );
 		container.add( this.getBottomPane(), BorderLayout.SOUTH );
 		
 		return container;
 	}
 	
-	private BTPanel getTextPane() {
-		BTPanel textFieldContainer = new BTPanel( new BorderLayout() );
+	private JPanel getTextPane() {
+		JPanel textFieldContainer = new JPanel( new BorderLayout() );
 		
 		final JScrollPane textWrapper = new JScrollPane( this.getReleaseContainer() );
 		textWrapper.getVerticalScrollBar().setUnitIncrement( 12 );
@@ -63,10 +63,10 @@ public class ChangelogDialog extends JDialog {
 		return textFieldContainer;
 	}
 	
-	private BTPanel getReleaseContainer() {
+	private JPanel getReleaseContainer() {
 		BTGridBagConstraints layout = new BTGridBagConstraints.Builder().weighty( 0d ).insets( new Insets( 0, 10, 0, 10 ) ).build();
 		
-		BTPanel container = new BTPanel( new GridBagLayout() );
+		JPanel container = new JPanel( new GridBagLayout() );
 
 		for ( Release release : ReleaseManager.getInstance().getSortedReleases() ) {
 			container.add( new ReleaseView.Builder().version( release.getVersion().toString() ).description( release.getDescription() ).features( release.getFeatures() ).fixes( release.getFixes() ).build(), layout );
@@ -78,8 +78,9 @@ public class ChangelogDialog extends JDialog {
 		return container;
 	}
 	
-	private BTPanel getBottomPane() {
-		BTPanel bottomPane = new BTPanel( new BorderLayout(), BorderFactory.createEmptyBorder( 10, 0, 0, 0 ) );
+	private JPanel getBottomPane() {
+		javax.swing.JPanel bottomPane = new JPanel( new BorderLayout() );
+		bottomPane.setBorder( BorderFactory.createEmptyBorder( 10, 0, 0, 0 ) );
 		bottomPane.add( this.getOkButton() );
 		return bottomPane;
 	}

@@ -5,11 +5,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JComponent;
+import javax.swing.JPanel;
 
 import utils.IconManager;
 import utils.Token;
 
-public class BTSplitPane extends BTPanel {
+public class BTSplitPane extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
@@ -40,8 +41,8 @@ public class BTSplitPane extends BTPanel {
 		this.add(this.getSplitAndBottomComponent(), BorderLayout.SOUTH);
 	}
 	
-	private BTPanel getSplitAndBottomComponent() {
-		final BTPanel bottomPane = new BTPanel(new BorderLayout());
+	private JPanel getSplitAndBottomComponent() {
+		final JPanel bottomPane = new JPanel(new BorderLayout());
 		bottomPane.add(this.getSplit());
 		bottomPane.add(this.getBottomComponent(), BorderLayout.SOUTH);
 		return bottomPane;

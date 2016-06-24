@@ -11,6 +11,8 @@ import java.io.IOException;
 
 import javax.swing.Action;
 import javax.swing.JComponent;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
@@ -19,8 +21,6 @@ import javax.swing.text.JTextComponent;
 import configuration.Configuration;
 import configuration.language.Language;
 import gui.MainFrame;
-import gui.components.BTMenu;
-import gui.components.BTMenuItem;
 import utils.IconManager;
 import utils.Token;
 
@@ -30,8 +30,8 @@ public class ContextMenu extends JPopupMenu {
 
 	private boolean isBrazilTab;
 
-	protected BTMenuItem getCopyOption() {
-		BTMenuItem copy = new BTMenuItem(Token.COPY, IconManager.getInstance().getIcon("icons/copy.png"));
+	protected JMenuItem getCopyOption() {
+		JMenuItem copy = new JMenuItem(Token.COPY, IconManager.getInstance().getIcon("icons/copy.png"));
 		copy.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -41,8 +41,8 @@ public class ContextMenu extends JPopupMenu {
 		return copy;
 	}
 
-	protected BTMenuItem getPasteOption() {
-		BTMenuItem paste = new BTMenuItem(Token.PASTE, IconManager.getInstance().getIcon("icons/paste.png"));
+	protected JMenuItem getPasteOption() {
+		JMenuItem paste = new JMenuItem(Token.PASTE, IconManager.getInstance().getIcon("icons/paste.png"));
 		paste.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -52,8 +52,8 @@ public class ContextMenu extends JPopupMenu {
 		return paste;
 	}
 	
-	protected BTMenu getAddTabGroup() {
-		BTMenu menu = new BTMenu(Token.ADD);
+	protected JMenu getAddTabGroup() {
+		JMenu menu = new JMenu(Token.ADD);
 		
 		for (Language language : Configuration.getInstance().getLanguages().values()) {
 			if ( !MainFrame.getInstance().getJMenuBar().getMenu( 0 ).getItem( language.getId().ordinal() ).isSelected() ) {
@@ -71,8 +71,8 @@ public class ContextMenu extends JPopupMenu {
 		return menu;
 	}
 	
-	protected BTMenu getLanguageGroup() {
-		BTMenu menu = new BTMenu(Token.VIEW_ON);
+	protected JMenu getLanguageGroup() {
+		JMenu menu = new JMenu(Token.VIEW_ON);
 		
 		for (Language language : Configuration.getInstance().getLanguages().values()) {
 			menu.add( this.getLanguageOption( language ) );
@@ -81,8 +81,8 @@ public class ContextMenu extends JPopupMenu {
 		return menu;
 	}
 	
-	protected BTMenuItem getLanguageOption( final Language language ) {
-		BTMenuItem item = new BTMenuItem( language.getTitle(), language.getIcon() );
+	protected JMenuItem getLanguageOption( final Language language ) {
+		JMenuItem item = new JMenuItem( language.getTitle(), language.getIcon() );
 		item.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -92,8 +92,8 @@ public class ContextMenu extends JPopupMenu {
 		return item;
 	}
 	
-	protected BTMenuItem getAddAllOption() {
-		BTMenuItem item = new BTMenuItem(Token.ADD_ALL);
+	protected JMenuItem getAddAllOption() {
+		JMenuItem item = new JMenuItem(Token.ADD_ALL);
 		item.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -104,8 +104,8 @@ public class ContextMenu extends JPopupMenu {
 		return item;
 	}
 	
-	protected BTMenuItem getCloseOption() {
-		BTMenuItem item = new BTMenuItem(Token.CLOSE);
+	protected JMenuItem getCloseOption() {
+		JMenuItem item = new JMenuItem(Token.CLOSE);
 		item.setEnabled(!this.isBrazilTab);
 		item.addActionListener(new ActionListener() {
 			@Override
@@ -117,8 +117,8 @@ public class ContextMenu extends JPopupMenu {
 		return item;
 	}
 
-	protected BTMenuItem getCloseOthersOption() {
-		BTMenuItem item = new BTMenuItem(Token.CLOSE_OTHERS);
+	protected JMenuItem getCloseOthersOption() {
+		JMenuItem item = new JMenuItem(Token.CLOSE_OTHERS);
 		item.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -129,8 +129,8 @@ public class ContextMenu extends JPopupMenu {
 		return item;
 	}
 	
-	protected BTMenuItem getCloseAllOption() {
-		BTMenuItem item = new BTMenuItem(Token.CLOSE_ALL);
+	protected JMenuItem getCloseAllOption() {
+		JMenuItem item = new JMenuItem(Token.CLOSE_ALL);
 		item.setEnabled(!this.isBrazilTab);
 		item.addActionListener(new ActionListener() {
 			@Override
