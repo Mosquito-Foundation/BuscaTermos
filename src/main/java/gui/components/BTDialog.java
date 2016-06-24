@@ -55,6 +55,7 @@ public class BTDialog extends JDialog {
 		BTButton btn = new BTButton(Token.OK);
 		btn.setSize(10, 10);
 		btn.setFocusable( true );
+		btn.addKeyListener( ShortcutFactory.createDisposeWindowShortcut( this ) );
 		btn.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

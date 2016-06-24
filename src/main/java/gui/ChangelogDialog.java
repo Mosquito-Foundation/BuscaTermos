@@ -91,6 +91,7 @@ public class ChangelogDialog extends JDialog {
 		BTButton okButton = new BTButton( Token.OK );
 		okButton.setPreferredSize( new Dimension( 100, 30) );
 		okButton.setFocusable( true );
+		okButton.addKeyListener( ShortcutFactory.createDisposeWindowShortcut( this ) );
 		okButton.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

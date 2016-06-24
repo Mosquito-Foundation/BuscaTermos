@@ -26,6 +26,7 @@ import configuration.language.Languages;
 import export.XLSExporter;
 import gui.components.BTButton;
 import gui.components.BTLoading;
+import gui.shortcut.ShortcutFactory;
 import utils.Token;
 
 public class ExportToXLSDialog extends JDialog {
@@ -40,6 +41,8 @@ public class ExportToXLSDialog extends JDialog {
 		super( MainFrame.getInstance(), ModalityType.APPLICATION_MODAL );
 		
 		this.exportOptionsMap = new LinkedHashMap<>();
+		
+		this.addKeyListener( ShortcutFactory.createDisposeWindowShortcut( this ) );
 		
 		this.add( this.createComponents() );
 		this.showDialog();
@@ -64,10 +67,11 @@ public class ExportToXLSDialog extends JDialog {
 
 	private JPanel getOptionsList( final String groupTitle, final XLSExporter.Type type ) {
 		final JPanel optionsContainer = new JPanel( new GridLayout( Configuration.getInstance().getLanguages().size(), 1 ) );
-		optionsContainer.setBorder( BorderFactory.createCompoundBorder( BorderFactory.createTitledBorder( groupTitle ), BorderFactory.createEmptyBorder( 0, 5, 0, 0) ) );
+		optionsContainer.setBorder( BorderFactory.createCompoundBorder( BorderFactory.createTitledBorder( groupTitle ), BorderFactory.createEmptyBorder( 0, 5, 0, 5) ) );
 		for ( final Language language : Configuration.getInstance().getLanguages().values() ) {
 			final JCheckBox checkbox = new JCheckBox( language.getTitle() );
 			checkbox.setSelected( type.equals( XLSExporter.Type.ALL ) );
+			checkbox.addKeyListener( ShortcutFactory.createDisposeWindowShortcut( this ) );
 			checkbox.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -95,6 +99,7 @@ public class ExportToXLSDialog extends JDialog {
 		};
 		okButton.setFocusable( true );
 		okButton.setBorder( BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY) );
+		okButton.addKeyListener( ShortcutFactory.createDisposeWindowShortcut( this ) );
 		okButton.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
