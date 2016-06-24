@@ -28,5 +28,4 @@ abstract class AbstractShortcut implements KeyListener {
 
 		((Window) windowToDispose).dispose();
 	}
-	
 }
