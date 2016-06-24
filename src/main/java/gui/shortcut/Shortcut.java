@@ -12,6 +12,8 @@ class Shortcut extends AbstractShortcut {
 	
 	private final String action;
 	
+	private final Object parameter;
+	
 	private final HashMap<Integer, Boolean> modifier;
 	
 	private final ArrayList<Integer> availableModifier;
@@ -24,6 +26,8 @@ class Shortcut extends AbstractShortcut {
 		
 		private int[] modifier;
 		
+		private Object parameter = null;
+		
 		public Builder( final int key, final String action ) {
 			this.key = key;
 			this.action = action;
@@ -31,6 +35,11 @@ class Shortcut extends AbstractShortcut {
 		
 		public Builder modifier( final int... modifier ) {
 			this.modifier = modifier;
+			return this;
+		}
+		
+		public Builder parameter( final Object parameter ) {
+			this.parameter = parameter;
 			return this;
 		}
 		
@@ -42,17 +51,20 @@ class Shortcut extends AbstractShortcut {
 	private Shortcut( final Shortcut.Builder builder ){
 		this.key = builder.key;
 		this.action = builder.action;
+		this.parameter = builder.parameter;
 		
 		this.modifier = new HashMap<>();
 		this.availableModifier = new ArrayList<>();
 		
 		this.initModifier();
 		
-		for ( final Integer modifier : builder.modifier ) {
-			if ( !this.availableModifier.contains( modifier ) ) {
-				System.err.println( "Não é possível adicionar " + modifier + " como modificador. São aceitos apenas: " + this.availableModifier );
+		if ( builder.modifier != null ) {
+			for ( final Integer modifier : builder.modifier ) {
+				if ( !this.availableModifier.contains( modifier ) ) {
+					System.err.println( "Não é possível adicionar " + modifier + " como modificador. São aceitos apenas: " + this.availableModifier );
+				}
+				this.modifier.put( modifier, true );
 			}
-			this.modifier.put( modifier, true );
 		}
 	}
 	
@@ -92,8 +104,13 @@ class Shortcut extends AbstractShortcut {
 
 	private void fireAction() {
 		try {
-			final Method method = this.getClass().getMethod( this.action );
-			method.invoke( this );
+			if ( this.parameter != null ) {
+				final Method method = this.getClass().getMethod( this.action, Object.class );
+				method.invoke( this, this.parameter );
+			} else {
+				final Method method = this.getClass().getMethod( this.action );
+				method.invoke( this );
+			}
 		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			e.printStackTrace();
 		}

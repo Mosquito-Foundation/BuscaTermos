@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import gui.MainFrame;
+import gui.shortcut.ShortcutFactory;
 import utils.Token;
 
 public class BTDialog extends JDialog {
@@ -29,7 +30,7 @@ public class BTDialog extends JDialog {
 
 		this.message = message;
 		this.init();
-		
+		this.addKeyListener( ShortcutFactory.createDisposeWindowShortcut( this ) );
 		this.output();
 	}
 	
@@ -52,6 +53,7 @@ public class BTDialog extends JDialog {
 	private JPanel getButton() {
 		BTButton btn = new BTButton(Token.OK);
 		btn.setSize(10, 10);
+		btn.setFocusable( true );
 		btn.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
