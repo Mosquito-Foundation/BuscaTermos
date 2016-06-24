@@ -136,7 +136,7 @@ public final class Configuration implements Serializable {
 	}
 	
 	private void createDefaultConfiguration() {
-		// Configurações
+		// ConfiguraÃ§Ãµes
 		this.setPath( "C:\\" );
 		this.setLastExportPath( "C:\\" );
 		this.setDimension( new Dimension(600, 500) );
