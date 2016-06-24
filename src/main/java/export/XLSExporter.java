@@ -120,7 +120,6 @@ public class XLSExporter {
 		System.out.println( "Tempo planilha ALL TOKENS -> " + ( ( System.currentTimeMillis() - timeAllSheet ) / 1000.0 ) + " segundos" );
 
 		sheet.setDefaultColumnWidth( 30 );
-		sheet.setColumnWidth( 0, 10 );
 		
 		return sheet;
 	}
