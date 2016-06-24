@@ -12,6 +12,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButtonMenuItem;
+import javax.swing.SwingUtilities;
 
 import org.pushingpixels.substance.api.SubstanceLookAndFeel;
 import org.pushingpixels.substance.api.skin.SkinInfo;
@@ -253,6 +254,7 @@ public class MainFrame extends BTMainFrame {
 	public void showTab( final Language language ) {
 		this.getLanguageTabs().addTab( language.getTitle(), language.getIcon(), this.languagePanelMap.get( language.getId() ) );
 		Configuration.getInstance().setTabState( language.getId(), true );
+		SwingUtilities.updateComponentTreeUI( this.languagePanelMap.get( language.getId() ) );
 	}
 	
 	private boolean hideTab( final Language language ) {

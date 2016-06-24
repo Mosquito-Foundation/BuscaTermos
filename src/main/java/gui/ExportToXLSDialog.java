@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -98,7 +97,6 @@ public class ExportToXLSDialog extends JDialog {
 			}
 		};
 		okButton.setFocusable( true );
-		okButton.setBorder( BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY) );
 		okButton.addKeyListener( ShortcutFactory.createDisposeWindowShortcut( this ) );
 		okButton.addActionListener( new ActionListener() {
 			@Override
