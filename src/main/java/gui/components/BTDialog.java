@@ -2,6 +2,7 @@ package gui.components;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -20,12 +21,12 @@ public class BTDialog extends JDialog {
 
 	private final String message;
 	
-	public BTDialog( final MainFrame frame, final String message ) {
-		this( frame, message, "" );
+	public BTDialog( final Window owner, final String message ) {
+		this( owner, message, "" );
 	}
 	
-	public BTDialog( final MainFrame frame, final String message, final String title ) {
-		super( frame, ModalityType.APPLICATION_MODAL );
+	public BTDialog( final Window owner, final String message, final String title ) {
+		super( owner, ModalityType.APPLICATION_MODAL );
 		super.setTitle( title );
 
 		this.message = message;
@@ -54,6 +55,7 @@ public class BTDialog extends JDialog {
 		BTButton btn = new BTButton(Token.OK);
 		btn.setSize(10, 10);
 		btn.setFocusable( true );
+		btn.addKeyListener( ShortcutFactory.createDisposeWindowShortcut( this ) );
 		btn.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -69,7 +71,7 @@ public class BTDialog extends JDialog {
 
 	public void output() {
 		this.pack();
-		this.setLocationRelativeTo( null );
+		this.setLocationRelativeTo( this.getOwner() );
 		this.setVisible( true );
 	}
 }

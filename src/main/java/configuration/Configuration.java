@@ -42,7 +42,7 @@ public final class Configuration implements Serializable {
 	
 	private static Configuration INSTANCE;
 	
-	private String path;
+	private String path, lastExportPath;
 	
 	private Dimension dimension;
 
@@ -120,6 +120,7 @@ public final class Configuration implements Serializable {
 	private void createDefaultConfiguration() {
 		// Configurações
 		this.setPath( "C:\\" );
+		this.setLastExportPath( "C:\\" );
 		this.setDimension( new Dimension(600, 500) );
 		this.setAlwaysOnTop( false );
 		this.setVersion( "1.0.0" );
@@ -215,6 +216,14 @@ public final class Configuration implements Serializable {
 		this.path = path;
 	}
 
+	public String getLastExportPath() {
+		return this.lastExportPath;
+	}
+	
+	public void setLastExportPath( final String path ) {
+		this.lastExportPath = path;
+	}
+	
 	public Dimension getDimension() {
 		return this.dimension;
 	}
@@ -271,6 +280,7 @@ public final class Configuration implements Serializable {
 	public String toString() {
 		String instance = "Configuration\n" +
 				"\n\tPath: " + this.path +
+				"\n\tLastExportPath: " + this.lastExportPath +
 				"\n\tDimension: " + this.dimension.width + "w " + this.dimension.height + "h" +
 				"\n\tMaximized: " + ( this.maximized ? "true" : "false" ) +
 				"\n\tTop: " + ( this.alwaysOnTop ? "true" : "false" ) +
