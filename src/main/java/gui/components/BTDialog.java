@@ -53,6 +53,7 @@ public class BTDialog extends JDialog {
 	private JPanel getButton() {
 		BTButton btn = new BTButton(Token.OK);
 		btn.setSize(10, 10);
+		btn.setFocusable( true );
 		btn.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

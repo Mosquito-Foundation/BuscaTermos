@@ -90,6 +90,7 @@ public class ChangelogDialog extends JDialog {
 	private BTButton getOkButton() {
 		BTButton okButton = new BTButton( Token.OK );
 		okButton.setPreferredSize( new Dimension( 100, 30) );
+		okButton.setFocusable( true );
 		okButton.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
