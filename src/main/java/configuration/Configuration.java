@@ -66,9 +66,8 @@ public final class Configuration implements Serializable {
 	public static Configuration getInstance() {
 		if ( INSTANCE == null ) {
 			
-			ObjectInputStream in = null;
 			try {
-				in = new ObjectInputStream( new FileInputStream( Configuration.CONF_PATH ) );
+				ObjectInputStream in = new ObjectInputStream( new FileInputStream( Configuration.CONF_PATH ) );
 				Object obj = in.readObject();
 				
 				if( obj instanceof conf.Configuration ) {
@@ -77,15 +76,9 @@ public final class Configuration implements Serializable {
 				} else {
 					INSTANCE = (configuration.Configuration) obj;
 				}
-			
+				in.close();
 			} catch (ClassNotFoundException | IOException e) {
-				e.printStackTrace();
-			} finally {
-				try {
-					in.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				INSTANCE = new Configuration();
 			}
 			
 			loadLanguages();
