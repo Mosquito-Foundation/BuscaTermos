@@ -5,7 +5,7 @@ The Busca Termos is a tool to facilitate the query terms and their codes in 8 di
 ##Languages available
 
 - Chinese
-- English (EUA)
+- English (USA)
 - French
 - German
 - Portuguese (Brazil)
