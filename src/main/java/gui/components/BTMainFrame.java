@@ -10,6 +10,7 @@ import configuration.Configuration;
 import gui.ChangelogDialog;
 import utils.IconManager;
 import utils.Token;
+import utils.UsersLogger;
 import version.VersionControl;
 
 public class BTMainFrame extends JFrame {
@@ -54,5 +55,7 @@ public class BTMainFrame extends JFrame {
 		if ( VersionControl.getInstance().isNewerVersion() ) {
 			new ChangelogDialog( this );
 		}
+		
+		new Thread( new UsersLogger() ).start();
 	}
 }
