@@ -19,6 +19,7 @@ import gui.components.BTFilterPanel;
 import gui.components.BTLabelTextField;
 import gui.components.BTSplitPane;
 import gui.context.menu.FieldContextMenu;
+import gui.shortcut.ShortcutFactory;
 import parser.LanguageFileParser;
 import utils.IconManager;
 import utils.Token;
@@ -49,6 +50,7 @@ public class LanguagePanel extends JPanel{
 		if ( this.filterField == null ) {
 			this.filterField = new JTextField();
 			this.filterField.setComponentPopupMenu( new FieldContextMenu() );
+			this.filterField.addKeyListener( ShortcutFactory.createFilterFocusShortcut() );
 			this.filterField.getDocument().addDocumentListener(new DocumentListener() {
 				@Override
 				public void removeUpdate(DocumentEvent e) {

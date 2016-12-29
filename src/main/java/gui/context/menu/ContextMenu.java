@@ -162,20 +162,26 @@ public class ContextMenu extends JPopupMenu {
 	}
 	
 	protected void pasteAction() {
-		String result = "";
+		String textToPaste = "";
 		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 		Transferable contents = clipboard.getContents( null );
 		boolean hasTransferableText = ( contents != null ) && contents.isDataFlavorSupported( DataFlavor.stringFlavor );
 		if ( hasTransferableText ) {
 			try {
-				result = (String) contents.getTransferData( DataFlavor.stringFlavor );
+				textToPaste = (String) contents.getTransferData( DataFlavor.stringFlavor );
 			} catch ( UnsupportedFlavorException | IOException e ) {
 				e.printStackTrace();
 			}
 		}
 
-		// FIXME quando colar em uma parada q ja ta selecionada deve substituir o q ta selecionado
-		( (JTextComponent) this.getInvoker() ).setText( ( (JTextComponent) this.getInvoker() ).getText() + result );
+		final JTextComponent field = (JTextComponent) this.getInvoker();
+		if ( field.getSelectedText() != null ) {
+			field.replaceSelection( textToPaste );
+		} else {
+			final StringBuilder sb = new StringBuilder( field.getText() );
+			sb.insert( field.getCaretPosition(), textToPaste );
+			field.setText( sb.toString() );
+		}
 	}
 	
 	protected void closeAction() { this.unimplementedMethod(); }

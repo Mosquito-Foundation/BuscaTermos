@@ -32,6 +32,17 @@
                     "Correção do problema que ocorria ao pesquisar utilizando o caractere \")\"."
                 ]
             }
+        },
+        {
+            "version": "1.2.1",
+            "changelog": {
+                "features": [
+                    "Adicionado atalho (Ctrl + F) no campo de pesquisa para que seu texto seja selecionado."
+                ],
+                "fixes": [
+                    "Correção do problema onde, ao colar um texto em um campo com seleção, a seleção não era sobrescrita."
+                ]
+            }
         }
     ]
 }
